@@ -5,6 +5,7 @@ import '../models/cycle.dart';
 import '../models/day_entry.dart';
 import '../models/settings.dart';
 import '../services/stm_engine.dart';
+import '../services/cycle_stats.dart';
 import '../services/notification_service.dart';
 
 class CycleProvider extends ChangeNotifier {
@@ -301,86 +302,31 @@ class CycleProvider extends ChangeNotifier {
   }
 
   /// Statistics: get all completed cycle lengths (only valid ones > 0)
-  List<int> get cycleLengths {
-    return _cycles
-        .where((c) => c.length != null && c.length! > 0)
-        .map((c) => c.length!)
-        .toList();
-  }
+  List<int> get cycleLengths => CycleStats.cycleLengths(_cycles);
 
-  double? get averageCycleLength {
-    final lengths = cycleLengths;
-    if (lengths.isEmpty) return null;
-    return lengths.reduce((a, b) => a + b) / lengths.length;
-  }
+  double? get averageCycleLength => CycleStats.averageCycleLength(_cycles);
 
-  int? get shortestCycle {
-    final lengths = cycleLengths;
-    if (lengths.isEmpty) return null;
-    return lengths.reduce((a, b) => a < b ? a : b);
-  }
+  int? get shortestCycle => CycleStats.shortestCycle(_cycles);
 
-  int? get longestCycle {
-    final lengths = cycleLengths;
-    if (lengths.isEmpty) return null;
-    return lengths.reduce((a, b) => a > b ? a : b);
-  }
+  int? get longestCycle => CycleStats.longestCycle(_cycles);
 
   /// Predicted next period start date based on average cycle length.
   /// Requires at least 2 completed cycles for a meaningful prediction.
-  DateTime? get predictedNextPeriod {
-    final avg = averageCycleLength;
-    if (avg == null || _currentCycle == null) return null;
-    // Need at least 2 completed cycles for a reliable prediction
-    if (cycleLengths.length < 2) return null;
-    return _currentCycle!.startDate.add(Duration(days: avg.round()));
-  }
+  DateTime? get predictedNextPeriod =>
+      CycleStats.predictedNextPeriod(_cycles, _currentCycle);
 
   /// Days until predicted next period (negative = overdue)
-  int? get daysUntilNextPeriod {
-    final predicted = predictedNextPeriod;
-    if (predicted == null) return null;
-    final today = DateTime.now();
-    return DateTime(predicted.year, predicted.month, predicted.day)
-        .difference(DateTime(today.year, today.month, today.day))
-        .inDays;
-  }
+  int? get daysUntilNextPeriod =>
+      CycleStats.daysUntilNextPeriod(_cycles, _currentCycle);
 
   /// Standard deviation of cycle lengths
-  double? get cycleLengthStdDev {
-    final lengths = cycleLengths;
-    if (lengths.length < 2) return null;
-    final avg = averageCycleLength!;
-    final variance = lengths
-            .map((l) => (l - avg) * (l - avg))
-            .reduce((a, b) => a + b) /
-        lengths.length;
-    return _sqrt(variance);
-  }
-
-  double _sqrt(double value) {
-    if (value <= 0) return 0;
-    double guess = value / 2;
-    for (int i = 0; i < 20; i++) {
-      guess = (guess + value / guess) / 2;
-    }
-    return guess;
-  }
+  double? get cycleLengthStdDev => CycleStats.cycleLengthStdDev(_cycles);
 
   /// Average temperature shift day across completed cycles
-  double? get averageTempShiftDay {
-    final shiftDays = _cycles
-        .where((c) => c.temperatureShiftDay != null)
-        .map((c) => c.temperatureShiftDay!)
-        .toList();
-    if (shiftDays.isEmpty) return null;
-    return shiftDays.reduce((a, b) => a + b) / shiftDays.length;
-  }
+  double? get averageTempShiftDay => CycleStats.averageTempShiftDay(_cycles);
 
   /// Number of completed cycles
-  int get completedCycleCount {
-    return _cycles.where((c) => c.length != null).length;
-  }
+  int get completedCycleCount => CycleStats.completedCycleCount(_cycles);
 
   bool _isSameDay(DateTime a, DateTime b) {
     return a.year == b.year && a.month == b.month && a.day == b.day;

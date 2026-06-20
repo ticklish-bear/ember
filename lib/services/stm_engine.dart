@@ -394,18 +394,36 @@ class StmEngine {
   }
 
   /// Find Peak Day: the last day of best-quality mucus before a decline.
+  ///
+  /// The decline must be an OBSERVED drier reading on the immediately
+  /// following calendar day. If mucus was not recorded on the day after a
+  /// fertile-quality day, the drop is unconfirmed and the peak cannot be
+  /// identified there — a gap in charting must never let an old fertile day
+  /// be retroactively "confirmed" as Peak by a much later dry entry. Skipping
+  /// the peak in that case keeps the day fertile, which is the safe direction.
   int? _findPeakDay(List<DayEntry> sorted, Cycle cycle) {
     // Check for manual Peak Day first
     for (final e in sorted) {
       if (e.isPeakDay) return e.cycleDay;
     }
 
-    // Auto-detect: find last day with fertile mucus (quality >= 3)
-    // followed by at least one day of lower quality
+    // Only days with an ACTUAL mucus observation may participate. A day that
+    // has a temperature but no recorded mucus carries quality 0; it must not
+    // be mistaken for an observed "dry" drop, or a peak could be confirmed
+    // from a charting gap.
+    final mucusDays = sorted.where((e) => e.hasMucusRecorded).toList();
+
+    // Auto-detect: last day with fertile mucus (quality >= 3) immediately
+    // followed (next calendar day) by an observed lower-quality reading.
     int? peak;
-    for (int i = 0; i < sorted.length - 1; i++) {
-      if (sorted[i].mucusQuality >= 3 && sorted[i + 1].mucusQuality < 3) {
-        peak = sorted[i].cycleDay;
+    for (int i = 0; i < mucusDays.length - 1; i++) {
+      final cur = mucusDays[i];
+      final next = mucusDays[i + 1];
+      final dropObservedNextDay = next.cycleDay == cur.cycleDay + 1;
+      if (cur.mucusQuality >= 3 &&
+          next.mucusQuality < 3 &&
+          dropObservedNextDay) {
+        peak = cur.cycleDay;
       }
     }
     return peak;
