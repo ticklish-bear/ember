@@ -119,7 +119,7 @@ In the Console: Create app → fill out:
 - Enable **GitHub Pages** for the repo (Settings → Pages → deploy from `main`),
   then link to the rendered file, **or**
 - Use the GitHub-rendered URL directly:
-  `https://github.com/ticklish-bear/crest/blob/main/PRIVACY.md`
+  `https://github.com/ticklish-bear/ember/blob/main/PRIVACY.md`
 
 Paste that URL into Console → Policy → App content → Privacy policy.
 

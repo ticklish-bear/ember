@@ -81,4 +81,4 @@ If this policy changes, the updated version will be published here with a new
 ## Contact
 
 Questions about privacy can be raised via the project's GitHub repository:
-https://github.com/ticklish-bear/crest
+https://github.com/ticklish-bear/ember
