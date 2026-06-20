@@ -41,7 +41,7 @@ class SettingsScreen extends StatelessWidget {
                         color: colors.onPrimaryContainer, size: 24),
                   ),
                   const SizedBox(height: 8),
-                  Text('Crest',
+                  Text('Ember',
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       )),
@@ -251,7 +251,7 @@ class SettingsScreen extends StatelessWidget {
                     color: colors.primary),
                 title: const Text('Import data (CSV)'),
                 subtitle:
-                    const Text('Import Crest CSV format'),
+                    const Text('Import Ember CSV format'),
                 onTap: () => _importData(context),
               ),
               const Divider(),
@@ -304,7 +304,7 @@ class SettingsScreen extends StatelessWidget {
                       color: colors.primary),
                   title: const Text('Support development'),
                   subtitle: const Text(
-                      'Crest is free. Chip in a coffee if you like — optional.'),
+                      'Ember is free. Chip in a coffee if you like — optional.'),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(

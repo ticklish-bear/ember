@@ -11,18 +11,18 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initDatabase();
   await NotificationService.instance.initialize();
-  runApp(const CrestApp());
+  runApp(const EmberApp());
 }
 
-class CrestApp extends StatelessWidget {
-  const CrestApp({super.key});
+class EmberApp extends StatelessWidget {
+  const EmberApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => CycleProvider()..initialize(),
       child: MaterialApp(
-        title: 'Crest',
+        title: 'Ember',
         theme: AppTheme.lightTheme,
         home: const HomeScreen(),
         debugShowCheckedModeBanner: false,

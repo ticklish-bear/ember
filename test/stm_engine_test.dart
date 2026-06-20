@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:crest/models/cycle.dart';
-import 'package:crest/models/day_entry.dart';
-import 'package:crest/services/stm_engine.dart';
+import 'package:ember/models/cycle.dart';
+import 'package:ember/models/day_entry.dart';
+import 'package:ember/services/stm_engine.dart';
 
 // ---------------------------------------------------------------------------
 // Backtest suite for the STM evaluation engine.

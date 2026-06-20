@@ -1,4 +1,4 @@
-"""Generate Crest launcher icons from scratch using Pillow.
+"""Generate Ember launcher icons from scratch using Pillow.
 
 Produces:
   - icon.png            : 1024x1024 full icon (rounded square background + curve)

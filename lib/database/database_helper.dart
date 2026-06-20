@@ -20,10 +20,10 @@ class DatabaseHelper {
   Future<Database> _initDatabase() async {
     String path;
     if (kIsWeb) {
-      path = 'crest.db';
+      path = 'ember.db';
     } else {
       final dbPath = await getDatabasesPath();
-      path = join(dbPath, 'crest.db');
+      path = join(dbPath, 'ember.db');
     }
     return await openDatabase(
       path,

@@ -1,4 +1,4 @@
-# Crest
+# Ember
 
 A free, offline charting app for the symptothermal method (STM / NFP / FAM).
 Android. No account. No ads. No predictions dressed up as science.
@@ -90,7 +90,7 @@ kind of feedback I want most.
 
 ## Disclaimer
 
-Crest is a charting tool, not a medical device. It does not provide
+Ember is a charting tool, not a medical device. It does not provide
 medical advice, diagnosis, or treatment, and it is not a substitute for a
 qualified instructor.
 

@@ -1,6 +1,6 @@
 # Daily Check-in Notifications
 
-Crest can remind you once per day to log your basal body temperature
+Ember can remind you once per day to log your basal body temperature
 and cervical mucus. A single, quiet notification fires at a time you choose
 — nothing else, no streaks, no guilt-trip copy.
 

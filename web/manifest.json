@@ -1,6 +1,6 @@
 {
-    "name": "Crest",
-    "short_name": "Crest",
+    "name": "Ember",
+    "short_name": "Ember",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#F3ECE0",

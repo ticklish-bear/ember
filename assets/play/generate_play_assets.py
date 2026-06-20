@@ -1,4 +1,4 @@
-"""Generate Google Play Store graphics for Crest (Forest palette).
+"""Generate Google Play Store graphics for Ember (Forest palette).
 
 Outputs into assets/play/:
   - play_icon_512.png   : 512x512 hi-res store icon (full square; Play masks it)
@@ -86,7 +86,7 @@ def make_feature_graphic():
     # Wordmark + tagline on the left
     title_font = load_font(96, bold=True)
     tag_font = load_font(34, bold=False)
-    draw.text((80, 175), "Crest", font=title_font, fill=FG)
+    draw.text((80, 175), "Ember", font=title_font, fill=FG)
     draw.text((84, 285), "Symptothermal method charting",
               font=tag_font, fill=MUTED)
     draw.text((84, 330), "Free · offline · private",

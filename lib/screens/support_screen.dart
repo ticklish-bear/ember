@@ -25,7 +25,7 @@ class SupportScreen extends StatelessWidget {
     final colors = theme.colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Support Crest')),
+      appBar: AppBar(title: const Text('Support Ember')),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
@@ -43,7 +43,7 @@ class SupportScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           Text(
-            'Crest is free — and stays that way',
+            'Ember is free — and stays that way',
             textAlign: TextAlign.center,
             style: theme.textTheme.titleMedium
                 ?.copyWith(fontWeight: FontWeight.w600),
@@ -52,7 +52,7 @@ class SupportScreen extends StatelessWidget {
           Text(
             'No subscriptions, no ads, no tracking. Every feature is available '
             'to everyone. It’s built and maintained in my spare time.\n\n'
-            'If Crest is useful to you and you’d like to chip in toward its '
+            'If Ember is useful to you and you’d like to chip in toward its '
             'development, you can leave a small tip. It’s entirely optional '
             'and unlocks nothing — you already have the whole app.',
             style: theme.textTheme.bodyMedium?.copyWith(
@@ -71,7 +71,7 @@ class SupportScreen extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            'Opens in your browser. Crest never sees your payment details.',
+            'Opens in your browser. Ember never sees your payment details.',
             textAlign: TextAlign.center,
             style: theme.textTheme.bodySmall
                 ?.copyWith(color: colors.onSurfaceVariant),

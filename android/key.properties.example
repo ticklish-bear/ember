@@ -12,4 +12,4 @@
 storePassword=CHANGE_ME
 keyPassword=CHANGE_ME
 keyAlias=upload
-storeFile=C:/Users/Jakub/keys/crest-upload-keystore.jks
+storeFile=C:/Users/Jakub/keys/ember-upload-keystore.jks

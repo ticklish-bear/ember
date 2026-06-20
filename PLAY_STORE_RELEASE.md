@@ -1,6 +1,6 @@
-# Crest — Google Play release guide
+# Ember — Google Play release guide
 
-Everything needed to ship Crest to the Play Store. Items marked **[you]** must
+Everything needed to ship Ember to the Play Store. Items marked **[you]** must
 be done by you (they need your Google account, your keystore password, or the
 Play Console). Items marked **[done]** are already set up in this repo.
 
@@ -13,7 +13,7 @@ Play Console). Items marked **[done]** are already set up in this repo.
    start this early).
 2. Decide on an account type. For an indie release, a **personal** account is
    fine. (A registered organization is only needed for some donation models —
-   not required for the Ko-fi link approach Crest uses.)
+   not required for the Ko-fi link approach Ember uses.)
 
 ---
 
@@ -25,7 +25,7 @@ fall back to debug keys otherwise (`android/app/build.gradle.kts`). **[done]**
 You must generate the keystore once:
 
 ```bash
-keytool -genkey -v -keystore crest-upload-keystore.jks \
+keytool -genkey -v -keystore ember-upload-keystore.jks \
         -keyalg RSA -keysize 2048 -validity 10000 -alias upload
 ```
 
@@ -96,7 +96,7 @@ number (after `+`) must increase on every upload. Current: `0.1.0+1`.
 
 In the Console: Create app → fill out:
 
-- **App name:** Crest
+- **App name:** Ember
 - **Short description (max 80 chars):**
 
   > Free, private symptothermal method (STM/NFP) charting. Offline, no account.
@@ -127,24 +127,24 @@ Paste that URL into Console → Policy → App content → Privacy policy.
 
 ## 7. App content declarations **[you — answers below]**
 
-Console → Policy → App content. Suggested answers based on how Crest actually
+Console → Policy → App content. Suggested answers based on how Ember actually
 behaves:
 
 - **Privacy policy:** URL from step 6.
 - **Ads:** No, the app contains no ads.
 - **Data safety:**
-  - Does your app collect or share user data? **No.** Crest stores everything
+  - Does your app collect or share user data? **No.** Ember stores everything
     locally and makes no network calls. (Be ready to explain: the only data
     exists on-device; export is user-initiated to the system share sheet.)
   - Is data encrypted in transit? **N/A — no data is transmitted.**
   - Can users request deletion? **Yes — in-app: Settings → Delete all data.**
-- **Content rating:** complete the questionnaire. Crest is a health/charting
+- **Content rating:** complete the questionnaire. Ember is a health/charting
   tool with no objectionable content → expect **Everyone / PEGI 3**. There is a
   reproductive-health context; answer honestly (no sexual content, it's a
   medical/health tracker).
 - **Target audience:** adults (18+) — it's a fertility tool. Not designed for
   children; do not opt into the "Designed for Families" program.
-- **Health apps declaration:** if prompted, Crest is a personal wellness/
+- **Health apps declaration:** if prompted, Ember is a personal wellness/
   fertility tracker, **not** a medical device, and makes no diagnostic claims.
 - **Government app / Financial features:** No.
 - **Data collection from children:** No.
@@ -166,7 +166,7 @@ collection.
 
 ## 9. Donations / monetization **[done in-app — handle [you]]**
 
-Crest uses a **voluntary, external** donation link (Ko-fi), surfaced under
+Ember uses a **voluntary, external** donation link (Ko-fi), surfaced under
 Settings → Support. This is deliberate:
 
 - Donations **unlock nothing** — every feature is free for everyone. That is

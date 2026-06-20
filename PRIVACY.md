@@ -1,21 +1,21 @@
-# Privacy Policy — Crest
+# Privacy Policy — Ember
 
 _Last updated: 2026-04-23_
 
-Crest is a charting app for the symptothermal method. It is built around a
+Ember is a charting app for the symptothermal method. It is built around a
 simple principle: your data is yours and stays on your device. This policy
 explains exactly what that means.
 
 ## Short version
 
-- Crest stores everything **locally on your device**. There is no account and
+- Ember stores everything **locally on your device**. There is no account and
   no cloud.
-- Crest **collects no personal data** and sends nothing to us or to any third
+- Ember **collects no personal data** and sends nothing to us or to any third
   party.
-- Crest makes **no network connections** to operate. It works fully offline.
+- Ember makes **no network connections** to operate. It works fully offline.
 - There are **no ads, no analytics, no trackers, and no advertising IDs**.
 
-## What data Crest stores
+## What data Ember stores
 
 Everything you enter is stored only in a local database on your device:
 
@@ -29,7 +29,7 @@ Everything you enter is stored only in a local database on your device:
 
 This data never leaves your device unless **you** choose to export it.
 
-## What Crest does NOT do
+## What Ember does NOT do
 
 - It does not create an account or ask you to sign in.
 - It does not upload, sync, or back up your data to any server.
@@ -45,7 +45,7 @@ sent anywhere, and the notification contains only a generic prompt to chart.
 
 ## Data you export yourself
 
-If you use the CSV export feature, Crest creates a file containing your data and
+If you use the CSV export feature, Ember creates a file containing your data and
 hands it to the Android share sheet so you can save or send it wherever you
 choose. What happens to that file afterwards is under your control and governed
 by whichever app or service you send it to.
@@ -53,9 +53,9 @@ by whichever app or service you send it to.
 ## The optional "support development" link
 
 The app contains an optional link to a third-party donation page (Ko-fi). If you
-tap it, it opens in your browser. Crest does not transmit any of your data to
+tap it, it opens in your browser. Ember does not transmit any of your data to
 that page, and donating is entirely optional and unlocks nothing in the app. The
-donation provider has its own privacy policy, which applies once you leave Crest.
+donation provider has its own privacy policy, which applies once you leave Ember.
 
 ## Deleting your data
 
@@ -65,12 +65,12 @@ removes its local database from your device.
 
 ## Children
 
-Crest is not directed at children and is intended for adults tracking their own
+Ember is not directed at children and is intended for adults tracking their own
 fertility signs.
 
 ## Medical disclaimer
 
-Crest is a charting tool, not a medical device, and does not provide medical
+Ember is a charting tool, not a medical device, and does not provide medical
 advice. See the in-app and README disclaimers for details.
 
 ## Changes to this policy

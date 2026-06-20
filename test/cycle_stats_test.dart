@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:crest/models/cycle.dart';
-import 'package:crest/services/cycle_stats.dart';
+import 'package:ember/models/cycle.dart';
+import 'package:ember/services/cycle_stats.dart';
 
 // Verifies every statistic shown on the Statistics screen. The math is pure,
 // so these run without a database. Reference values are hand-computed.

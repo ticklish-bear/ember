@@ -10,7 +10,7 @@ class SupportLinks {
 
   /// Ko-fi "buy me a coffee" page.
   ///
-  /// TODO(crest): replace YOUR_HANDLE with the real Ko-fi handle before
+  /// TODO(ember): replace YOUR_HANDLE with the real Ko-fi handle before
   /// publishing. If you have not created a Ko-fi page yet, sign up at
   /// https://ko-fi.com and put your page name here.
   static const String kofi = 'https://ko-fi.com/YOUR_HANDLE';

@@ -21,7 +21,7 @@
 -keepattributes EnclosingMethod
 
 # Flutter's embedding references Play Core (deferred components / SplitCompat),
-# which Crest does not use and does not bundle. Tell R8 not to fail on the
+# which Ember does not use and does not bundle. Tell R8 not to fail on the
 # missing references.
 -dontwarn com.google.android.play.core.**
 -keep class com.google.android.play.core.** { *; }
