@@ -578,4 +578,87 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get statusUnknown => 'Unknown';
+
+  @override
+  String get chartNoData => 'No chart data yet';
+
+  @override
+  String get chartNoDataSub =>
+      'Start a new cycle and log your daily temperature to see the chart.';
+
+  @override
+  String get chartNoTempData => 'No temperature data recorded yet.';
+
+  @override
+  String get coverlineLabel => 'Coverline';
+
+  @override
+  String get chartCycleDayAxis => 'Cycle Day';
+
+  @override
+  String get peakShort => 'Peak';
+
+  @override
+  String peakDayLine(int day) {
+    return 'Peak Day: Cycle Day $day';
+  }
+
+  @override
+  String mucusDayTooltip(int day, String mucus) {
+    return 'Day $day: $mucus';
+  }
+
+  @override
+  String chartTempTooltip(int day, String temp, String unit) {
+    return 'Day $day\n$temp$unit';
+  }
+
+  @override
+  String get stmEvaluation => 'STM Evaluation';
+
+  @override
+  String get evalNotDetermined => 'Not yet determined';
+
+  @override
+  String get evalTempShift => 'Temp Shift';
+
+  @override
+  String evalConfirmedDay(int day) {
+    return 'Confirmed Day $day';
+  }
+
+  @override
+  String get evalNotConfirmed => 'Not yet confirmed';
+
+  @override
+  String get evalPeakDay => 'Peak Day';
+
+  @override
+  String evalDayValue(int day) {
+    return 'Day $day';
+  }
+
+  @override
+  String get evalNotIdentified => 'Not yet identified';
+
+  @override
+  String get evalInfertileFrom => 'Infertile from';
+
+  @override
+  String get coverlineDialogTitle => 'Set Coverline';
+
+  @override
+  String get coverlineDialogBody =>
+      'Enter the coverline temperature manually, or use automatic detection.';
+
+  @override
+  String coverlineFieldLabel(String unit) {
+    return 'Coverline ($unit)';
+  }
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get set => 'Set';
 }

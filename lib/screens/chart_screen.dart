@@ -6,6 +6,7 @@ import '../models/day_entry.dart';
 import '../models/settings.dart';
 import '../services/stm_engine.dart';
 import '../theme/app_theme.dart';
+import '../l10n/app_localizations.dart';
 
 class ChartScreen extends StatelessWidget {
   const ChartScreen({super.key});
@@ -14,6 +15,7 @@ class ChartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
+    final l = AppLocalizations.of(context)!;
 
     return Consumer<CycleProvider>(
       builder: (context, provider, _) {
@@ -33,13 +35,13 @@ class ChartScreen extends StatelessWidget {
                       size: 56,
                       color: colors.onSurfaceVariant.withAlpha(120)),
                   const SizedBox(height: 16),
-                  Text('No chart data yet',
+                  Text(l.chartNoData,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       )),
                   const SizedBox(height: 8),
                   Text(
-                    'Start a new cycle and log your daily temperature to see the chart.',
+                    l.chartNoDataSub,
                     textAlign: TextAlign.center,
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: colors.onSurfaceVariant,
@@ -55,7 +57,7 @@ class ChartScreen extends StatelessWidget {
             entries.where((e) => e.temperature != null).toList();
         if (tempEntries.isEmpty) {
           return Center(
-            child: Text('No temperature data recorded yet.',
+            child: Text(l.chartNoTempData,
                 style: TextStyle(color: colors.onSurfaceVariant)),
           );
         }
@@ -77,14 +79,14 @@ class ChartScreen extends StatelessWidget {
               // Header
               Row(
                 children: [
-                  Text('Temperature',
+                  Text(l.sectionTemperature,
                       style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w600,
                       )),
                   const Spacer(),
                   TextButton.icon(
                     icon: const Icon(Icons.edit, size: 14),
-                    label: const Text('Coverline'),
+                    label: Text(l.coverlineLabel),
                     onPressed: () =>
                         _showCoverlineDialog(context, provider),
                   ),
@@ -119,7 +121,7 @@ class ChartScreen extends StatelessWidget {
                     ),
                     titlesData: FlTitlesData(
                       bottomTitles: AxisTitles(
-                        axisNameWidget: Text('Cycle Day',
+                        axisNameWidget: Text(l.chartCycleDayAxis,
                             style: TextStyle(
                                 fontSize: 11,
                                 color: colors.onSurfaceVariant)),
@@ -234,7 +236,7 @@ class ChartScreen extends StatelessWidget {
                             dashArray: [8, 4],
                             label: HorizontalLineLabel(
                               show: true,
-                              labelResolver: (_) => 'Coverline',
+                              labelResolver: (_) => l.coverlineLabel,
                               style: const TextStyle(
                                 color: AppColors.coverline,
                                 fontSize: 10,
@@ -253,7 +255,7 @@ class ChartScreen extends StatelessWidget {
                             dashArray: [4, 4],
                             label: VerticalLineLabel(
                               show: true,
-                              labelResolver: (_) => 'Peak',
+                              labelResolver: (_) => l.peakShort,
                               style: const TextStyle(
                                 color: AppColors.fertile,
                                 fontSize: 10,
@@ -268,7 +270,10 @@ class ChartScreen extends StatelessWidget {
                         getTooltipItems: (touchedSpots) {
                           return touchedSpots.map((spot) {
                             return LineTooltipItem(
-                              'Day ${spot.x.toInt()}\n${spot.y.toStringAsFixed(2)}${settings.tempUnitLabel}',
+                              l.chartTempTooltip(
+                                  spot.x.toInt(),
+                                  spot.y.toStringAsFixed(2),
+                                  settings.tempUnitLabel),
                               const TextStyle(
                                   color: Colors.white,
                                   fontSize: 12),
@@ -283,12 +288,12 @@ class ChartScreen extends StatelessWidget {
               const SizedBox(height: 24),
 
               // Mucus chart
-              _buildMucusChart(entries, evaluation, theme, colors),
+              _buildMucusChart(entries, evaluation, theme, colors, l),
 
               // Evaluation summary
               if (evaluation != null)
                 _buildEvaluationSummary(
-                    evaluation, settings, theme, colors),
+                    evaluation, settings, theme, colors, l),
             ],
           ),
         );
@@ -297,13 +302,14 @@ class ChartScreen extends StatelessWidget {
   }
 
   Widget _buildMucusChart(List<DayEntry> entries,
-      StmEvaluation? evaluation, ThemeData theme, ColorScheme colors) {
+      StmEvaluation? evaluation, ThemeData theme, ColorScheme colors,
+      AppLocalizations l) {
     if (entries.isEmpty) return const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Cervical Mucus',
+        Text(l.sectionMucus,
             style: theme.textTheme.titleSmall?.copyWith(
               fontWeight: FontWeight.w600,
             )),
@@ -322,7 +328,8 @@ class ChartScreen extends StatelessWidget {
             children: entries.map((e) {
               return Expanded(
                 child: Tooltip(
-                  message: 'Day ${e.cycleDay}: ${e.mucusType.name}',
+                  message: l.mucusDayTooltip(
+                      e.cycleDay, _mucusName(e.mucusType, l)),
                   child: Container(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 0.5),
@@ -342,7 +349,7 @@ class ChartScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 6),
             child: Text(
-              'Peak Day: Cycle Day ${evaluation!.peakDay}',
+              l.peakDayLine(evaluation!.peakDay!),
               style: const TextStyle(
                 color: AppColors.fertile,
                 fontWeight: FontWeight.w500,
@@ -356,7 +363,8 @@ class ChartScreen extends StatelessWidget {
   }
 
   Widget _buildEvaluationSummary(StmEvaluation evaluation,
-      AppSettings settings, ThemeData theme, ColorScheme colors) {
+      AppSettings settings, ThemeData theme, ColorScheme colors,
+      AppLocalizations l) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -368,36 +376,36 @@ class ChartScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('STM Evaluation',
+          Text(l.stmEvaluation,
               style: theme.textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.w600,
               )),
           const SizedBox(height: 12),
           _evalRow(
-              'Coverline',
+              l.coverlineLabel,
               evaluation.coverline != null
                   ? '${settings.displayTemp(evaluation.coverline!).toStringAsFixed(2)} ${settings.tempUnitLabel}'
-                  : 'Not yet determined',
+                  : l.evalNotDetermined,
               colors),
           _evalRow(
-              'Temp Shift',
+              l.evalTempShift,
               evaluation.temperatureShiftConfirmedDay != null
-                  ? 'Confirmed Day ${evaluation.temperatureShiftConfirmedDay}'
-                  : 'Not yet confirmed',
+                  ? l.evalConfirmedDay(evaluation.temperatureShiftConfirmedDay!)
+                  : l.evalNotConfirmed,
               colors),
           _evalRow(
-              'Peak Day',
+              l.evalPeakDay,
               evaluation.peakDay != null
-                  ? 'Day ${evaluation.peakDay}'
-                  : 'Not yet identified',
+                  ? l.evalDayValue(evaluation.peakDay!)
+                  : l.evalNotIdentified,
               colors),
           _evalRow(
               settings.purpose == AppPurpose.anticonception
-                  ? 'Infertile from'
-                  : 'Post-ov',
+                  ? l.evalInfertileFrom
+                  : l.legendPostOv,
               evaluation.postPeakInfertileFrom != null
-                  ? 'Day ${evaluation.postPeakInfertileFrom}'
-                  : 'Not yet confirmed',
+                  ? l.evalDayValue(evaluation.postPeakInfertileFrom!)
+                  : l.evalNotConfirmed,
               colors),
         ],
       ),
@@ -426,6 +434,25 @@ class ChartScreen extends StatelessWidget {
     );
   }
 
+  String _mucusName(MucusType type, AppLocalizations l) {
+    switch (type) {
+      case MucusType.dry:
+        return l.mucusDry;
+      case MucusType.nothing:
+        return l.mucusNothing;
+      case MucusType.moist:
+        return l.mucusMoist;
+      case MucusType.wet:
+        return l.mucusWet;
+      case MucusType.slippery:
+        return l.mucusSlippery;
+      case MucusType.eggWhite:
+        return l.mucusEggWhite;
+      case MucusType.unrecorded:
+        return l.mucusNotRecorded;
+    }
+  }
+
   Color _dotColor(FertilityStatus status) {
     switch (status) {
       case FertilityStatus.menstruation:
@@ -444,6 +471,7 @@ class ChartScreen extends StatelessWidget {
 
   void _showCoverlineDialog(
       BuildContext context, CycleProvider provider) {
+    final l = AppLocalizations.of(context)!;
     final controller = TextEditingController(
       text: provider.currentEvaluation?.coverline != null
           ? provider.settings
@@ -455,13 +483,11 @@ class ChartScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Set Coverline'),
+        title: Text(l.coverlineDialogTitle),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'Enter the coverline temperature manually, or use automatic detection.',
-            ),
+            Text(l.coverlineDialogBody),
             const SizedBox(height: 16),
             TextField(
               controller: controller,
@@ -469,7 +495,7 @@ class ChartScreen extends StatelessWidget {
                   decimal: true),
               decoration: InputDecoration(
                 labelText:
-                    'Coverline (${provider.settings.tempUnitLabel})',
+                    l.coverlineFieldLabel(provider.settings.tempUnitLabel),
                 hintText: provider.settings.temperatureUnit ==
                         TemperatureUnit.celsius
                     ? '36.40'
@@ -484,11 +510,11 @@ class ChartScreen extends StatelessWidget {
               provider.setCoverline(null);
               Navigator.pop(context);
             },
-            child: const Text('Auto'),
+            child: Text(l.auto),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           FilledButton(
             onPressed: () {
@@ -499,7 +525,7 @@ class ChartScreen extends StatelessWidget {
               }
               Navigator.pop(context);
             },
-            child: const Text('Set'),
+            child: Text(l.set),
           ),
         ],
       ),

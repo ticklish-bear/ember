@@ -581,4 +581,87 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get statusUnknown => 'Inconnu';
+
+  @override
+  String get chartNoData => 'Pas encore de données de courbe';
+
+  @override
+  String get chartNoDataSub =>
+      'Démarrez un nouveau cycle et notez votre température quotidienne pour voir la courbe.';
+
+  @override
+  String get chartNoTempData => 'Aucune donnée de température enregistrée.';
+
+  @override
+  String get coverlineLabel => 'Ligne de base';
+
+  @override
+  String get chartCycleDayAxis => 'Jour du cycle';
+
+  @override
+  String get peakShort => 'Sommet';
+
+  @override
+  String peakDayLine(int day) {
+    return 'Jour sommet : jour du cycle $day';
+  }
+
+  @override
+  String mucusDayTooltip(int day, String mucus) {
+    return 'Jour $day : $mucus';
+  }
+
+  @override
+  String chartTempTooltip(int day, String temp, String unit) {
+    return 'Jour $day\n$temp$unit';
+  }
+
+  @override
+  String get stmEvaluation => 'Évaluation de la méthode';
+
+  @override
+  String get evalNotDetermined => 'Pas encore déterminée';
+
+  @override
+  String get evalTempShift => 'Hausse temp.';
+
+  @override
+  String evalConfirmedDay(int day) {
+    return 'Confirmé jour $day';
+  }
+
+  @override
+  String get evalNotConfirmed => 'Pas encore confirmé';
+
+  @override
+  String get evalPeakDay => 'Jour sommet';
+
+  @override
+  String evalDayValue(int day) {
+    return 'Jour $day';
+  }
+
+  @override
+  String get evalNotIdentified => 'Pas encore identifié';
+
+  @override
+  String get evalInfertileFrom => 'Infertile à partir de';
+
+  @override
+  String get coverlineDialogTitle => 'Définir la ligne de base';
+
+  @override
+  String get coverlineDialogBody =>
+      'Saisissez la température de la ligne de base manuellement ou utilisez la détection automatique.';
+
+  @override
+  String coverlineFieldLabel(String unit) {
+    return 'Ligne de base ($unit)';
+  }
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get set => 'Définir';
 }

@@ -581,4 +581,87 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get statusUnknown => 'Unbekannt';
+
+  @override
+  String get chartNoData => 'Noch keine Kurvendaten';
+
+  @override
+  String get chartNoDataSub =>
+      'Starte einen neuen Zyklus und trage täglich deine Temperatur ein, um die Kurve zu sehen.';
+
+  @override
+  String get chartNoTempData => 'Noch keine Temperaturdaten erfasst.';
+
+  @override
+  String get coverlineLabel => 'Hilfslinie';
+
+  @override
+  String get chartCycleDayAxis => 'Zyklustag';
+
+  @override
+  String get peakShort => 'Höhep.';
+
+  @override
+  String peakDayLine(int day) {
+    return 'Höhepunkt: Zyklustag $day';
+  }
+
+  @override
+  String mucusDayTooltip(int day, String mucus) {
+    return 'Tag $day: $mucus';
+  }
+
+  @override
+  String chartTempTooltip(int day, String temp, String unit) {
+    return 'Tag $day\n$temp$unit';
+  }
+
+  @override
+  String get stmEvaluation => 'STM-Auswertung';
+
+  @override
+  String get evalNotDetermined => 'Noch nicht bestimmt';
+
+  @override
+  String get evalTempShift => 'Temp.-Anstieg';
+
+  @override
+  String evalConfirmedDay(int day) {
+    return 'Bestätigt Tag $day';
+  }
+
+  @override
+  String get evalNotConfirmed => 'Noch nicht bestätigt';
+
+  @override
+  String get evalPeakDay => 'Höhepunkt';
+
+  @override
+  String evalDayValue(int day) {
+    return 'Tag $day';
+  }
+
+  @override
+  String get evalNotIdentified => 'Noch nicht erkannt';
+
+  @override
+  String get evalInfertileFrom => 'Unfruchtbar ab';
+
+  @override
+  String get coverlineDialogTitle => 'Hilfslinie setzen';
+
+  @override
+  String get coverlineDialogBody =>
+      'Gib die Hilfslinien-Temperatur manuell ein oder nutze die automatische Erkennung.';
+
+  @override
+  String coverlineFieldLabel(String unit) {
+    return 'Hilfslinie ($unit)';
+  }
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get set => 'Setzen';
 }

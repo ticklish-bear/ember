@@ -580,4 +580,87 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get statusUnknown => 'Desconhecido';
+
+  @override
+  String get chartNoData => 'Ainda não há dados do gráfico';
+
+  @override
+  String get chartNoDataSub =>
+      'Inicie um novo ciclo e registre sua temperatura diária para ver o gráfico.';
+
+  @override
+  String get chartNoTempData => 'Ainda não há dados de temperatura.';
+
+  @override
+  String get coverlineLabel => 'Linha de base';
+
+  @override
+  String get chartCycleDayAxis => 'Dia do ciclo';
+
+  @override
+  String get peakShort => 'Ápice';
+
+  @override
+  String peakDayLine(int day) {
+    return 'Dia ápice: dia do ciclo $day';
+  }
+
+  @override
+  String mucusDayTooltip(int day, String mucus) {
+    return 'Dia $day: $mucus';
+  }
+
+  @override
+  String chartTempTooltip(int day, String temp, String unit) {
+    return 'Dia $day\n$temp$unit';
+  }
+
+  @override
+  String get stmEvaluation => 'Avaliação do método';
+
+  @override
+  String get evalNotDetermined => 'Ainda não determinada';
+
+  @override
+  String get evalTempShift => 'Mudança térmica';
+
+  @override
+  String evalConfirmedDay(int day) {
+    return 'Confirmado dia $day';
+  }
+
+  @override
+  String get evalNotConfirmed => 'Ainda não confirmado';
+
+  @override
+  String get evalPeakDay => 'Dia ápice';
+
+  @override
+  String evalDayValue(int day) {
+    return 'Dia $day';
+  }
+
+  @override
+  String get evalNotIdentified => 'Ainda não identificado';
+
+  @override
+  String get evalInfertileFrom => 'Infértil a partir de';
+
+  @override
+  String get coverlineDialogTitle => 'Definir linha de base';
+
+  @override
+  String get coverlineDialogBody =>
+      'Insira a temperatura da linha de base manualmente ou use a detecção automática.';
+
+  @override
+  String coverlineFieldLabel(String unit) {
+    return 'Linha de base ($unit)';
+  }
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get set => 'Definir';
 }

@@ -1167,6 +1167,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unknown'**
   String get statusUnknown;
+
+  /// No description provided for @chartNoData.
+  ///
+  /// In en, this message translates to:
+  /// **'No chart data yet'**
+  String get chartNoData;
+
+  /// No description provided for @chartNoDataSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Start a new cycle and log your daily temperature to see the chart.'**
+  String get chartNoDataSub;
+
+  /// No description provided for @chartNoTempData.
+  ///
+  /// In en, this message translates to:
+  /// **'No temperature data recorded yet.'**
+  String get chartNoTempData;
+
+  /// No description provided for @coverlineLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Coverline'**
+  String get coverlineLabel;
+
+  /// No description provided for @chartCycleDayAxis.
+  ///
+  /// In en, this message translates to:
+  /// **'Cycle Day'**
+  String get chartCycleDayAxis;
+
+  /// No description provided for @peakShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak'**
+  String get peakShort;
+
+  /// No description provided for @peakDayLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak Day: Cycle Day {day}'**
+  String peakDayLine(int day);
+
+  /// No description provided for @mucusDayTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Day {day}: {mucus}'**
+  String mucusDayTooltip(int day, String mucus);
+
+  /// No description provided for @chartTempTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Day {day}\n{temp}{unit}'**
+  String chartTempTooltip(int day, String temp, String unit);
+
+  /// No description provided for @stmEvaluation.
+  ///
+  /// In en, this message translates to:
+  /// **'STM Evaluation'**
+  String get stmEvaluation;
+
+  /// No description provided for @evalNotDetermined.
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet determined'**
+  String get evalNotDetermined;
+
+  /// No description provided for @evalTempShift.
+  ///
+  /// In en, this message translates to:
+  /// **'Temp Shift'**
+  String get evalTempShift;
+
+  /// No description provided for @evalConfirmedDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed Day {day}'**
+  String evalConfirmedDay(int day);
+
+  /// No description provided for @evalNotConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet confirmed'**
+  String get evalNotConfirmed;
+
+  /// No description provided for @evalPeakDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak Day'**
+  String get evalPeakDay;
+
+  /// No description provided for @evalDayValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Day {day}'**
+  String evalDayValue(int day);
+
+  /// No description provided for @evalNotIdentified.
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet identified'**
+  String get evalNotIdentified;
+
+  /// No description provided for @evalInfertileFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Infertile from'**
+  String get evalInfertileFrom;
+
+  /// No description provided for @coverlineDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Coverline'**
+  String get coverlineDialogTitle;
+
+  /// No description provided for @coverlineDialogBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the coverline temperature manually, or use automatic detection.'**
+  String get coverlineDialogBody;
+
+  /// No description provided for @coverlineFieldLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Coverline ({unit})'**
+  String coverlineFieldLabel(String unit);
+
+  /// No description provided for @auto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get auto;
+
+  /// No description provided for @set.
+  ///
+  /// In en, this message translates to:
+  /// **'Set'**
+  String get set;
 }
 
 class _AppLocalizationsDelegate
