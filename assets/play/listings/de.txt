@@ -1,0 +1,33 @@
+TITLE (max 30):
+Ember: NFP & Zyklus-Chart
+
+SHORT DESCRIPTION (max 80):
+Kostenlos, privat & offline: symptothermale Methode (NFP/FAM) charten.
+
+FULL DESCRIPTION:
+Ember ist eine Charting-App für die symptothermale Methode (STM, auch NFP/FAM). Eine digitale Kurve – gebaut, um deine eigene Auswertung zu unterstützen, nicht um sie durch eine Blackbox zu ersetzen.
+
+WAS ES IST
+Ember erfasst deine Zeichen: Basaltemperatur, Zervixschleim, Muttermund, Blutung und Notizen. Die Auswertung folgt den veröffentlichten STM-Regeln und den AG-NFP-Richtlinien – nichts anderes.
+
+• Kein Algorithmus, der aus deinen Daten „lernt"
+• Keine Vorhersagen aus früheren Zyklen
+• Keine geheime Logik
+Wird ein Tag als fruchtbar markiert, kannst du genau nachvollziehen, welche Regel das ausgelöst hat.
+
+PRIVATSPHÄRE ZUERST
+• Alles wird lokal auf deinem Gerät gespeichert
+• Kein Konto, keine Anmeldung, keine Cloud
+• Keine Werbung, keine Analyse, kein Tracking
+• Funktioniert komplett offline – nichts verlässt dein Telefon
+
+DIE METHODE LERNEN
+Ember enthält einen ausführlichen Teil zur Biologie der Methode: den Hormonzyklus, warum die Biomarker funktionieren und wie sich die Regeln aus der Physiologie ableiten. Idealerweise lernst du STM bei einer qualifizierten Beraterin – dies hilft dir, die Methode wirklich zu verstehen, statt Regeln blind zu folgen.
+
+KOSTENLOS
+Die ganze App ist für alle kostenlos. Wer die Entwicklung unterstützen möchte, kann freiwillig etwas geben – es schaltet nichts frei, alle bekommen die komplette App.
+
+WICHTIG
+Ember ist ein Charting-Werkzeug, kein Medizinprodukt. Es bietet keine medizinische Beratung, Diagnose oder Behandlung und ersetzt keine qualifizierte Beraterin. Die symptothermale Methode ist wirksam, wenn sie korrekt von einer geschulten Person angewendet wird. Wenn du STM zur Verhütung nutzt, lerne die Methode richtig, bevor du dich darauf verlässt.
+
+Ember ist ein unabhängiges Projekt. Es ist mit der symptothermalen Methode nach AG NFP / Malteser kompatibel, aber mit keiner Organisation verbunden, von ihr unterstützt oder zertifiziert. „Sensiplan" ist eine eingetragene Marke der Malteser AG NFP und wird nicht zur Beschreibung dieser App verwendet.

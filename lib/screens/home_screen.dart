@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import 'calendar_screen.dart';
 import 'chart_screen.dart';
 import 'statistics_screen.dart';
@@ -15,8 +16,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  static const _titles = ['Today', 'Chart', 'Insights', 'Learn', 'Settings'];
-
   final _screens = const [
     CalendarScreen(),
     ChartScreen(),
@@ -27,9 +26,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final titles = [
+      l.navToday,
+      l.navChart,
+      l.navInsights,
+      l.navLearn,
+      l.navSettings,
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: Text(_titles[_currentIndex]),
+        title: Text(titles[_currentIndex]),
       ),
       body: IndexedStack(
         index: _currentIndex,
@@ -39,31 +46,31 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedIndex: _currentIndex,
         onDestinationSelected: (index) =>
             setState(() => _currentIndex = index),
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.today_outlined),
-            selectedIcon: Icon(Icons.today),
-            label: 'Today',
+            icon: const Icon(Icons.today_outlined),
+            selectedIcon: const Icon(Icons.today),
+            label: l.navToday,
           ),
           NavigationDestination(
-            icon: Icon(Icons.ssid_chart_outlined),
-            selectedIcon: Icon(Icons.ssid_chart),
-            label: 'Chart',
+            icon: const Icon(Icons.ssid_chart_outlined),
+            selectedIcon: const Icon(Icons.ssid_chart),
+            label: l.navChart,
           ),
           NavigationDestination(
-            icon: Icon(Icons.insights_outlined),
-            selectedIcon: Icon(Icons.insights),
-            label: 'Insights',
+            icon: const Icon(Icons.insights_outlined),
+            selectedIcon: const Icon(Icons.insights),
+            label: l.navInsights,
           ),
           NavigationDestination(
-            icon: Icon(Icons.menu_book_outlined),
-            selectedIcon: Icon(Icons.menu_book),
-            label: 'Learn',
+            icon: const Icon(Icons.menu_book_outlined),
+            selectedIcon: const Icon(Icons.menu_book),
+            label: l.navLearn,
           ),
           NavigationDestination(
-            icon: Icon(Icons.tune_outlined),
-            selectedIcon: Icon(Icons.tune),
-            label: 'Settings',
+            icon: const Icon(Icons.tune_outlined),
+            selectedIcon: const Icon(Icons.tune),
+            label: l.navSettings,
           ),
         ],
       ),

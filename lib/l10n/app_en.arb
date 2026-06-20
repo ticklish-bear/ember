@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "appTitle": "Ember",
+  "navToday": "Today",
+  "navChart": "Chart",
+  "navInsights": "Insights",
+  "navLearn": "Learn",
+  "navSettings": "Settings",
+  "supportTitle": "Support Ember",
+  "supportHeadline": "Ember is free — and stays that way",
+  "supportBody": "No subscriptions, no ads, no tracking. Every feature is available to everyone. It’s built and maintained in my spare time.\n\nIf Ember is useful to you and you’d like to chip in toward its development, you can leave a small tip. It’s entirely optional and unlocks nothing — you already have the whole app.",
+  "supportButton": "Buy me a coffee",
+  "supportFootnote": "Opens in your browser. Ember never sees your payment details.",
+  "supportLinkError": "Could not open the link"
+}

@@ -1,0 +1,33 @@
+TITLE (max 30):
+Ember : symptothermie NFP
+
+SHORT DESCRIPTION (max 80):
+Gratuit et privé : la méthode symptothermique (NFP/FAM). Hors ligne.
+
+FULL DESCRIPTION:
+Ember est une application de courbe pour la méthode symptothermique (aussi appelée méthodes naturelles, NFP/FAM). C'est une courbe numérique, conçue pour soutenir votre propre interprétation, et non pour la remplacer par une boîte noire.
+
+CE QUE C'EST
+Ember enregistre vos signes : température basale, glaire cervicale, col de l'utérus, saignements et notes. L'évaluation suit les règles publiées de la méthode symptothermique et les directives de l'AG NFP, rien d'autre.
+
+• Aucun algorithme qui « apprend » de vos données
+• Aucune prédiction basée sur les cycles précédents
+• Aucune logique opaque
+Si un jour est marqué comme fertile, vous pouvez voir exactement quelle règle l'a déclenché.
+
+LA CONFIDENTIALITÉ D'ABORD
+• Tout est stocké localement sur votre appareil
+• Pas de compte, pas de connexion, pas de cloud
+• Pas de publicité, pas d'analyse, pas de traceurs
+• Fonctionne entièrement hors ligne : rien ne quitte votre téléphone
+
+APPRENDRE LA MÉTHODE
+Ember comprend une section détaillée sur la biologie de la méthode : le cycle hormonal, pourquoi les biomarqueurs fonctionnent et comment les règles découlent de la physiologie. L'idéal est d'apprendre la méthode avec une monitrice qualifiée ; ceci est là pour que vous compreniez vraiment la méthode plutôt que de suivre des règles aveuglément.
+
+GRATUIT
+L'application complète est gratuite pour tout le monde. Si vous souhaitez soutenir le développement, vous pouvez laisser un pourboire facultatif, mais cela ne débloque rien : tout le monde a l'application complète.
+
+IMPORTANT
+Ember est un outil de courbe, pas un dispositif médical. Il ne fournit ni conseil, ni diagnostic, ni traitement médical, et ne remplace pas une monitrice qualifiée. La méthode symptothermique est efficace lorsqu'elle est appliquée correctement par une personne formée. Si vous utilisez la méthode pour éviter une grossesse, apprenez-la bien avant de vous y fier.
+
+Ember est un projet indépendant. Il est compatible avec la méthode symptothermique telle qu'enseignée par l'AG NFP / Malteser, mais n'est ni affilié, ni approuvé, ni certifié par aucune organisation. « Sensiplan » est une marque déposée de Malteser AG NFP et n'est pas utilisée pour décrire cette application.

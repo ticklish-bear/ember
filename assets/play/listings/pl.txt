@@ -1,0 +1,33 @@
+TITLE (max 30):
+Ember: NPR objawowo-termiczna
+
+SHORT DESCRIPTION (max 80):
+Darmowa, prywatna aplikacja do NPR (metoda objawowo-termiczna). Offline.
+
+FULL DESCRIPTION:
+Ember to aplikacja do prowadzenia karty metody objawowo-termicznej (NPR – naturalne planowanie rodziny, znane też jako obserwacja płodności). To cyfrowa karta, stworzona po to, by wspierać Twoją własną interpretację, a nie zastępować ją czarną skrzynką.
+
+CO TO JEST
+Ember zapisuje Twoje objawy: podstawową temperaturę ciała, śluz szyjkowy, szyjkę macicy, krwawienie i notatki. Ocena opiera się na opublikowanych regułach metody objawowo-termicznej oraz wytycznych AG NFP – i niczym więcej.
+
+• Żaden algorytm nie „uczy się" z Twoich danych
+• Brak prognoz na podstawie poprzednich cykli
+• Brak ukrytej logiki
+Jeśli dzień zostanie oznaczony jako płodny, możesz dokładnie sprawdzić, która reguła to spowodowała.
+
+PRYWATNOŚĆ PRZEDE WSZYSTKIM
+• Wszystko jest przechowywane lokalnie na Twoim urządzeniu
+• Bez konta, bez logowania, bez chmury
+• Bez reklam, bez analityki, bez śledzenia
+• Działa całkowicie offline – nic nie opuszcza Twojego telefonu
+
+POZNAJ METODĘ
+Ember zawiera obszerną część o biologii metody: cykl hormonalny, dlaczego biomarkery działają i jak reguły wynikają z fizjologii. Najlepiej uczyć się metody u wykwalifikowanej instruktorki – ta część jest po to, byś naprawdę zrozumiała metodę, zamiast ślepo stosować reguły.
+
+ZA DARMO
+Cała aplikacja jest darmowa dla wszystkich. Jeśli chcesz wesprzeć rozwój, możesz zostawić dobrowolny napiwek, ale nie odblokowuje on niczego – każdy ma pełną aplikację.
+
+WAŻNE
+Ember to narzędzie do prowadzenia karty, a nie wyrób medyczny. Nie udziela porad, diagnoz ani leczenia i nie zastępuje wykwalifikowanej instruktorki. Metoda objawowo-termiczna jest skuteczna, gdy stosuje ją prawidłowo osoba przeszkolona. Jeśli używasz metody do unikania ciąży, naucz się jej dobrze, zanim na niej polegniesz.
+
+Ember to niezależny projekt. Jest zgodny z metodą objawowo-termiczną według AG NFP / Malteser, ale nie jest powiązany z żadną organizacją ani przez nią wspierany czy certyfikowany. „Sensiplan" to zastrzeżony znak towarowy Malteser AG NFP i nie jest używany do opisu tej aplikacji.

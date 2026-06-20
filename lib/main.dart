@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ember/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'database/init_db_native.dart'
     if (dart.library.html) 'database/init_db_web.dart';
@@ -22,8 +23,10 @@ class EmberApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => CycleProvider()..initialize(),
       child: MaterialApp(
-        title: 'Ember',
+        onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
         theme: AppTheme.lightTheme,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         home: const HomeScreen(),
         debugShowCheckedModeBanner: false,
       ),

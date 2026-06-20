@@ -1,0 +1,33 @@
+TITLE (max 30):
+Ember: método sintotérmico
+
+SHORT DESCRIPTION (max 80):
+Gratis y privado: registra tu método sintotérmico (PFN). Funciona sin conexión.
+
+FULL DESCRIPTION:
+Ember es una app para registrar el método sintotérmico (PFN, también conocido como conocimiento de la fertilidad). Es una gráfica digital, hecha para apoyar tu propia interpretación, no para sustituirla por una caja negra.
+
+QUÉ ES
+Ember registra tus signos: temperatura basal, moco cervical, cuello uterino, sangrado y notas. La evaluación sigue las reglas publicadas del método sintotérmico y las directrices de la AG NFP, nada más.
+
+• Ningún algoritmo que "aprenda" de tus datos
+• Ninguna predicción basada en ciclos anteriores
+• Ninguna lógica oculta
+Si un día se marca como fértil, puedes ver exactamente qué regla lo causó.
+
+LA PRIVACIDAD PRIMERO
+• Todo se guarda localmente en tu dispositivo
+• Sin cuenta, sin registro, sin nube
+• Sin anuncios, sin analíticas, sin rastreadores
+• Funciona totalmente sin conexión: nada sale de tu teléfono
+
+APRENDE EL MÉTODO
+Ember incluye una sección amplia sobre la biología del método: el ciclo hormonal, por qué funcionan los biomarcadores y cómo se derivan las reglas de la fisiología. Lo ideal es aprender el método con una instructora cualificada; esto está aquí para que entiendas el método de verdad, en lugar de seguir reglas a ciegas.
+
+GRATIS
+La app completa es gratuita para todo el mundo. Si quieres apoyar el desarrollo puedes dejar una propina opcional, pero no desbloquea nada: todos tienen la app completa.
+
+IMPORTANTE
+Ember es una herramienta de registro, no un dispositivo médico. No ofrece consejo, diagnóstico ni tratamiento médico, y no sustituye a una instructora cualificada. El método sintotérmico es eficaz cuando lo aplica correctamente una persona formada en él. Si usas el método para evitar el embarazo, apréndelo bien antes de confiar en él.
+
+Ember es un proyecto independiente. Es compatible con el método sintotérmico tal como lo enseña la AG NFP / Malteser, pero no está afiliado, respaldado ni certificado por ninguna organización. "Sensiplan" es una marca registrada de Malteser AG NFP y no se usa para describir esta app.

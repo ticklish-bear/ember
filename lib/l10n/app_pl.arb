@@ -1,0 +1,15 @@
+{
+  "@@locale": "pl",
+  "appTitle": "Ember",
+  "navToday": "Dziś",
+  "navChart": "Wykres",
+  "navInsights": "Statystyki",
+  "navLearn": "Naucz się",
+  "navSettings": "Ustawienia",
+  "supportTitle": "Wesprzyj Ember",
+  "supportHeadline": "Ember jest darmowy — i taki zostanie",
+  "supportBody": "Bez subskrypcji, bez reklam, bez śledzenia. Wszystkie funkcje są dostępne dla każdego. Tworzę i utrzymuję aplikację w wolnym czasie.\n\nJeśli Ember jest dla Ciebie przydatny i chcesz wesprzeć jego rozwój, możesz zostawić mały napiwek. Jest całkowicie dobrowolny i niczego nie odblokowuje — masz już całą aplikację.",
+  "supportButton": "Postaw mi kawę",
+  "supportFootnote": "Otwiera się w przeglądarce. Ember nigdy nie widzi Twoich danych płatności.",
+  "supportLinkError": "Nie udało się otworzyć linku"
+}
