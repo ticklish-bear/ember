@@ -177,6 +177,336 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not open the link'**
   String get supportLinkError;
+
+  /// No description provided for @settingsGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal'**
+  String get settingsGoal;
+
+  /// No description provided for @settingsUseFor.
+  ///
+  /// In en, this message translates to:
+  /// **'I use STM for'**
+  String get settingsUseFor;
+
+  /// No description provided for @purposeAvoiding.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoiding'**
+  String get purposeAvoiding;
+
+  /// No description provided for @purposeAchieving.
+  ///
+  /// In en, this message translates to:
+  /// **'Achieving'**
+  String get purposeAchieving;
+
+  /// No description provided for @purposeAvoidingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Labels reflect a cautious approach — only confirmed phases are marked infertile.'**
+  String get purposeAvoidingDesc;
+
+  /// No description provided for @purposeAchievingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Labels use standard STM terminology for identifying the fertile window.'**
+  String get purposeAchievingDesc;
+
+  /// No description provided for @settingsTracking.
+  ///
+  /// In en, this message translates to:
+  /// **'Tracking'**
+  String get settingsTracking;
+
+  /// No description provided for @settingsTempUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature Unit'**
+  String get settingsTempUnit;
+
+  /// No description provided for @settingsRuleset.
+  ///
+  /// In en, this message translates to:
+  /// **'STM Ruleset'**
+  String get settingsRuleset;
+
+  /// No description provided for @settingsCervix.
+  ///
+  /// In en, this message translates to:
+  /// **'Cervix tracking'**
+  String get settingsCervix;
+
+  /// No description provided for @settingsCervixSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Position, openness & firmness'**
+  String get settingsCervixSub;
+
+  /// No description provided for @settingsIntercourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Intercourse tracking'**
+  String get settingsIntercourse;
+
+  /// No description provided for @settingsOpenEntryVia.
+  ///
+  /// In en, this message translates to:
+  /// **'Open day entry via'**
+  String get settingsOpenEntryVia;
+
+  /// No description provided for @tapLongPress.
+  ///
+  /// In en, this message translates to:
+  /// **'Long press'**
+  String get tapLongPress;
+
+  /// No description provided for @tapDoubleTap.
+  ///
+  /// In en, this message translates to:
+  /// **'Double tap'**
+  String get tapDoubleTap;
+
+  /// No description provided for @settingsAutoDetection.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic Detection'**
+  String get settingsAutoDetection;
+
+  /// No description provided for @settingsAutoCoverline.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-detect coverline'**
+  String get settingsAutoCoverline;
+
+  /// No description provided for @settingsAutoCoverlineSub.
+  ///
+  /// In en, this message translates to:
+  /// **'3-over-6 rule'**
+  String get settingsAutoCoverlineSub;
+
+  /// No description provided for @settingsAutoPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-detect Peak Day'**
+  String get settingsAutoPeak;
+
+  /// No description provided for @settingsAutoPeakSub.
+  ///
+  /// In en, this message translates to:
+  /// **'From mucus pattern'**
+  String get settingsAutoPeakSub;
+
+  /// No description provided for @settingsReminders.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get settingsReminders;
+
+  /// No description provided for @settingsDailyReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily check-in reminder'**
+  String get settingsDailyReminder;
+
+  /// No description provided for @settingsDailyReminderSub.
+  ///
+  /// In en, this message translates to:
+  /// **'A single notification each day to log BBT and mucus.'**
+  String get settingsDailyReminderSub;
+
+  /// No description provided for @settingsReminderTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder time'**
+  String get settingsReminderTime;
+
+  /// No description provided for @settingsData.
+  ///
+  /// In en, this message translates to:
+  /// **'Data'**
+  String get settingsData;
+
+  /// No description provided for @settingsExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export data (CSV)'**
+  String get settingsExport;
+
+  /// No description provided for @settingsExportSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Save all data as CSV'**
+  String get settingsExportSub;
+
+  /// No description provided for @settingsImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import data (CSV)'**
+  String get settingsImport;
+
+  /// No description provided for @settingsImportSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Ember CSV format'**
+  String get settingsImportSub;
+
+  /// No description provided for @settingsImportKindara.
+  ///
+  /// In en, this message translates to:
+  /// **'Import from Kindara'**
+  String get settingsImportKindara;
+
+  /// No description provided for @settingsImportKindaraSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Kindara export file'**
+  String get settingsImportKindaraSub;
+
+  /// No description provided for @settingsDeleteAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all data'**
+  String get settingsDeleteAll;
+
+  /// No description provided for @settingsDeleteAllSub.
+  ///
+  /// In en, this message translates to:
+  /// **'This cannot be undone'**
+  String get settingsDeleteAllSub;
+
+  /// No description provided for @settingsAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get settingsAbout;
+
+  /// No description provided for @settingsPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy'**
+  String get settingsPrivacy;
+
+  /// No description provided for @settingsPrivacySub.
+  ///
+  /// In en, this message translates to:
+  /// **'All data stored locally. No account required.'**
+  String get settingsPrivacySub;
+
+  /// No description provided for @settingsAboutStm.
+  ///
+  /// In en, this message translates to:
+  /// **'About STM'**
+  String get settingsAboutStm;
+
+  /// No description provided for @settingsAboutStmSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Compatible with the symptothermal method. Independent app, not affiliated with any organization.'**
+  String get settingsAboutStmSub;
+
+  /// No description provided for @settingsSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get settingsSupport;
+
+  /// No description provided for @settingsSupportDev.
+  ///
+  /// In en, this message translates to:
+  /// **'Support development'**
+  String get settingsSupportDev;
+
+  /// No description provided for @settingsSupportDevSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Ember is free. Chip in a coffee if you like — optional.'**
+  String get settingsSupportDevSub;
+
+  /// No description provided for @exportCompleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Complete'**
+  String get exportCompleteTitle;
+
+  /// No description provided for @exportCompleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'File saved to:\n{path}\n\nWould you like to share it?'**
+  String exportCompleteBody(String path);
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
+
+  /// No description provided for @exportFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed: {error}'**
+  String exportFailed(String error);
+
+  /// No description provided for @importedEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported {count} entries'**
+  String importedEntries(int count);
+
+  /// No description provided for @importFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Import failed: {error}'**
+  String importFailed(String error);
+
+  /// No description provided for @importedKindara.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported {count} Kindara entries'**
+  String importedKindara(int count);
+
+  /// No description provided for @kindaraImportFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Kindara import failed: {error}'**
+  String kindaraImportFailed(String error);
+
+  /// No description provided for @deleteAllTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete All Data?'**
+  String get deleteAllTitle;
+
+  /// No description provided for @deleteAllBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete all your cycles and entries. Consider exporting your data first.\n\nThis action cannot be undone.'**
+  String get deleteAllBody;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @deleteEverything.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Everything'**
+  String get deleteEverything;
+
+  /// No description provided for @allDataDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'All data deleted'**
+  String get allDataDeleted;
 }
 
 class _AppLocalizationsDelegate

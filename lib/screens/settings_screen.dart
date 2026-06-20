@@ -8,6 +8,7 @@ import '../models/settings.dart';
 import '../database/database_helper.dart';
 import '../services/export_import_service.dart';
 import '../config/support_links.dart';
+import '../l10n/app_localizations.dart';
 import 'support_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -17,6 +18,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
+    final l = AppLocalizations.of(context)!;
 
     return Consumer<CycleProvider>(
       builder: (context, provider, _) {
@@ -55,20 +57,20 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 8),
 
             // Purpose
-            _sectionTitle('Goal', colors),
+            _sectionTitle(l.settingsGoal, colors),
             _settingsContainer(colors, [
               ListTile(
                 leading: Icon(Icons.favorite_border,
                     color: colors.onSurfaceVariant),
-                title: const Text('I use STM for'),
+                title: Text(l.settingsUseFor),
                 trailing: SegmentedButton<AppPurpose>(
-                  segments: const [
+                  segments: [
                     ButtonSegment(
                         value: AppPurpose.anticonception,
-                        label: Text('Avoiding')),
+                        label: Text(l.purposeAvoiding)),
                     ButtonSegment(
                         value: AppPurpose.conception,
-                        label: Text('Achieving')),
+                        label: Text(l.purposeAchieving)),
                   ],
                   selected: {settings.purpose},
                   onSelectionChanged: (value) {
@@ -82,8 +84,8 @@ class SettingsScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
                 child: Text(
                   settings.purpose == AppPurpose.anticonception
-                      ? 'Labels reflect a cautious approach \u2014 only confirmed phases are marked infertile.'
-                      : 'Labels use standard STM terminology for identifying the fertile window.',
+                      ? l.purposeAvoidingDesc
+                      : l.purposeAchievingDesc,
                   style: TextStyle(
                     fontSize: 12,
                     color: colors.onSurfaceVariant,
@@ -94,20 +96,20 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Tracking
-            _sectionTitle('Tracking', colors),
+            _sectionTitle(l.settingsTracking, colors),
             _settingsContainer(colors, [
               ListTile(
                 leading: Icon(Icons.thermostat_outlined,
                     color: colors.onSurfaceVariant),
-                title: const Text('Temperature Unit'),
+                title: Text(l.settingsTempUnit),
                 trailing: SegmentedButton<TemperatureUnit>(
                   segments: const [
                     ButtonSegment(
                         value: TemperatureUnit.celsius,
-                        label: Text('\u00B0C')),
+                        label: Text('°C')),
                     ButtonSegment(
                         value: TemperatureUnit.fahrenheit,
-                        label: Text('\u00B0F')),
+                        label: Text('°F')),
                   ],
                   selected: {settings.temperatureUnit},
                   onSelectionChanged: (value) {
@@ -120,7 +122,7 @@ class SettingsScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.rule,
                     color: colors.onSurfaceVariant),
-                title: const Text('STM Ruleset'),
+                title: Text(l.settingsRuleset),
                 trailing: SegmentedButton<StmRuleset>(
                   segments: const [
                     ButtonSegment(
@@ -141,9 +143,8 @@ class SettingsScreen extends StatelessWidget {
               SwitchListTile(
                 secondary: Icon(Icons.adjust,
                     color: colors.onSurfaceVariant),
-                title: const Text('Cervix tracking'),
-                subtitle:
-                    const Text('Position, openness & firmness'),
+                title: Text(l.settingsCervix),
+                subtitle: Text(l.settingsCervixSub),
                 value: settings.showCervixTracking,
                 onChanged: (v) => provider.updateSettings(
                     settings.copyWith(showCervixTracking: v)),
@@ -152,7 +153,7 @@ class SettingsScreen extends StatelessWidget {
               SwitchListTile(
                 secondary: Icon(Icons.people_outline,
                     color: colors.onSurfaceVariant),
-                title: const Text('Intercourse tracking'),
+                title: Text(l.settingsIntercourse),
                 value: settings.showIntercourseTracking,
                 onChanged: (v) => provider.updateSettings(
                     settings.copyWith(
@@ -162,15 +163,15 @@ class SettingsScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.touch_app_outlined,
                     color: colors.onSurfaceVariant),
-                title: const Text('Open day entry via'),
+                title: Text(l.settingsOpenEntryVia),
                 trailing: SegmentedButton<CalendarTapAction>(
-                  segments: const [
+                  segments: [
                     ButtonSegment(
                         value: CalendarTapAction.longPress,
-                        label: Text('Long press')),
+                        label: Text(l.tapLongPress)),
                     ButtonSegment(
                         value: CalendarTapAction.doubleTap,
-                        label: Text('Double tap')),
+                        label: Text(l.tapDoubleTap)),
                   ],
                   selected: {settings.calendarTapAction},
                   onSelectionChanged: (value) {
@@ -183,13 +184,13 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Automatic Detection
-            _sectionTitle('Automatic Detection', colors),
+            _sectionTitle(l.settingsAutoDetection, colors),
             _settingsContainer(colors, [
               SwitchListTile(
                 secondary: Icon(Icons.auto_graph,
                     color: colors.onSurfaceVariant),
-                title: const Text('Auto-detect coverline'),
-                subtitle: const Text('3-over-6 rule'),
+                title: Text(l.settingsAutoCoverline),
+                subtitle: Text(l.settingsAutoCoverlineSub),
                 value: settings.autoDetectCoverline,
                 onChanged: (v) => provider.updateSettings(
                     settings.copyWith(autoDetectCoverline: v)),
@@ -198,8 +199,8 @@ class SettingsScreen extends StatelessWidget {
               SwitchListTile(
                 secondary: Icon(Icons.water_drop_outlined,
                     color: colors.onSurfaceVariant),
-                title: const Text('Auto-detect Peak Day'),
-                subtitle: const Text('From mucus pattern'),
+                title: Text(l.settingsAutoPeak),
+                subtitle: Text(l.settingsAutoPeakSub),
                 value: settings.autoDetectPeakDay,
                 onChanged: (v) => provider.updateSettings(
                     settings.copyWith(autoDetectPeakDay: v)),
@@ -208,14 +209,13 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Reminders
-            _sectionTitle('Reminders', colors),
+            _sectionTitle(l.settingsReminders, colors),
             _settingsContainer(colors, [
               SwitchListTile(
                 secondary: Icon(Icons.notifications_active_outlined,
                     color: colors.onSurfaceVariant),
-                title: const Text('Daily check-in reminder'),
-                subtitle: const Text(
-                    'A single notification each day to log BBT and mucus.'),
+                title: Text(l.settingsDailyReminder),
+                subtitle: Text(l.settingsDailyReminderSub),
                 value: settings.dailyReminderEnabled,
                 onChanged: (v) => provider.updateSettings(
                     settings.copyWith(dailyReminderEnabled: v)),
@@ -224,7 +224,7 @@ class SettingsScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.schedule,
                     color: colors.onSurfaceVariant),
-                title: const Text('Reminder time'),
+                title: Text(l.settingsReminderTime),
                 subtitle: Text(settings.reminderTimeLabel),
                 enabled: settings.dailyReminderEnabled,
                 onTap: settings.dailyReminderEnabled
@@ -236,75 +236,70 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Data
-            _sectionTitle('Data', colors),
+            _sectionTitle(l.settingsData, colors),
             _settingsContainer(colors, [
               ListTile(
                 leading: Icon(Icons.upload_file_outlined,
                     color: colors.primary),
-                title: const Text('Export data (CSV)'),
-                subtitle: const Text('Save all data as CSV'),
+                title: Text(l.settingsExport),
+                subtitle: Text(l.settingsExportSub),
                 onTap: () => _exportData(context),
               ),
               const Divider(),
               ListTile(
                 leading: Icon(Icons.download_outlined,
                     color: colors.primary),
-                title: const Text('Import data (CSV)'),
-                subtitle:
-                    const Text('Import Ember CSV format'),
+                title: Text(l.settingsImport),
+                subtitle: Text(l.settingsImportSub),
                 onTap: () => _importData(context),
               ),
               const Divider(),
               ListTile(
                 leading: Icon(Icons.swap_horiz,
                     color: colors.primary),
-                title: const Text('Import from Kindara'),
-                subtitle:
-                    const Text('Import Kindara export file'),
+                title: Text(l.settingsImportKindara),
+                subtitle: Text(l.settingsImportKindaraSub),
                 onTap: () => _importKindara(context),
               ),
               const Divider(),
               ListTile(
                 leading: Icon(Icons.delete_outline,
                     color: colors.error),
-                title: Text('Delete all data',
+                title: Text(l.settingsDeleteAll,
                     style: TextStyle(color: colors.error)),
-                subtitle: const Text('This cannot be undone'),
+                subtitle: Text(l.settingsDeleteAllSub),
                 onTap: () => _confirmDelete(context, provider),
               ),
             ]),
             const SizedBox(height: 20),
 
             // About
-            _sectionTitle('About', colors),
+            _sectionTitle(l.settingsAbout, colors),
             _settingsContainer(colors, [
               ListTile(
                 leading: Icon(Icons.shield_outlined,
                     color: colors.onSurfaceVariant),
-                title: const Text('Privacy'),
-                subtitle: const Text(
-                    'All data stored locally. No account required.'),
+                title: Text(l.settingsPrivacy),
+                subtitle: Text(l.settingsPrivacySub),
               ),
               const Divider(),
               ListTile(
                 leading: Icon(Icons.info_outline,
                     color: colors.onSurfaceVariant),
-                title: const Text('About STM'),
-                subtitle: const Text(
-                    'Compatible with the symptothermal method. Independent app, not affiliated with any organization.'),
+                title: Text(l.settingsAboutStm),
+                subtitle: Text(l.settingsAboutStmSub),
               ),
             ]),
 
             if (SupportLinks.enabled) ...[
               const SizedBox(height: 20),
-              _sectionTitle('Support', colors),
+              _sectionTitle(l.settingsSupport, colors),
               _settingsContainer(colors, [
                 ListTile(
                   leading: Icon(Icons.local_cafe_outlined,
                       color: colors.primary),
-                  title: const Text('Support development'),
-                  subtitle: const Text(
-                      'Ember is free. Chip in a coffee if you like — optional.'),
+                  title: Text(l.settingsSupportDev),
+                  subtitle: Text(l.settingsSupportDevSub),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
@@ -364,6 +359,7 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Future<void> _exportData(BuildContext context) async {
+    final l = AppLocalizations.of(context)!;
     try {
       final service = ExportImportService();
       final path = await service.exportToCsv();
@@ -371,17 +367,16 @@ class SettingsScreen extends StatelessWidget {
         final result = await showDialog<bool>(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: const Text('Export Complete'),
-            content: Text(
-                'File saved to:\n$path\n\nWould you like to share it?'),
+            title: Text(l.exportCompleteTitle),
+            content: Text(l.exportCompleteBody(path)),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx, false),
-                child: const Text('Close'),
+                child: Text(l.close),
               ),
               FilledButton(
                 onPressed: () => Navigator.pop(ctx, true),
-                child: const Text('Share'),
+                child: Text(l.share),
               ),
             ],
           ),
@@ -393,12 +388,13 @@ class SettingsScreen extends StatelessWidget {
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Export failed: $e')));
+            SnackBar(content: Text(l.exportFailed(e.toString()))));
       }
     }
   }
 
   Future<void> _importData(BuildContext context) async {
+    final l = AppLocalizations.of(context)!;
     try {
       final result = await FilePicker.platform.pickFiles(
           type: FileType.custom,
@@ -414,17 +410,18 @@ class SettingsScreen extends StatelessWidget {
         final provider = context.read<CycleProvider>();
         await provider.loadCycles();
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Imported $count entries')));
+            SnackBar(content: Text(l.importedEntries(count))));
       }
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Import failed: $e')));
+            SnackBar(content: Text(l.importFailed(e.toString()))));
       }
     }
   }
 
   Future<void> _importKindara(BuildContext context) async {
+    final l = AppLocalizations.of(context)!;
     try {
       final result = await FilePicker.platform.pickFiles(
           type: FileType.custom,
@@ -440,12 +437,12 @@ class SettingsScreen extends StatelessWidget {
         final provider = context.read<CycleProvider>();
         await provider.loadCycles();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('Imported $count Kindara entries')));
+            content: Text(l.importedKindara(count))));
       }
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('Kindara import failed: $e')));
+            content: Text(l.kindaraImportFailed(e.toString()))));
       }
     }
   }
@@ -453,25 +450,22 @@ class SettingsScreen extends StatelessWidget {
   Future<void> _confirmDelete(
       BuildContext context, CycleProvider provider) async {
     final colors = Theme.of(context).colorScheme;
+    final l = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Delete All Data?'),
-        content: const Text(
-          'This will permanently delete all your cycles and entries. '
-          'Consider exporting your data first.\n\n'
-          'This action cannot be undone.',
-        ),
+        title: Text(l.deleteAllTitle),
+        content: Text(l.deleteAllBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           FilledButton(
             style: FilledButton.styleFrom(
                 backgroundColor: colors.error),
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Delete Everything'),
+            child: Text(l.deleteEverything),
           ),
         ],
       ),
@@ -483,7 +477,7 @@ class SettingsScreen extends StatelessWidget {
       await provider.loadCycles();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('All data deleted')));
+            SnackBar(content: Text(l.allDataDeleted)));
       }
     }
   }

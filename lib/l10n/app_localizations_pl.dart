@@ -45,4 +45,188 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get supportLinkError => 'Nie udało się otworzyć linku';
+
+  @override
+  String get settingsGoal => 'Cel';
+
+  @override
+  String get settingsUseFor => 'Używam metody, aby';
+
+  @override
+  String get purposeAvoiding => 'Unikać';
+
+  @override
+  String get purposeAchieving => 'Starać się';
+
+  @override
+  String get purposeAvoidingDesc =>
+      'Etykiety odzwierciedlają ostrożne podejście — tylko potwierdzone fazy są oznaczane jako niepłodne.';
+
+  @override
+  String get purposeAchievingDesc =>
+      'Etykiety używają standardowej terminologii metody do określenia okna płodności.';
+
+  @override
+  String get settingsTracking => 'Zapis';
+
+  @override
+  String get settingsTempUnit => 'Jednostka temperatury';
+
+  @override
+  String get settingsRuleset => 'Reguły metody';
+
+  @override
+  String get settingsCervix => 'Zapis szyjki macicy';
+
+  @override
+  String get settingsCervixSub => 'Pozycja, rozwarcie i twardość';
+
+  @override
+  String get settingsIntercourse => 'Zapis współżycia';
+
+  @override
+  String get settingsOpenEntryVia => 'Otwórz wpis dnia przez';
+
+  @override
+  String get tapLongPress => 'Długie naciśnięcie';
+
+  @override
+  String get tapDoubleTap => 'Podwójne dotknięcie';
+
+  @override
+  String get settingsAutoDetection => 'Automatyczne wykrywanie';
+
+  @override
+  String get settingsAutoCoverline => 'Automatyczna linia bazowa';
+
+  @override
+  String get settingsAutoCoverlineSub => 'Reguła 3 ponad 6';
+
+  @override
+  String get settingsAutoPeak => 'Automatyczny dzień szczytu';
+
+  @override
+  String get settingsAutoPeakSub => 'Na podstawie wzorca śluzu';
+
+  @override
+  String get settingsReminders => 'Przypomnienia';
+
+  @override
+  String get settingsDailyReminder => 'Codzienne przypomnienie';
+
+  @override
+  String get settingsDailyReminderSub =>
+      'Jedno powiadomienie dziennie, aby zapisać temperaturę i śluz.';
+
+  @override
+  String get settingsReminderTime => 'Godzina przypomnienia';
+
+  @override
+  String get settingsData => 'Dane';
+
+  @override
+  String get settingsExport => 'Eksportuj dane (CSV)';
+
+  @override
+  String get settingsExportSub => 'Zapisz wszystkie dane jako CSV';
+
+  @override
+  String get settingsImport => 'Importuj dane (CSV)';
+
+  @override
+  String get settingsImportSub => 'Importuj format CSV aplikacji Ember';
+
+  @override
+  String get settingsImportKindara => 'Importuj z Kindara';
+
+  @override
+  String get settingsImportKindaraSub => 'Importuj plik eksportu Kindara';
+
+  @override
+  String get settingsDeleteAll => 'Usuń wszystkie dane';
+
+  @override
+  String get settingsDeleteAllSub => 'Tego nie można cofnąć';
+
+  @override
+  String get settingsAbout => 'O aplikacji';
+
+  @override
+  String get settingsPrivacy => 'Prywatność';
+
+  @override
+  String get settingsPrivacySub =>
+      'Wszystkie dane przechowywane lokalnie. Konto nie jest wymagane.';
+
+  @override
+  String get settingsAboutStm => 'O metodzie';
+
+  @override
+  String get settingsAboutStmSub =>
+      'Zgodna z metodą objawowo-termiczną. Niezależna aplikacja, niepowiązana z żadną organizacją.';
+
+  @override
+  String get settingsSupport => 'Wsparcie';
+
+  @override
+  String get settingsSupportDev => 'Wesprzyj rozwój';
+
+  @override
+  String get settingsSupportDevSub =>
+      'Ember jest darmowy. Postaw kawę, jeśli chcesz — dobrowolnie.';
+
+  @override
+  String get exportCompleteTitle => 'Eksport zakończony';
+
+  @override
+  String exportCompleteBody(String path) {
+    return 'Plik zapisany w:\n$path\n\nCzy chcesz go udostępnić?';
+  }
+
+  @override
+  String get close => 'Zamknij';
+
+  @override
+  String get share => 'Udostępnij';
+
+  @override
+  String exportFailed(String error) {
+    return 'Eksport nie powiódł się: $error';
+  }
+
+  @override
+  String importedEntries(int count) {
+    return 'Zaimportowano $count wpisów';
+  }
+
+  @override
+  String importFailed(String error) {
+    return 'Import nie powiódł się: $error';
+  }
+
+  @override
+  String importedKindara(int count) {
+    return 'Zaimportowano $count wpisów z Kindara';
+  }
+
+  @override
+  String kindaraImportFailed(String error) {
+    return 'Import z Kindara nie powiódł się: $error';
+  }
+
+  @override
+  String get deleteAllTitle => 'Usunąć wszystkie dane?';
+
+  @override
+  String get deleteAllBody =>
+      'Spowoduje to trwałe usunięcie wszystkich cykli i wpisów. Rozważ najpierw wyeksportowanie danych.\n\nTej operacji nie można cofnąć.';
+
+  @override
+  String get cancel => 'Anuluj';
+
+  @override
+  String get deleteEverything => 'Usuń wszystko';
+
+  @override
+  String get allDataDeleted => 'Usunięto wszystkie dane';
 }
