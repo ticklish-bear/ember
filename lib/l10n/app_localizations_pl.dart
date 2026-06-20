@@ -229,4 +229,234 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get allDataDeleted => 'Usunięto wszystkie dane';
+
+  @override
+  String cycleDayLabel(int day) {
+    return 'Dzień cyklu $day';
+  }
+
+  @override
+  String get deleteEntryTooltip => 'Usuń wpis';
+
+  @override
+  String get sectionTemperature => 'Temperatura';
+
+  @override
+  String bbtLabel(String unit) {
+    return 'PTC ($unit)';
+  }
+
+  @override
+  String get fieldTime => 'Godzina';
+
+  @override
+  String get disturbanceFactorsLabel => 'Czynniki zakłócające';
+
+  @override
+  String get disturbanceHelp =>
+      'Czy coś nietypowego wpłynęło na temperaturę? Oznaczone wartości są widoczne na wykresie, ale wyłączone z obliczania linii bazowej.';
+
+  @override
+  String get distIllness => 'Choroba';
+
+  @override
+  String get distPoorSleep => 'Słaby sen';
+
+  @override
+  String get distAlcohol => 'Alkohol';
+
+  @override
+  String get distLateMeasurement => 'Późny pomiar';
+
+  @override
+  String get distStress => 'Stres';
+
+  @override
+  String get distTravel => 'Podróż';
+
+  @override
+  String get distMedication => 'Leki';
+
+  @override
+  String get additionalDetails => 'Dodatkowe szczegóły (opcjonalnie)';
+
+  @override
+  String get additionalDetailsHint => 'np. obudziłam się 2 h później';
+
+  @override
+  String get sectionMucus => 'Śluz szyjkowy';
+
+  @override
+  String get mucusSensation => 'Odczucie';
+
+  @override
+  String get mucusAppearanceLabel => 'Wygląd';
+
+  @override
+  String get mucusDry => 'Sucho';
+
+  @override
+  String get mucusNothing => 'Nic';
+
+  @override
+  String get mucusMoist => 'Wilgotno';
+
+  @override
+  String get mucusWet => 'Mokro';
+
+  @override
+  String get mucusSlippery => 'Śliski';
+
+  @override
+  String get mucusEggWhite => 'Jak białko jaja';
+
+  @override
+  String get mucusNotRecorded => 'Nie zapisano';
+
+  @override
+  String get appNone => 'Brak';
+
+  @override
+  String get appCloudy => 'Mętny';
+
+  @override
+  String get appYellowish => 'Żółtawy';
+
+  @override
+  String get appSticky => 'Lepki';
+
+  @override
+  String get appCreamy => 'Kremowy';
+
+  @override
+  String get appClear => 'Przejrzysty';
+
+  @override
+  String get appStretchy => 'Rozciągliwy';
+
+  @override
+  String get appTransparent => 'Przezroczysty';
+
+  @override
+  String get sectionBleeding => 'Krwawienie';
+
+  @override
+  String get bleedNone => 'Brak';
+
+  @override
+  String get bleedSpotting => 'Plamienie';
+
+  @override
+  String get bleedLight => 'Lekkie';
+
+  @override
+  String get bleedMedium => 'Średnie';
+
+  @override
+  String get bleedHeavy => 'Obfite';
+
+  @override
+  String get sectionCervix => 'Szyjka macicy';
+
+  @override
+  String get cervixPositionLabel => 'Pozycja';
+
+  @override
+  String get cervixOpennessLabel => 'Rozwarcie';
+
+  @override
+  String get cervixFirmnessLabel => 'Twardość';
+
+  @override
+  String get posLow => 'Nisko';
+
+  @override
+  String get posMedium => 'Średnio';
+
+  @override
+  String get posHigh => 'Wysoko';
+
+  @override
+  String get openClosed => 'Zamknięta';
+
+  @override
+  String get openPartially => 'Lekko otwarta';
+
+  @override
+  String get openOpen => 'Otwarta';
+
+  @override
+  String get firmFirm => 'Twarda';
+
+  @override
+  String get firmMedium => 'Średnia';
+
+  @override
+  String get firmSoft => 'Miękka';
+
+  @override
+  String get sectionAdditional => 'Dodatkowe';
+
+  @override
+  String get fieldIntercourse => 'Współżycie';
+
+  @override
+  String get markPeakDay => 'Oznacz jako dzień szczytu';
+
+  @override
+  String get markPeakDaySub =>
+      'Ostatni dzień najlepszego śluzu przed wyschnięciem';
+
+  @override
+  String get sectionNotes => 'Notatki';
+
+  @override
+  String get notesHint => 'Inne obserwacje...';
+
+  @override
+  String get saveEntry => 'Zapisz wpis';
+
+  @override
+  String get couldNotLoad => 'Nie udało się wczytać wpisu';
+
+  @override
+  String get goBack => 'Wstecz';
+
+  @override
+  String get unsavedTitle => 'Niezapisane zmiany';
+
+  @override
+  String get unsavedBody => 'Masz niezapisane zmiany. Czy chcesz je odrzucić?';
+
+  @override
+  String get keepEditing => 'Kontynuuj edycję';
+
+  @override
+  String get discard => 'Odrzuć';
+
+  @override
+  String get invalidNumber => 'Wpisz prawidłową liczbę';
+
+  @override
+  String get rangeCelsius => 'Oczekiwany zakres: 35,00–39,00 °C';
+
+  @override
+  String get rangeFahrenheit => 'Oczekiwany zakres: 95,00–102,20 °F';
+
+  @override
+  String get deleteEntryTitle => 'Usunąć wpis?';
+
+  @override
+  String deleteEntryBody(String date, int day) {
+    return 'Usunąć wpis z $date (dzień cyklu $day)?\n\nTej operacji nie można cofnąć.';
+  }
+
+  @override
+  String get delete => 'Usuń';
+
+  @override
+  String get entryDeleted => 'Wpis usunięty';
+
+  @override
+  String get entrySaved => 'Wpis zapisany';
 }

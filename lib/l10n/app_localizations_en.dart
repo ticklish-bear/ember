@@ -229,4 +229,234 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get allDataDeleted => 'All data deleted';
+
+  @override
+  String cycleDayLabel(int day) {
+    return 'Cycle Day $day';
+  }
+
+  @override
+  String get deleteEntryTooltip => 'Delete entry';
+
+  @override
+  String get sectionTemperature => 'Temperature';
+
+  @override
+  String bbtLabel(String unit) {
+    return 'BBT ($unit)';
+  }
+
+  @override
+  String get fieldTime => 'Time';
+
+  @override
+  String get disturbanceFactorsLabel => 'Disturbance factors';
+
+  @override
+  String get disturbanceHelp =>
+      'Did anything unusual affect your temperature? Tagged temps are shown on the chart but excluded from the coverline calculation.';
+
+  @override
+  String get distIllness => 'Illness';
+
+  @override
+  String get distPoorSleep => 'Poor sleep';
+
+  @override
+  String get distAlcohol => 'Alcohol';
+
+  @override
+  String get distLateMeasurement => 'Late measurement';
+
+  @override
+  String get distStress => 'Stress';
+
+  @override
+  String get distTravel => 'Travel';
+
+  @override
+  String get distMedication => 'Medication';
+
+  @override
+  String get additionalDetails => 'Additional details (optional)';
+
+  @override
+  String get additionalDetailsHint => 'e.g., woke up 2h late';
+
+  @override
+  String get sectionMucus => 'Cervical Mucus';
+
+  @override
+  String get mucusSensation => 'Sensation';
+
+  @override
+  String get mucusAppearanceLabel => 'Appearance';
+
+  @override
+  String get mucusDry => 'Dry';
+
+  @override
+  String get mucusNothing => 'Nothing';
+
+  @override
+  String get mucusMoist => 'Moist';
+
+  @override
+  String get mucusWet => 'Wet';
+
+  @override
+  String get mucusSlippery => 'Slippery';
+
+  @override
+  String get mucusEggWhite => 'Egg white';
+
+  @override
+  String get mucusNotRecorded => 'Not recorded';
+
+  @override
+  String get appNone => 'None';
+
+  @override
+  String get appCloudy => 'Cloudy';
+
+  @override
+  String get appYellowish => 'Yellowish';
+
+  @override
+  String get appSticky => 'Sticky';
+
+  @override
+  String get appCreamy => 'Creamy';
+
+  @override
+  String get appClear => 'Clear';
+
+  @override
+  String get appStretchy => 'Stretchy';
+
+  @override
+  String get appTransparent => 'Transparent';
+
+  @override
+  String get sectionBleeding => 'Bleeding';
+
+  @override
+  String get bleedNone => 'None';
+
+  @override
+  String get bleedSpotting => 'Spotting';
+
+  @override
+  String get bleedLight => 'Light';
+
+  @override
+  String get bleedMedium => 'Medium';
+
+  @override
+  String get bleedHeavy => 'Heavy';
+
+  @override
+  String get sectionCervix => 'Cervix';
+
+  @override
+  String get cervixPositionLabel => 'Position';
+
+  @override
+  String get cervixOpennessLabel => 'Openness';
+
+  @override
+  String get cervixFirmnessLabel => 'Firmness';
+
+  @override
+  String get posLow => 'Low';
+
+  @override
+  String get posMedium => 'Medium';
+
+  @override
+  String get posHigh => 'High';
+
+  @override
+  String get openClosed => 'Closed';
+
+  @override
+  String get openPartially => 'Partially open';
+
+  @override
+  String get openOpen => 'Open';
+
+  @override
+  String get firmFirm => 'Firm';
+
+  @override
+  String get firmMedium => 'Medium';
+
+  @override
+  String get firmSoft => 'Soft';
+
+  @override
+  String get sectionAdditional => 'Additional';
+
+  @override
+  String get fieldIntercourse => 'Intercourse';
+
+  @override
+  String get markPeakDay => 'Mark as Peak Day';
+
+  @override
+  String get markPeakDaySub => 'Last day of best-quality mucus before drying';
+
+  @override
+  String get sectionNotes => 'Notes';
+
+  @override
+  String get notesHint => 'Any additional observations...';
+
+  @override
+  String get saveEntry => 'Save Entry';
+
+  @override
+  String get couldNotLoad => 'Could not load entry';
+
+  @override
+  String get goBack => 'Go Back';
+
+  @override
+  String get unsavedTitle => 'Unsaved Changes';
+
+  @override
+  String get unsavedBody =>
+      'You have unsaved changes. Do you want to discard them?';
+
+  @override
+  String get keepEditing => 'Keep Editing';
+
+  @override
+  String get discard => 'Discard';
+
+  @override
+  String get invalidNumber => 'Enter a valid number';
+
+  @override
+  String get rangeCelsius => 'Expected range: 35.00 - 39.00 °C';
+
+  @override
+  String get rangeFahrenheit => 'Expected range: 95.00 - 102.20 °F';
+
+  @override
+  String get deleteEntryTitle => 'Delete Entry?';
+
+  @override
+  String deleteEntryBody(String date, int day) {
+    return 'Delete the entry for $date (Cycle Day $day)?\n\nThis cannot be undone.';
+  }
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get entryDeleted => 'Entry deleted';
+
+  @override
+  String get entrySaved => 'Entry saved';
 }

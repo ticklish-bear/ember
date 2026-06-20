@@ -5,6 +5,7 @@ import '../providers/cycle_provider.dart';
 import '../models/day_entry.dart';
 import '../models/settings.dart';
 import '../theme/app_theme.dart';
+import '../l10n/app_localizations.dart';
 
 class DayEntryScreen extends StatefulWidget {
   final DateTime date;
@@ -163,20 +164,20 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
 
   Future<bool> _onWillPop() async {
     if (!_isDirty) return true;
+    final l = AppLocalizations.of(context)!;
     final result = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Unsaved Changes'),
-        content: const Text(
-            'You have unsaved changes. Do you want to discard them?'),
+        title: Text(l.unsavedTitle),
+        content: Text(l.unsavedBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Keep Editing'),
+            child: Text(l.keepEditing),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Discard'),
+            child: Text(l.discard),
           ),
         ],
       ),
@@ -188,11 +189,14 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
+    final l = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).toString();
+    final dateLabel = DateFormat('EEE, MMM d', locale).format(widget.date);
 
     if (_isLoading) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(DateFormat('EEE, MMM d').format(widget.date)),
+          title: Text(dateLabel),
         ),
         body: const Center(child: CircularProgressIndicator()),
       );
@@ -202,7 +206,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
     if (entry == null) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(DateFormat('EEE, MMM d').format(widget.date)),
+          title: Text(dateLabel),
         ),
         body: Center(
           child: Column(
@@ -210,11 +214,11 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
             children: [
               Icon(Icons.error_outline, size: 48, color: colors.error),
               const SizedBox(height: 16),
-              const Text('Could not load entry'),
+              Text(l.couldNotLoad),
               const SizedBox(height: 12),
               FilledButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Go Back'),
+                child: Text(l.goBack),
               ),
             ],
           ),
@@ -239,9 +243,9 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(DateFormat('EEE, MMM d').format(widget.date)),
+              Text(dateLabel),
               Text(
-                'Cycle Day ${entry.cycleDay}',
+                l.cycleDayLabel(entry.cycleDay),
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w400,
@@ -255,7 +259,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
             if (entry.id != null)
               IconButton(
                 icon: Icon(Icons.delete_outline, color: colors.error),
-                tooltip: 'Delete entry',
+                tooltip: l.deleteEntryTooltip,
                 onPressed: () => _confirmDelete(context, provider, entry),
               ),
           ],
@@ -265,7 +269,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
           children: [
             // Temperature
             _buildSection(
-              title: 'Temperature',
+              title: l.sectionTemperature,
               icon: Icons.thermostat_outlined,
               children: [
                 Row(
@@ -277,7 +281,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                         keyboardType: const TextInputType.numberWithOptions(
                             decimal: true),
                         decoration: InputDecoration(
-                          labelText: 'BBT (${settings.tempUnitLabel})',
+                          labelText: l.bbtLabel(settings.tempUnitLabel),
                           hintText:
                               settings.temperatureUnit == TemperatureUnit.celsius
                                   ? '36.50'
@@ -304,8 +308,8 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                     Expanded(
                       child: TextField(
                         controller: _timeController,
-                        decoration: const InputDecoration(
-                          labelText: 'Time',
+                        decoration: InputDecoration(
+                          labelText: l.fieldTime,
                           hintText: '06:30',
                         ),
                         onTap: _pickTime,
@@ -316,12 +320,10 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                 ),
                 const SizedBox(height: 12),
                 // Disturbance factors
-                _subLabel('Disturbance factors', colors),
+                _subLabel(l.disturbanceFactorsLabel, colors),
                 const SizedBox(height: 4),
                 Text(
-                  'Did anything unusual affect your temperature? '
-                  'Tagged temps are shown on the chart but excluded '
-                  'from the coverline calculation.',
+                  l.disturbanceHelp,
                   style: TextStyle(
                     fontSize: 12,
                     color: colors.onSurfaceVariant,
@@ -335,7 +337,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                     final isSelected =
                         _selectedDisturbances.contains(factor);
                     return FilterChip(
-                      label: Text(factor),
+                      label: Text(_disturbanceLabel(factor, l)),
                       selected: isSelected,
                       selectedColor: colors.errorContainer,
                       checkmarkColor: colors.onErrorContainer,
@@ -365,9 +367,9 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                     padding: const EdgeInsets.only(top: 8),
                     child: TextField(
                       controller: _excludeReasonController,
-                      decoration: const InputDecoration(
-                        labelText: 'Additional details (optional)',
-                        hintText: 'e.g., woke up 2h late',
+                      decoration: InputDecoration(
+                        labelText: l.additionalDetails,
+                        hintText: l.additionalDetailsHint,
                       ),
                     ),
                   ),
@@ -376,10 +378,10 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
 
             // Cervical mucus
             _buildSection(
-              title: 'Cervical Mucus',
+              title: l.sectionMucus,
               icon: Icons.water_drop_outlined,
               children: [
-                _subLabel('Sensation', colors),
+                _subLabel(l.mucusSensation, colors),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -406,7 +408,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                   }).toList(),
                 ),
                 const SizedBox(height: 12),
-                _subLabel('Appearance', colors),
+                _subLabel(l.mucusAppearanceLabel, colors),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -433,7 +435,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
 
             // Bleeding
             _buildSection(
-              title: 'Bleeding',
+              title: l.sectionBleeding,
               icon: Icons.circle,
               iconColor: AppColors.menstruation,
               children: [
@@ -464,17 +466,17 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
             // Cervix (optional)
             if (settings.showCervixTracking)
               _buildSection(
-                title: 'Cervix',
+                title: l.sectionCervix,
                 icon: Icons.adjust,
                 children: [
-                  _subLabel('Position', colors),
+                  _subLabel(l.cervixPositionLabel, colors),
                   const SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
                     children: CervixPosition.values
                         .where((p) => p != CervixPosition.unset)
                         .map((pos) => ChoiceChip(
-                              label: Text(pos.name),
+                              label: Text(_cervixPositionLabel(pos)),
                               selected: entry.cervixPosition == pos,
                               onSelected: (s) {
                                 setState(() {
@@ -489,7 +491,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                         .toList(),
                   ),
                   const SizedBox(height: 12),
-                  _subLabel('Openness', colors),
+                  _subLabel(l.cervixOpennessLabel, colors),
                   const SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
@@ -511,14 +513,14 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                         .toList(),
                   ),
                   const SizedBox(height: 12),
-                  _subLabel('Firmness', colors),
+                  _subLabel(l.cervixFirmnessLabel, colors),
                   const SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
                     children: CervixFirmness.values
                         .where((f) => f != CervixFirmness.unset)
                         .map((firm) => ChoiceChip(
-                              label: Text(firm.name),
+                              label: Text(_cervixFirmnessLabel(firm)),
                               selected: entry.cervixFirmness == firm,
                               onSelected: (s) {
                                 setState(() {
@@ -537,12 +539,12 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
 
             // Additional
             _buildSection(
-              title: 'Additional',
+              title: l.sectionAdditional,
               icon: Icons.more_horiz,
               children: [
                 if (settings.showIntercourseTracking)
                   SwitchListTile(
-                    title: const Text('Intercourse'),
+                    title: Text(l.fieldIntercourse),
                     value: entry.intercourse,
                     onChanged: (v) {
                       setState(() {
@@ -553,9 +555,8 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
                     contentPadding: EdgeInsets.zero,
                   ),
                 SwitchListTile(
-                  title: const Text('Mark as Peak Day'),
-                  subtitle: const Text(
-                      'Last day of best-quality mucus before drying'),
+                  title: Text(l.markPeakDay),
+                  subtitle: Text(l.markPeakDaySub),
                   value: entry.isPeakDay,
                   onChanged: (v) {
                     setState(() {
@@ -570,14 +571,14 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
 
             // Notes
             _buildSection(
-              title: 'Notes',
+              title: l.sectionNotes,
               icon: Icons.edit_note,
               children: [
                 TextField(
                   controller: _notesController,
                   maxLines: 3,
-                  decoration: const InputDecoration(
-                    hintText: 'Any additional observations...',
+                  decoration: InputDecoration(
+                    hintText: l.notesHint,
                   ),
                 ),
               ],
@@ -601,7 +602,7 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
               style: FilledButton.styleFrom(
                 minimumSize: const Size(double.infinity, 48),
               ),
-              child: const Text('Save Entry'),
+              child: Text(l.saveEntry),
             ),
           ),
         ),
@@ -664,17 +665,18 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
   /// Validate temperature is within reasonable BBT range
   String? _validateTemperature(String value, AppSettings settings) {
     if (value.isEmpty) return null;
+    final l = AppLocalizations.of(context)!;
     final normalized = _normalizeDecimal(value);
     final parsed = double.tryParse(normalized);
-    if (parsed == null) return 'Enter a valid number';
+    if (parsed == null) return l.invalidNumber;
 
     if (settings.temperatureUnit == TemperatureUnit.celsius) {
       if (parsed < 35.0 || parsed > 39.0) {
-        return 'Expected range: 35.00 - 39.00 \u00B0C';
+        return l.rangeCelsius;
       }
     } else {
       if (parsed < 95.0 || parsed > 102.2) {
-        return 'Expected range: 95.00 - 102.20 \u00B0F';
+        return l.rangeFahrenheit;
       }
     }
     return null;
@@ -706,24 +708,23 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
   Future<void> _confirmDelete(
       BuildContext context, CycleProvider provider, DayEntry entry) async {
     final colors = Theme.of(context).colorScheme;
+    final l = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).toString();
+    final dateStr = DateFormat('MMM d', locale).format(entry.date);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Delete Entry?'),
-        content: Text(
-          'Delete the entry for ${DateFormat('MMM d').format(entry.date)} '
-          '(Cycle Day ${entry.cycleDay})?\n\n'
-          'This cannot be undone.',
-        ),
+        title: Text(l.deleteEntryTitle),
+        content: Text(l.deleteEntryBody(dateStr, entry.cycleDay)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: colors.error),
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Delete'),
+            child: Text(l.delete),
           ),
         ],
       ),
@@ -733,9 +734,9 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
       await provider.deleteDayEntry(entry);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Entry deleted'),
-            duration: Duration(seconds: 2),
+          SnackBar(
+            content: Text(l.entryDeleted),
+            duration: const Duration(seconds: 2),
           ),
         );
         Navigator.pop(context);
@@ -783,80 +784,136 @@ class _DayEntryScreenState extends State<DayEntryScreen> {
     if (mounted) {
       setState(() => _hasUnsavedChanges = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Entry saved'),
-          duration: Duration(seconds: 1),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.entrySaved),
+          duration: const Duration(seconds: 1),
         ),
       );
       Navigator.pop(context);
     }
   }
 
+  /// Map a canonical (English, stored) disturbance factor to its localized
+  /// label. Storage keeps the English value so saved reasons stay stable
+  /// across language changes.
+  String _disturbanceLabel(String factor, AppLocalizations l) {
+    switch (factor) {
+      case 'Illness':
+        return l.distIllness;
+      case 'Poor sleep':
+        return l.distPoorSleep;
+      case 'Alcohol':
+        return l.distAlcohol;
+      case 'Late measurement':
+        return l.distLateMeasurement;
+      case 'Stress':
+        return l.distStress;
+      case 'Travel':
+        return l.distTravel;
+      case 'Medication':
+        return l.distMedication;
+      default:
+        return factor;
+    }
+  }
+
   String _mucusTypeLabel(MucusType type) {
+    final l = AppLocalizations.of(context)!;
     switch (type) {
       case MucusType.dry:
-        return 'Dry';
+        return l.mucusDry;
       case MucusType.nothing:
-        return 'Nothing';
+        return l.mucusNothing;
       case MucusType.moist:
-        return 'Moist';
+        return l.mucusMoist;
       case MucusType.wet:
-        return 'Wet';
+        return l.mucusWet;
       case MucusType.slippery:
-        return 'Slippery';
+        return l.mucusSlippery;
       case MucusType.eggWhite:
-        return 'Egg white';
+        return l.mucusEggWhite;
       case MucusType.unrecorded:
-        return 'Not recorded';
+        return l.mucusNotRecorded;
     }
   }
 
   String _mucusAppLabel(MucusAppearance app) {
+    final l = AppLocalizations.of(context)!;
     switch (app) {
       case MucusAppearance.none:
-        return 'None';
+        return l.appNone;
       case MucusAppearance.cloudy:
-        return 'Cloudy';
+        return l.appCloudy;
       case MucusAppearance.yellowish:
-        return 'Yellowish';
+        return l.appYellowish;
       case MucusAppearance.sticky:
-        return 'Sticky';
+        return l.appSticky;
       case MucusAppearance.creamy:
-        return 'Creamy';
+        return l.appCreamy;
       case MucusAppearance.clear:
-        return 'Clear';
+        return l.appClear;
       case MucusAppearance.stretchy:
-        return 'Stretchy';
+        return l.appStretchy;
       case MucusAppearance.transparent:
-        return 'Transparent';
+        return l.appTransparent;
     }
   }
 
   String _bleedingLabel(BleedingType type) {
+    final l = AppLocalizations.of(context)!;
     switch (type) {
       case BleedingType.none:
-        return 'None';
+        return l.bleedNone;
       case BleedingType.spotting:
-        return 'Spotting';
+        return l.bleedSpotting;
       case BleedingType.light:
-        return 'Light';
+        return l.bleedLight;
       case BleedingType.medium:
-        return 'Medium';
+        return l.bleedMedium;
       case BleedingType.heavy:
-        return 'Heavy';
+        return l.bleedHeavy;
+    }
+  }
+
+  String _cervixPositionLabel(CervixPosition pos) {
+    final l = AppLocalizations.of(context)!;
+    switch (pos) {
+      case CervixPosition.unset:
+        return '';
+      case CervixPosition.low:
+        return l.posLow;
+      case CervixPosition.medium:
+        return l.posMedium;
+      case CervixPosition.high:
+        return l.posHigh;
     }
   }
 
   String _cervixOpennessLabel(CervixOpenness op) {
+    final l = AppLocalizations.of(context)!;
     switch (op) {
       case CervixOpenness.unset:
-        return 'Unset';
+        return '';
       case CervixOpenness.closed:
-        return 'Closed';
+        return l.openClosed;
       case CervixOpenness.partiallyOpen:
-        return 'Partially open';
+        return l.openPartially;
       case CervixOpenness.open:
-        return 'Open';
+        return l.openOpen;
+    }
+  }
+
+  String _cervixFirmnessLabel(CervixFirmness firm) {
+    final l = AppLocalizations.of(context)!;
+    switch (firm) {
+      case CervixFirmness.unset:
+        return '';
+      case CervixFirmness.firm:
+        return l.firmFirm;
+      case CervixFirmness.medium:
+        return l.firmMedium;
+      case CervixFirmness.soft:
+        return l.firmSoft;
     }
   }
 }
