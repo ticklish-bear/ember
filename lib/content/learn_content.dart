@@ -56,6 +56,73 @@ List<FaqSection> faqSections(String lang) {
   }
 }
 
+/// Translatable text for one mucus category (visual attributes — icon,
+/// illustration, quality — are fixed in the widget and paired by order).
+class MucusCategoryText {
+  final String category;
+  final String fertility;
+  final String sensation;
+  final String appearance;
+  final String fingerTest;
+  final String details;
+  const MucusCategoryText({
+    required this.category,
+    required this.fertility,
+    required this.sensation,
+    required this.appearance,
+    required this.fingerTest,
+    required this.details,
+  });
+}
+
+class SamplingMethodText {
+  final String title;
+  final String text;
+  const SamplingMethodText({required this.title, required this.text});
+}
+
+class ProgressionRowText {
+  final String phase;
+  final String mucus;
+  const ProgressionRowText({required this.phase, required this.mucus});
+}
+
+/// All translatable content of the Mucus Atlas tab.
+class AtlasContent {
+  final List<MucusCategoryText> categories; // 5, fixed order
+  final String progressionTitle;
+  final List<ProgressionRowText> progression; // 5
+  final String progressionCaption;
+  final String goodToKnowTitle;
+  final String goodToKnowBody;
+  final String samplingTitle;
+  final String samplingIntro;
+  final List<SamplingMethodText> samplingMethods; // 3
+  final String samplingTip;
+  const AtlasContent({
+    required this.categories,
+    required this.progressionTitle,
+    required this.progression,
+    required this.progressionCaption,
+    required this.goodToKnowTitle,
+    required this.goodToKnowBody,
+    required this.samplingTitle,
+    required this.samplingIntro,
+    required this.samplingMethods,
+    required this.samplingTip,
+  });
+}
+
+/// Mucus Atlas content for the given language code (falls back to English).
+AtlasContent atlasContent(String lang) {
+  switch (lang) {
+    case 'de':
+      return _atlasDe;
+    default:
+      return _atlasEn;
+  }
+}
+
 const _methodTopicsEn = <TopicContent>[
   TopicContent(
     icon: Icons.auto_stories_outlined,
@@ -572,3 +639,414 @@ const _methodTopicsDe = <TopicContent>[
         '\nManhart MD et al. (2013). Osteopathic Family Physician, 5(1).',
   ),
 ];
+
+const _atlasEn = AtlasContent(
+  categories: [
+    MucusCategoryText(
+      category: 'Dry',
+      fertility: 'Not fertile',
+      sensation: 'Dry, rough, possibly itchy or slightly '
+          'uncomfortable. The vaginal opening may feel '
+          'sandpapery when you wipe.',
+      appearance: 'Nothing visible on toilet paper or underwear. '
+          'The tissue stays completely clean and dry when you '
+          'wipe. There is no sheen or residue at all.',
+      fingerTest: 'Nothing to test — your fingers remain '
+          'completely dry with no residue.',
+      details: 'This is typically observed in the days right after '
+          'menstruation ends and again after ovulation throughout '
+          'the luteal phase. Estrogen levels are at their lowest, '
+          'so the cervix produces little to no secretion. In the '
+          'STM classification, dry days during the pre-ovulatory '
+          'phase (before any mucus has appeared) may still be '
+          'considered infertile according to the calendar rules.\n\n'
+          'Note: Some women rarely feel completely "dry" — if your '
+          'baseline is more neutral, that\'s your personal pattern. '
+          'What matters is recognizing when it CHANGES.',
+    ),
+    MucusCategoryText(
+      category: 'Nothing felt, nothing seen',
+      fertility: 'Not fertile',
+      sensation: 'Neither dry nor moist — a neutral feeling. '
+          'You don\'t particularly notice anything, no '
+          'discomfort, no wetness.',
+      appearance: 'No visible mucus on toilet paper. No stains '
+          'on underwear. The tissue may have a very slight '
+          'sheen but nothing you can pick up or examine.',
+      fingerTest: 'Nothing to pick up or test between your '
+          'fingers. The area feels neutral to touch.',
+      details: 'This is a transitional category that sits between '
+          '"dry" and "moist." Some women experience this as their '
+          'baseline rather than complete dryness — especially '
+          'women who naturally have slightly more moisture. '
+          'This is perfectly normal.\n\n'
+          'The key with this category is to pay close attention '
+          'to whether it transitions to "moist" or "wet" — that '
+          'shift, even if subtle, signals rising estrogen and '
+          'the potential opening of the fertile window.',
+    ),
+    MucusCategoryText(
+      category: 'Moist / Sticky',
+      fertility: 'Possibly fertile',
+      sensation: 'Slightly moist or damp feeling at the vaginal '
+          'opening. You notice something is there, but it '
+          'doesn\'t feel slick or lubricative.',
+      appearance: 'Thick, white, cloudy, or yellowish. May look '
+          'pasty, crumbly, or gummy. Stays in a blob or lump. '
+          'Can resemble white school glue or thick hand cream '
+          'that has started to dry.',
+      fingerTest: 'Breaks immediately when pulled apart, or '
+          'stretches less than 1 cm before snapping. '
+          'Feels tacky, sticky, or crumbly between your '
+          'thumb and forefinger — like dried paste.',
+      details: 'The cervix is beginning to respond to rising '
+          'estrogen levels. This mucus provides limited sperm '
+          'survival (hours rather than days), but it signals '
+          'that the body is transitioning toward fertility.\n\n'
+          'In the STM classification, this is the boundary zone. '
+          'If you are using the method to avoid pregnancy, the '
+          'first appearance of this mucus after dry days should '
+          'be treated as the start of the fertile window — even '
+          'if the calendar calculation says you\'re still in the '
+          'infertile phase. Mucus always takes priority over '
+          'calendar rules.\n\n'
+          'This type of mucus forms a mesh-like structure under '
+          'the microscope that partially blocks sperm passage.',
+    ),
+    MucusCategoryText(
+      category: 'Wet / Creamy',
+      fertility: 'Fertile',
+      sensation: 'Wet, smooth, or slick feeling. You may '
+          'notice moisture when you walk or sit down. '
+          'There\'s a clear sense of lubrication, though '
+          'not as intense as the egg white phase.',
+      appearance: 'White to slightly cloudy, with a creamy, '
+          'lotion-like consistency. More fluid than the sticky '
+          'phase. May leave noticeable wet spots on underwear. '
+          'Can look like body lotion, yogurt, or thin '
+          'hand cream.',
+      fingerTest: 'Stretches 1–2 cm before breaking. Feels '
+          'smooth and creamy between your fingers — like '
+          'hand lotion or moisturizer. Not yet forming '
+          'the elastic threads of egg white mucus.',
+      details: 'Estrogen levels are now significantly elevated, '
+          'signaling that ovulation is approaching (usually '
+          'within a few days). The mucus is becoming hospitable '
+          'to sperm — providing nutrients, alkaline pH to '
+          'counteract the vagina\'s acidity, and channels '
+          'that facilitate sperm transport toward the egg.\n\n'
+          'Sperm can survive 3–5 days in this type of mucus, '
+          'which is why the fertile window extends well before '
+          'ovulation itself. This marks the clearly fertile '
+          'phase of the cycle.\n\n'
+          'Under a microscope, this mucus shows a more open, '
+          'channel-like structure compared to the mesh of '
+          'sticky mucus, actively guiding sperm upward.',
+    ),
+    MucusCategoryText(
+      category: 'Egg white / Slippery',
+      fertility: 'Highly fertile',
+      sensation: 'Very slippery, lubricative — like soap, oil, '
+          'or sliding on a wet surface. You may notice it '
+          'when walking, sitting, or even without wiping. '
+          'Some describe it as a "gushing" sensation.',
+      appearance: 'Clear, transparent, or slightly streaked '
+          'with white. Highly fluid, glassy, and stretchy. '
+          'Resembles raw egg white — you can often see '
+          'long, thin strings on the toilet paper. May be '
+          'watery-clear with no cloudiness at all.',
+      fingerTest: 'Stretches 3–10+ cm without breaking, forming '
+          'thin, elastic, glistening threads between thumb and '
+          'forefinger. The longer and thinner the thread, the '
+          'more fertile. Feels extremely slippery — your '
+          'fingers almost glide past each other.',
+      details: 'This is the most fertile mucus, indicating peak '
+          'estrogen levels and that ovulation is imminent or '
+          'happening right now. Sperm can survive up to 5 days '
+          'in this mucus, and it actively facilitates their '
+          'transport to the egg.\n\n'
+          'The LAST day you observe this peak-quality mucus is '
+          'your "Peak Day" — one of the two key markers in STM. '
+          'You can only identify the Peak Day retrospectively: '
+          'when you notice that today\'s mucus is drier or less '
+          'stretchy than yesterday, then yesterday was the Peak '
+          'Day.\n\n'
+          'Not everyone produces large amounts — some women '
+          'only see a small amount of stretchy mucus. The '
+          'quality (stretchiness, clarity, slipperiness) matters '
+          'more than the quantity. Even a small amount of true '
+          'egg-white mucus is a strong fertility sign.\n\n'
+          'Under a microscope, this mucus shows wide-open, '
+          'parallel channels — essentially a highway system '
+          'for sperm. It also shows a characteristic "ferning" '
+          'pattern when dried on a glass slide.',
+    ),
+  ],
+  progressionTitle: 'Typical Progression',
+  progression: [
+    ProgressionRowText(phase: 'After period', mucus: 'Dry'),
+    ProgressionRowText(phase: 'Early follicular', mucus: 'Sticky/cloudy'),
+    ProgressionRowText(phase: 'Near ovulation', mucus: 'Wet/creamy'),
+    ProgressionRowText(phase: 'Peak fertility', mucus: 'Egg white'),
+    ProgressionRowText(phase: 'After ovulation', mucus: 'Back to dry'),
+  ],
+  progressionCaption: 'The abrupt change from egg white back to '
+      'dry/sticky marks the Peak Day (identified the next day).',
+  goodToKnowTitle: 'Good to know',
+  goodToKnowBody: '• Focus on the change in pattern, not matching a '
+      'textbook description exactly.\n'
+      '• Arousal fluid is different — watery, disappears '
+      'quickly, doesn\'t stretch.\n'
+      '• Semen can mask observations for 12–24 hours.\n'
+      '• Some medications may reduce mucus production.',
+  samplingTitle: 'How to observe & collect a sample',
+  samplingIntro: 'There are three ways to check your cervical mucus. '
+      'Use whichever feels most comfortable — what matters '
+      'is that you do it consistently.',
+  samplingMethods: [
+    SamplingMethodText(
+      title: 'Toilet paper method',
+      text: 'Before urinating, wipe the vaginal opening from '
+          'front to back with white, unscented toilet paper. '
+          'Look at the tissue: is there anything on it? '
+          'Note the color, consistency, and how it feels '
+          'while wiping (dry, smooth, slippery?).',
+    ),
+    SamplingMethodText(
+      title: 'Finger method',
+      text: 'With clean hands, insert your index or middle '
+          'finger into the vagina (about 2–3 cm is enough). '
+          'Gently sweep around the cervical opening. Remove '
+          'your finger and examine what\'s on it. Then do '
+          'the finger test: press the mucus between your '
+          'thumb and forefinger and slowly pull apart. '
+          'Note how far it stretches before breaking.',
+    ),
+    SamplingMethodText(
+      title: 'Underwear check',
+      text: 'Look at your underwear throughout the day. '
+          'Cervical mucus often leaves visible marks — '
+          'note whether the spot is dry, creamy, wet, '
+          'or shows clear stretchy residue.',
+    ),
+  ],
+  samplingTip: 'Always record the HIGHEST quality you observed '
+      'during the day. If you saw sticky mucus in the '
+      'morning but egg white in the afternoon, record '
+      'egg white.\n\n'
+      'Check several times per day — mucus can change '
+      'throughout the day. Pay extra attention to the '
+      'sensation: the slippery/lubricative feeling is '
+      'often the most reliable indicator, even when '
+      'you can\'t see much.',
+);
+
+const _atlasDe = AtlasContent(
+  categories: [
+    MucusCategoryText(
+      category: 'Trocken',
+      fertility: 'Nicht fruchtbar',
+      sensation: 'Trocken, rau, evtl. juckend oder leicht '
+          'unangenehm. Der Scheideneingang kann sich beim '
+          'Abwischen wie Schmirgelpapier anfühlen.',
+      appearance: 'Nichts auf Toilettenpapier oder Unterwäsche '
+          'sichtbar. Das Papier bleibt beim Abwischen völlig '
+          'sauber und trocken. Kein Glanz, kein Rückstand.',
+      fingerTest: 'Nichts zu testen – deine Finger bleiben '
+          'völlig trocken, ohne Rückstand.',
+      details: 'Dies wird typischerweise in den Tagen direkt nach '
+          'dem Ende der Menstruation und erneut nach dem Eisprung '
+          'während der gesamten Lutealphase beobachtet. Der '
+          'Östrogenspiegel ist am niedrigsten, daher produziert '
+          'der Gebärmutterhals kaum bis kein Sekret. In der '
+          'STM-Klassifikation können trockene Tage in der Phase '
+          'vor dem Eisprung (bevor Schleim aufgetreten ist) nach '
+          'den Kalenderregeln noch als unfruchtbar gelten.\n\n'
+          'Hinweis: Manche Frauen fühlen sich selten völlig '
+          '„trocken" – wenn dein Normalzustand neutraler ist, '
+          'ist das dein persönliches Muster. Entscheidend ist, '
+          'zu erkennen, wann es sich ÄNDERT.',
+    ),
+    MucusCategoryText(
+      category: 'Nichts gefühlt, nichts gesehen',
+      fertility: 'Nicht fruchtbar',
+      sensation: 'Weder trocken noch feucht – ein neutrales '
+          'Gefühl. Du nimmst nichts Besonderes wahr, kein '
+          'Unbehagen, keine Nässe.',
+      appearance: 'Kein sichtbarer Schleim auf Toilettenpapier. '
+          'Keine Flecken auf der Unterwäsche. Das Papier kann '
+          'einen ganz leichten Glanz haben, aber nichts, das du '
+          'aufnehmen oder untersuchen kannst.',
+      fingerTest: 'Nichts zum Aufnehmen oder Testen zwischen den '
+          'Fingern. Der Bereich fühlt sich neutral an.',
+      details: 'Dies ist eine Übergangskategorie zwischen „trocken" '
+          'und „feucht". Manche Frauen erleben dies als '
+          'Normalzustand statt völliger Trockenheit – besonders '
+          'Frauen mit von Natur aus etwas mehr Feuchtigkeit. '
+          'Das ist völlig normal.\n\n'
+          'Wichtig bei dieser Kategorie ist, genau darauf zu '
+          'achten, ob sie zu „feucht" oder „nass" übergeht – '
+          'dieser Wechsel, auch wenn er subtil ist, signalisiert '
+          'steigendes Östrogen und das mögliche Öffnen des '
+          'fruchtbaren Fensters.',
+    ),
+    MucusCategoryText(
+      category: 'Feucht / Klebrig',
+      fertility: 'Evtl. fruchtbar',
+      sensation: 'Leicht feuchtes oder klammes Gefühl am '
+          'Scheideneingang. Du merkst, dass etwas da ist, aber '
+          'es fühlt sich nicht glatt oder gleitfähig an.',
+      appearance: 'Dick, weiß, trüb oder gelblich. Kann pastös, '
+          'krümelig oder gummiartig aussehen. Bleibt als Klumpen. '
+          'Kann an weißen Bastelkleber oder dicke Handcreme '
+          'erinnern, die anzutrocknen beginnt.',
+      fingerTest: 'Reißt sofort beim Auseinanderziehen oder dehnt '
+          'sich weniger als 1 cm, bevor es reißt. Fühlt sich '
+          'klebrig oder krümelig zwischen Daumen und Zeigefinger '
+          'an – wie angetrocknete Paste.',
+      details: 'Der Gebärmutterhals beginnt, auf steigendes '
+          'Östrogen zu reagieren. Dieser Schleim ermöglicht ein '
+          'begrenztes Spermienüberleben (Stunden statt Tage), '
+          'signalisiert aber, dass der Körper in Richtung '
+          'Fruchtbarkeit übergeht.\n\n'
+          'In der STM-Klassifikation ist dies die Grenzzone. '
+          'Wenn du die Methode zur Verhütung nutzt, sollte das '
+          'erste Auftreten dieses Schleims nach trockenen Tagen '
+          'als Beginn des fruchtbaren Fensters behandelt werden – '
+          'auch wenn die Kalenderberechnung sagt, du seist noch '
+          'in der unfruchtbaren Phase. Schleim hat immer Vorrang '
+          'vor Kalenderregeln.\n\n'
+          'Diese Schleimart bildet unter dem Mikroskop eine '
+          'netzartige Struktur, die den Spermiendurchgang teilweise '
+          'blockiert.',
+    ),
+    MucusCategoryText(
+      category: 'Nass / Cremig',
+      fertility: 'Fruchtbar',
+      sensation: 'Nasses, glattes oder gleitfähiges Gefühl. Du '
+          'bemerkst evtl. Feuchtigkeit beim Gehen oder Sitzen. '
+          'Es gibt ein klares Gefühl von Gleitfähigkeit, wenn '
+          'auch nicht so intensiv wie in der Eiweiß-Phase.',
+      appearance: 'Weiß bis leicht trüb, mit cremiger, '
+          'lotionartiger Konsistenz. Flüssiger als die klebrige '
+          'Phase. Kann deutliche nasse Flecken auf der Unterwäsche '
+          'hinterlassen. Kann wie Körperlotion, Joghurt oder '
+          'dünne Handcreme aussehen.',
+      fingerTest: 'Dehnt sich 1–2 cm, bevor es reißt. Fühlt sich '
+          'glatt und cremig zwischen den Fingern an – wie '
+          'Handlotion oder Feuchtigkeitscreme. Bildet noch nicht '
+          'die elastischen Fäden des Eiweißschleims.',
+      details: 'Der Östrogenspiegel ist nun deutlich erhöht und '
+          'signalisiert, dass der Eisprung naht (meist innerhalb '
+          'weniger Tage). Der Schleim wird spermienfreundlich – '
+          'er liefert Nährstoffe, einen alkalischen pH-Wert, der '
+          'die Säure der Scheide ausgleicht, und Kanäle, die den '
+          'Spermientransport zur Eizelle erleichtern.\n\n'
+          'Spermien können in dieser Schleimart 3–5 Tage '
+          'überleben, weshalb sich das fruchtbare Fenster weit '
+          'vor den Eisprung selbst erstreckt. Dies markiert die '
+          'klar fruchtbare Phase des Zyklus.\n\n'
+          'Unter dem Mikroskop zeigt dieser Schleim eine offenere, '
+          'kanalartige Struktur als das Netz des klebrigen '
+          'Schleims und leitet Spermien aktiv nach oben.',
+    ),
+    MucusCategoryText(
+      category: 'Eiweiß / Spinnbar',
+      fertility: 'Hoch fruchtbar',
+      sensation: 'Sehr glitschig, gleitfähig – wie Seife, Öl '
+          'oder das Gleiten auf einer nassen Oberfläche. Du '
+          'bemerkst es evtl. beim Gehen, Sitzen oder sogar ohne '
+          'Abwischen. Manche beschreiben es als „strömendes" '
+          'Gefühl.',
+      appearance: 'Klar, durchsichtig oder leicht weißlich '
+          'durchzogen. Sehr flüssig, glasig und dehnbar. Ähnelt '
+          'rohem Eiweiß – oft sieht man lange, dünne Fäden auf '
+          'dem Toilettenpapier. Kann wässrig-klar und völlig '
+          'ungetrübt sein.',
+      fingerTest: 'Dehnt sich 3–10+ cm, ohne zu reißen, und '
+          'bildet dünne, elastische, glänzende Fäden zwischen '
+          'Daumen und Zeigefinger. Je länger und dünner der '
+          'Faden, desto fruchtbarer. Fühlt sich extrem glitschig '
+          'an – die Finger gleiten fast aneinander vorbei.',
+      details: 'Dies ist der fruchtbarste Schleim und zeigt einen '
+          'Östrogen-Höchststand sowie an, dass der Eisprung '
+          'unmittelbar bevorsteht oder gerade stattfindet. '
+          'Spermien können in diesem Schleim bis zu 5 Tage '
+          'überleben, und er erleichtert aktiv ihren Transport '
+          'zur Eizelle.\n\n'
+          'Der LETZTE Tag, an dem du diesen Schleim bester '
+          'Qualität beobachtest, ist dein „Höhepunkt" – einer der '
+          'beiden Schlüsselmarker der STM. Du kannst den '
+          'Höhepunkt nur rückblickend bestimmen: Wenn du '
+          'bemerkst, dass der Schleim heute trockener oder weniger '
+          'dehnbar ist als gestern, dann war gestern der '
+          'Höhepunkt.\n\n'
+          'Nicht jede produziert große Mengen – manche Frauen '
+          'sehen nur eine kleine Menge dehnbaren Schleim. Die '
+          'Qualität (Dehnbarkeit, Klarheit, Glitschigkeit) zählt '
+          'mehr als die Menge. Schon eine kleine Menge echten '
+          'Eiweißschleims ist ein starkes Fruchtbarkeitszeichen.\n\n'
+          'Unter dem Mikroskop zeigt dieser Schleim weit offene, '
+          'parallele Kanäle – im Grunde ein Autobahnsystem für '
+          'Spermien. Getrocknet auf einem Glasträger zeigt er '
+          'zudem ein charakteristisches „Farnkraut"-Muster.',
+    ),
+  ],
+  progressionTitle: 'Typischer Verlauf',
+  progression: [
+    ProgressionRowText(phase: 'Nach der Periode', mucus: 'Trocken'),
+    ProgressionRowText(phase: 'Frühe Follikelphase', mucus: 'Klebrig/trüb'),
+    ProgressionRowText(phase: 'Nahe Eisprung', mucus: 'Nass/cremig'),
+    ProgressionRowText(phase: 'Höchste Fruchtbarkeit', mucus: 'Eiweiß'),
+    ProgressionRowText(phase: 'Nach dem Eisprung', mucus: 'Wieder trocken'),
+  ],
+  progressionCaption: 'Der abrupte Wechsel von Eiweiß zurück zu '
+      'trocken/klebrig markiert den Höhepunkt (am nächsten Tag '
+      'erkennbar).',
+  goodToKnowTitle: 'Gut zu wissen',
+  goodToKnowBody: '• Achte auf die Veränderung des Musters, nicht '
+      'auf das exakte Übereinstimmen mit einer Lehrbuchbeschreibung.\n'
+      '• Erregungsflüssigkeit ist anders – wässrig, verschwindet '
+      'schnell, dehnt sich nicht.\n'
+      '• Sperma kann Beobachtungen 12–24 Stunden überdecken.\n'
+      '• Manche Medikamente können die Schleimbildung verringern.',
+  samplingTitle: 'Beobachten & Probe gewinnen',
+  samplingIntro: 'Es gibt drei Wege, deinen Zervixschleim zu prüfen. '
+      'Nutze den, der sich am angenehmsten anfühlt – wichtig ist, '
+      'dass du es regelmäßig tust.',
+  samplingMethods: [
+    SamplingMethodText(
+      title: 'Toilettenpapier-Methode',
+      text: 'Wische vor dem Wasserlassen den Scheideneingang von '
+          'vorne nach hinten mit weißem, unparfümiertem '
+          'Toilettenpapier ab. Schau auf das Papier: Ist etwas '
+          'darauf? Notiere Farbe, Konsistenz und wie es sich beim '
+          'Abwischen anfühlt (trocken, glatt, glitschig?).',
+    ),
+    SamplingMethodText(
+      title: 'Finger-Methode',
+      text: 'Führe mit sauberen Händen den Zeige- oder Mittelfinger '
+          'in die Scheide ein (etwa 2–3 cm reichen). Streiche '
+          'sanft um den Muttermund. Zieh den Finger heraus und '
+          'untersuche, was daran ist. Mach dann den Fingertest: '
+          'Drücke den Schleim zwischen Daumen und Zeigefinger und '
+          'zieh langsam auseinander. Notiere, wie weit er sich '
+          'dehnt, bevor er reißt.',
+    ),
+    SamplingMethodText(
+      title: 'Unterwäsche-Kontrolle',
+      text: 'Schau über den Tag verteilt auf deine Unterwäsche. '
+          'Zervixschleim hinterlässt oft sichtbare Spuren – '
+          'notiere, ob der Fleck trocken, cremig, nass ist oder '
+          'klare, dehnbare Rückstände zeigt.',
+    ),
+  ],
+  samplingTip: 'Notiere immer die HÖCHSTE Qualität, die du an dem '
+      'Tag beobachtet hast. Wenn du morgens klebrigen Schleim '
+      'gesehen hast, nachmittags aber Eiweißschleim, trage '
+      'Eiweißschleim ein.\n\n'
+      'Prüfe mehrmals täglich – Schleim kann sich im Lauf des '
+      'Tages ändern. Achte besonders auf das Empfinden: das '
+      'glitschige/gleitfähige Gefühl ist oft der zuverlässigste '
+      'Indikator, auch wenn du wenig sehen kannst.',
+);

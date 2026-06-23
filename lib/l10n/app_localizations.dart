@@ -1539,6 +1539,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tap a question to see the answer.'**
   String get learnFaqIntro;
+
+  /// No description provided for @atlasSensation.
+  ///
+  /// In en, this message translates to:
+  /// **'Sensation'**
+  String get atlasSensation;
+
+  /// No description provided for @atlasAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get atlasAppearance;
+
+  /// No description provided for @atlasFingerTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Finger test'**
+  String get atlasFingerTest;
 }
 
 class _AppLocalizationsDelegate

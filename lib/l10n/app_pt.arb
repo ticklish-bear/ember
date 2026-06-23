@@ -275,5 +275,8 @@
   "learnTabFaq": "Perguntas",
   "learnTabAtlas": "Atlas do muco",
   "learnIntro": "Aprenda no seu ritmo. Toque em qualquer tópico para expandi-lo.",
-  "learnFaqIntro": "Toque em uma pergunta para ver a resposta."
+  "learnFaqIntro": "Toque em uma pergunta para ver a resposta.",
+  "atlasSensation": "Sensação",
+  "atlasAppearance": "Aparência",
+  "atlasFingerTest": "Teste com os dedos"
 }

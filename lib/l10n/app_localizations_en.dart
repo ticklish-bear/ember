@@ -827,4 +827,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get learnFaqIntro => 'Tap a question to see the answer.';
+
+  @override
+  String get atlasSensation => 'Sensation';
+
+  @override
+  String get atlasAppearance => 'Appearance';
+
+  @override
+  String get atlasFingerTest => 'Finger test';
 }

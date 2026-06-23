@@ -275,5 +275,8 @@
   "learnTabFaq": "FAQ",
   "learnTabAtlas": "Mucus Atlas",
   "learnIntro": "Learn at your own pace. Tap any topic to expand it.",
-  "learnFaqIntro": "Tap a question to see the answer."
+  "learnFaqIntro": "Tap a question to see the answer.",
+  "atlasSensation": "Sensation",
+  "atlasAppearance": "Appearance",
+  "atlasFingerTest": "Finger test"
 }

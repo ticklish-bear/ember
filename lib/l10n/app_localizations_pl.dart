@@ -833,4 +833,13 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get learnFaqIntro => 'Dotknij pytania, aby zobaczyć odpowiedź.';
+
+  @override
+  String get atlasSensation => 'Odczucie';
+
+  @override
+  String get atlasAppearance => 'Wygląd';
+
+  @override
+  String get atlasFingerTest => 'Test palcami';
 }

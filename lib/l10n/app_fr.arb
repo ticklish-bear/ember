@@ -275,5 +275,8 @@
   "learnTabFaq": "FAQ",
   "learnTabAtlas": "Atlas de la glaire",
   "learnIntro": "Apprenez à votre rythme. Touchez un sujet pour le développer.",
-  "learnFaqIntro": "Touchez une question pour voir la réponse."
+  "learnFaqIntro": "Touchez une question pour voir la réponse.",
+  "atlasSensation": "Sensation",
+  "atlasAppearance": "Aspect",
+  "atlasFingerTest": "Test des doigts"
 }

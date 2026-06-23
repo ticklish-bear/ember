@@ -275,5 +275,8 @@
   "learnTabFaq": "FAQ",
   "learnTabAtlas": "Schleim-Atlas",
   "learnIntro": "Lerne in deinem Tempo. Tippe ein Thema an, um es aufzuklappen.",
-  "learnFaqIntro": "Tippe eine Frage an, um die Antwort zu sehen."
+  "learnFaqIntro": "Tippe eine Frage an, um die Antwort zu sehen.",
+  "atlasSensation": "Empfinden",
+  "atlasAppearance": "Aussehen",
+  "atlasFingerTest": "Fingertest"
 }

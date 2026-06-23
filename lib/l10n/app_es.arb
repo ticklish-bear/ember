@@ -275,5 +275,8 @@
   "learnTabFaq": "Preguntas",
   "learnTabAtlas": "Atlas del moco",
   "learnIntro": "Aprende a tu ritmo. Toca cualquier tema para ampliarlo.",
-  "learnFaqIntro": "Toca una pregunta para ver la respuesta."
+  "learnFaqIntro": "Toca una pregunta para ver la respuesta.",
+  "atlasSensation": "Sensación",
+  "atlasAppearance": "Aspecto",
+  "atlasFingerTest": "Prueba con los dedos"
 }

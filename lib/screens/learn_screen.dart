@@ -142,9 +142,32 @@ class _FaqTab extends StatelessWidget {
 class _MucusAtlasTab extends StatelessWidget {
   const _MucusAtlasTab();
 
+  static const _icons = [
+    Icons.wb_sunny_outlined,
+    Icons.remove_circle_outline,
+    Icons.grain,
+    Icons.water_outlined,
+    Icons.opacity,
+  ];
+  static const _illustrations = [
+    _MucusIllustration.dry,
+    _MucusIllustration.nothing,
+    _MucusIllustration.sticky,
+    _MucusIllustration.creamy,
+    _MucusIllustration.eggWhite,
+  ];
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final c = atlasContent(Localizations.localeOf(context).languageCode);
+    final progressionColors = [
+      AppColors.mucusDry,
+      AppColors.mucusMoist,
+      AppColors.mucusWet,
+      AppColors.mucusEggWhite,
+      AppColors.mucusDry,
+    ];
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 32),
@@ -153,163 +176,19 @@ class _MucusAtlasTab extends StatelessWidget {
         _SamplingGuide(colors: colors),
         const SizedBox(height: 20),
 
-        // Category cards with illustrations and photos
-        const _MucusCategoryCard(
-          category: 'Dry',
-          quality: 0,
-          icon: Icons.wb_sunny_outlined,
-          mucusType: _MucusIllustration.dry,
-          // No photo for dry — nothing visible to photograph
-          sensation: 'Dry, rough, possibly itchy or slightly '
-              'uncomfortable. The vaginal opening may feel '
-              'sandpapery when you wipe.',
-          appearance: 'Nothing visible on toilet paper or underwear. '
-              'The tissue stays completely clean and dry when you '
-              'wipe. There is no sheen or residue at all.',
-          fingerTest: 'Nothing to test — your fingers remain '
-              'completely dry with no residue.',
-          fertility: 'Not fertile',
-          details: 'This is typically observed in the days right after '
-              'menstruation ends and again after ovulation throughout '
-              'the luteal phase. Estrogen levels are at their lowest, '
-              'so the cervix produces little to no secretion. In the '
-              'STM classification, dry days during the pre-ovulatory '
-              'phase (before any mucus has appeared) may still be '
-              'considered infertile according to the calendar rules.\n\n'
-              'Note: Some women rarely feel completely "dry" — if your '
-              'baseline is more neutral, that\'s your personal pattern. '
-              'What matters is recognizing when it CHANGES.',
-        ),
-        const _MucusCategoryCard(
-          category: 'Nothing felt, nothing seen',
-          quality: 1,
-          icon: Icons.remove_circle_outline,
-          mucusType: _MucusIllustration.nothing,
-          // No photo — nothing visible
-          sensation: 'Neither dry nor moist — a neutral feeling. '
-              'You don\'t particularly notice anything, no '
-              'discomfort, no wetness.',
-          appearance: 'No visible mucus on toilet paper. No stains '
-              'on underwear. The tissue may have a very slight '
-              'sheen but nothing you can pick up or examine.',
-          fingerTest: 'Nothing to pick up or test between your '
-              'fingers. The area feels neutral to touch.',
-          fertility: 'Not fertile',
-          details: 'This is a transitional category that sits between '
-              '"dry" and "moist." Some women experience this as their '
-              'baseline rather than complete dryness — especially '
-              'women who naturally have slightly more moisture. '
-              'This is perfectly normal.\n\n'
-              'The key with this category is to pay close attention '
-              'to whether it transitions to "moist" or "wet" — that '
-              'shift, even if subtle, signals rising estrogen and '
-              'the potential opening of the fertile window.',
-        ),
-        const _MucusCategoryCard(
-          category: 'Moist / Sticky',
-          quality: 2,
-          icon: Icons.grain,
-          mucusType: _MucusIllustration.sticky,
-          sensation: 'Slightly moist or damp feeling at the vaginal '
-              'opening. You notice something is there, but it '
-              'doesn\'t feel slick or lubricative.',
-          appearance: 'Thick, white, cloudy, or yellowish. May look '
-              'pasty, crumbly, or gummy. Stays in a blob or lump. '
-              'Can resemble white school glue or thick hand cream '
-              'that has started to dry.',
-          fingerTest: 'Breaks immediately when pulled apart, or '
-              'stretches less than 1 cm before snapping. '
-              'Feels tacky, sticky, or crumbly between your '
-              'thumb and forefinger — like dried paste.',
-          fertility: 'Possibly fertile',
-          details: 'The cervix is beginning to respond to rising '
-              'estrogen levels. This mucus provides limited sperm '
-              'survival (hours rather than days), but it signals '
-              'that the body is transitioning toward fertility.\n\n'
-              'In the STM classification, this is the boundary zone. '
-              'If you are using the method to avoid pregnancy, the '
-              'first appearance of this mucus after dry days should '
-              'be treated as the start of the fertile window — even '
-              'if the calendar calculation says you\'re still in the '
-              'infertile phase. Mucus always takes priority over '
-              'calendar rules.\n\n'
-              'This type of mucus forms a mesh-like structure under '
-              'the microscope that partially blocks sperm passage.',
-        ),
-        const _MucusCategoryCard(
-          category: 'Wet / Creamy',
-          quality: 3,
-          icon: Icons.water_outlined,
-          mucusType: _MucusIllustration.creamy,
-          sensation: 'Wet, smooth, or slick feeling. You may '
-              'notice moisture when you walk or sit down. '
-              'There\'s a clear sense of lubrication, though '
-              'not as intense as the egg white phase.',
-          appearance: 'White to slightly cloudy, with a creamy, '
-              'lotion-like consistency. More fluid than the sticky '
-              'phase. May leave noticeable wet spots on underwear. '
-              'Can look like body lotion, yogurt, or thin '
-              'hand cream.',
-          fingerTest: 'Stretches 1–2 cm before breaking. Feels '
-              'smooth and creamy between your fingers — like '
-              'hand lotion or moisturizer. Not yet forming '
-              'the elastic threads of egg white mucus.',
-          fertility: 'Fertile',
-          details: 'Estrogen levels are now significantly elevated, '
-              'signaling that ovulation is approaching (usually '
-              'within a few days). The mucus is becoming hospitable '
-              'to sperm — providing nutrients, alkaline pH to '
-              'counteract the vagina\'s acidity, and channels '
-              'that facilitate sperm transport toward the egg.\n\n'
-              'Sperm can survive 3–5 days in this type of mucus, '
-              'which is why the fertile window extends well before '
-              'ovulation itself. This marks the clearly fertile '
-              'phase of the cycle.\n\n'
-              'Under a microscope, this mucus shows a more open, '
-              'channel-like structure compared to the mesh of '
-              'sticky mucus, actively guiding sperm upward.',
-        ),
-        const _MucusCategoryCard(
-          category: 'Egg white / Slippery',
-          quality: 4,
-          icon: Icons.opacity,
-          mucusType: _MucusIllustration.eggWhite,
-          sensation: 'Very slippery, lubricative — like soap, oil, '
-              'or sliding on a wet surface. You may notice it '
-              'when walking, sitting, or even without wiping. '
-              'Some describe it as a "gushing" sensation.',
-          appearance: 'Clear, transparent, or slightly streaked '
-              'with white. Highly fluid, glassy, and stretchy. '
-              'Resembles raw egg white — you can often see '
-              'long, thin strings on the toilet paper. May be '
-              'watery-clear with no cloudiness at all.',
-          fingerTest: 'Stretches 3–10+ cm without breaking, forming '
-              'thin, elastic, glistening threads between thumb and '
-              'forefinger. The longer and thinner the thread, the '
-              'more fertile. Feels extremely slippery — your '
-              'fingers almost glide past each other.',
-          fertility: 'Highly fertile',
-          details: 'This is the most fertile mucus, indicating peak '
-              'estrogen levels and that ovulation is imminent or '
-              'happening right now. Sperm can survive up to 5 days '
-              'in this mucus, and it actively facilitates their '
-              'transport to the egg.\n\n'
-              'The LAST day you observe this peak-quality mucus is '
-              'your "Peak Day" — one of the two key markers in STM. '
-              'You can only identify the Peak Day retrospectively: '
-              'when you notice that today\'s mucus is drier or less '
-              'stretchy than yesterday, then yesterday was the Peak '
-              'Day.\n\n'
-              'Not everyone produces large amounts — some women '
-              'only see a small amount of stretchy mucus. The '
-              'quality (stretchiness, clarity, slipperiness) matters '
-              'more than the quantity. Even a small amount of true '
-              'egg-white mucus is a strong fertility sign.\n\n'
-              'Under a microscope, this mucus shows wide-open, '
-              'parallel channels — essentially a highway system '
-              'for sperm. It also shows a characteristic "ferning" '
-              'pattern when dried on a glass slide.',
-        ),
+        // Category cards with illustrations
+        for (var i = 0; i < c.categories.length; i++)
+          _MucusCategoryCard(
+            category: c.categories[i].category,
+            quality: i,
+            icon: _icons[i],
+            mucusType: _illustrations[i],
+            sensation: c.categories[i].sensation,
+            appearance: c.categories[i].appearance,
+            fingerTest: c.categories[i].fingerTest,
+            fertility: c.categories[i].fertility,
+            details: c.categories[i].details,
+          ),
 
         const SizedBox(height: 16),
 
@@ -329,28 +208,20 @@ class _MucusAtlasTab extends StatelessWidget {
                   Icon(Icons.trending_up,
                       size: 18, color: colors.primary),
                   const SizedBox(width: 8),
-                  const Text('Typical Progression',
-                      style: TextStyle(
+                  Text(c.progressionTitle,
+                      style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       )),
                 ],
               ),
               const SizedBox(height: 14),
-              _ProgressionRow(
-                  'After period', 'Dry', AppColors.mucusDry),
-              _ProgressionRow('Early follicular',
-                  'Sticky/cloudy', AppColors.mucusMoist),
-              _ProgressionRow('Near ovulation',
-                  'Wet/creamy', AppColors.mucusWet),
-              _ProgressionRow('Peak fertility',
-                  'Egg white', AppColors.mucusEggWhite),
-              _ProgressionRow('After ovulation',
-                  'Back to dry', AppColors.mucusDry),
+              for (var i = 0; i < c.progression.length; i++)
+                _ProgressionRow(c.progression[i].phase,
+                    c.progression[i].mucus, progressionColors[i]),
               const SizedBox(height: 10),
               Text(
-                'The abrupt change from egg white back to dry/sticky '
-                'marks the Peak Day (identified the next day).',
+                c.progressionCaption,
                 style: TextStyle(
                   fontSize: 12.5,
                   color: colors.onSurfaceVariant,
@@ -378,7 +249,7 @@ class _MucusAtlasTab extends StatelessWidget {
                   Icon(Icons.info_outline,
                       size: 16, color: colors.onSurfaceVariant),
                   const SizedBox(width: 8),
-                  Text('Good to know',
+                  Text(c.goodToKnowTitle,
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -388,12 +259,7 @@ class _MucusAtlasTab extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                '• Focus on the change in pattern, not matching a '
-                'textbook description exactly.\n'
-                '• Arousal fluid is different — watery, disappears '
-                'quickly, doesn\'t stretch.\n'
-                '• Semen can mask observations for 12–24 hours.\n'
-                '• Some medications may reduce mucus production.',
+                c.goodToKnowBody,
                 style: TextStyle(
                   fontSize: 12.5,
                   height: 1.5,
@@ -574,6 +440,7 @@ class _MucusCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final l = AppLocalizations.of(context)!;
     final mucusColor = AppTheme.mucusColor(quality);
 
     return Container(
@@ -663,13 +530,13 @@ class _MucusCategoryCard extends StatelessWidget {
               children: [
                 const SizedBox(height: 4),
                 _detailRow(Icons.touch_app_outlined,
-                    'Sensation', sensation, colors),
+                    l.atlasSensation, sensation, colors),
                 const SizedBox(height: 6),
                 _detailRow(Icons.visibility_outlined,
-                    'Appearance', appearance, colors),
+                    l.atlasAppearance, appearance, colors),
                 const SizedBox(height: 6),
                 _detailRow(Icons.pinch_outlined,
-                    'Finger test', fingerTest, colors),
+                    l.atlasFingerTest, fingerTest, colors),
                 const SizedBox(height: 4),
               ],
             ),
@@ -1081,6 +948,7 @@ class _SamplingGuide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final c = atlasContent(Localizations.localeOf(context).languageCode);
     return Container(
       decoration: BoxDecoration(
         color: colors.surface,
@@ -1096,7 +964,7 @@ class _SamplingGuide extends StatelessWidget {
         initiallyExpanded: true,
         leading: Icon(Icons.lightbulb_outline,
             size: 20, color: colors.primary),
-        title: Text('How to observe & collect a sample',
+        title: Text(c.samplingTitle,
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 14,
@@ -1104,9 +972,7 @@ class _SamplingGuide extends StatelessWidget {
             )),
         children: [
           Text(
-            'There are three ways to check your cervical mucus. '
-            'Use whichever feels most comfortable — what matters '
-            'is that you do it consistently.',
+            c.samplingIntro,
             style: TextStyle(
               fontSize: 13,
               height: 1.5,
@@ -1114,36 +980,9 @@ class _SamplingGuide extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-
-          _samplingMethod(
-            '1',
-            'Toilet paper method',
-            'Before urinating, wipe the vaginal opening from '
-            'front to back with white, unscented toilet paper. '
-            'Look at the tissue: is there anything on it? '
-            'Note the color, consistency, and how it feels '
-            'while wiping (dry, smooth, slippery?).',
-          ),
-          _samplingMethod(
-            '2',
-            'Finger method',
-            'With clean hands, insert your index or middle '
-            'finger into the vagina (about 2–3 cm is enough). '
-            'Gently sweep around the cervical opening. Remove '
-            'your finger and examine what\'s on it. Then do '
-            'the finger test: press the mucus between your '
-            'thumb and forefinger and slowly pull apart. '
-            'Note how far it stretches before breaking.',
-          ),
-          _samplingMethod(
-            '3',
-            'Underwear check',
-            'Look at your underwear throughout the day. '
-            'Cervical mucus often leaves visible marks — '
-            'note whether the spot is dry, creamy, wet, '
-            'or shows clear stretchy residue.',
-          ),
-
+          for (var i = 0; i < c.samplingMethods.length; i++)
+            _samplingMethod('${i + 1}', c.samplingMethods[i].title,
+                c.samplingMethods[i].text),
           const SizedBox(height: 12),
           Container(
             padding: const EdgeInsets.all(12),
@@ -1159,15 +998,7 @@ class _SamplingGuide extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'Always record the HIGHEST quality you observed '
-                    'during the day. If you saw sticky mucus in the '
-                    'morning but egg white in the afternoon, record '
-                    'egg white.\n\n'
-                    'Check several times per day — mucus can change '
-                    'throughout the day. Pay extra attention to the '
-                    'sensation: the slippery/lubricative feeling is '
-                    'often the most reliable indicator, even when '
-                    'you can\'t see much.',
+                    c.samplingTip,
                     style: TextStyle(
                       fontSize: 12.5,
                       height: 1.45,
