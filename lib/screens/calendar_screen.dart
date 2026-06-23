@@ -675,10 +675,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
       FertilityStatus status, int cycleDay, AppPurpose purpose,
       StmEvaluation? evaluation) {
     final l = AppLocalizations.of(context)!;
+    final lang = Localizations.localeOf(context).languageCode;
     final explanation =
-        _statusExplanation(status, cycleDay, purpose, evaluation);
+        _statusExplanation(status, cycleDay, purpose, evaluation, lang);
     final ruleDetail =
-        _statusRuleDetail(status, cycleDay, purpose, evaluation);
+        _statusRuleDetail(status, cycleDay, purpose, evaluation, lang);
 
     showDialog(
       context: context,
@@ -760,7 +761,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   /// Short explanation for inline display
   String _statusExplanation(FertilityStatus status, int cycleDay,
-      AppPurpose purpose, StmEvaluation? evaluation) {
+      AppPurpose purpose, StmEvaluation? evaluation, String lang) {
+    if (lang == 'de') {
+      return _statusExplanationDe(status, cycleDay, purpose, evaluation);
+    }
     switch (status) {
       case FertilityStatus.menstruation:
         if (purpose == AppPurpose.anticonception) {
@@ -826,13 +830,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   /// Detailed rule citation for the info popup
   String? _statusRuleDetail(FertilityStatus status, int cycleDay,
-      AppPurpose purpose, StmEvaluation? evaluation) {
+      AppPurpose purpose, StmEvaluation? evaluation, String lang) {
+    if (lang == 'de') {
+      return _statusRuleDetailDe(status, cycleDay, purpose, evaluation);
+    }
     switch (status) {
       case FertilityStatus.menstruation:
         if (purpose == AppPurpose.anticonception) {
           final limit = evaluation?.lastInfertilePreOvDay ?? 5;
           if (cycleDay <= limit) {
-            return _preOvRuleDetailText(evaluation);
+            return _preOvRuleDetailText(evaluation, lang);
           } else {
             return 'Bleeding after cycle day $limit does not '
                 'automatically indicate infertility. Ovulation may '
@@ -889,7 +896,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   /// Generate detailed text explaining which pre-ov rule is active and why
-  String _preOvRuleDetailText(StmEvaluation? evaluation) {
+  String _preOvRuleDetailText(StmEvaluation? evaluation, String lang) {
+    if (lang == 'de') return _preOvRuleDetailTextDe(evaluation);
     if (evaluation == null) {
       return 'AG NFP / Sensiplan: The first 5 days are considered '
           'infertile for beginners (fewer than 12 recorded cycles), '
@@ -952,6 +960,219 @@ class _CalendarScreenState extends State<CalendarScreen> {
     buf.write('\n\nImportant: Any observation of fertile cervical '
         'mucus immediately overrides this calculation and marks '
         'the beginning of the fertile phase.');
+
+    return buf.toString();
+  }
+
+  // ── German variants of the rule-explanation prose ──────────────────────────
+
+  String _preOvRuleDescDe(PreOvRule rule) {
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        return '5-Tage-Regel (Anfänger-Standard)';
+      case PreOvRule.roetzerSixDayRule:
+        return 'Rötzer 6-Tage-Regel (alle Zyklen ≥ 26 Tage)';
+      case PreOvRule.minus20Rule:
+        return 'Minus-20-Regel (kürzester Zyklus − 20)';
+      case PreOvRule.minus8Rule:
+        return 'Minus-8-Regel (frühester Temperaturanstieg − 8)';
+      case PreOvRule.mucusOverride:
+        return 'Schleim-Override (fruchtbare Zeichen erkannt)';
+      case PreOvRule.none:
+        return 'Keine Regel angewendet';
+    }
+  }
+
+  String _statusExplanationDe(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            final ruleDesc = evaluation != null
+                ? _preOvRuleDescDe(evaluation.appliedPreOvRule)
+                : '5-Tage-Regel';
+            return 'Zyklustag $cycleDay von $limit — '
+                'unfruchtbar laut $ruleDesc. '
+                'Es darf kein fruchtbarer Schleim beobachtet werden.';
+          } else {
+            return 'Zyklustag $cycleDay — eine Blutung nach Tag $limit '
+                'ist nicht automatisch unfruchtbar. '
+                'Der Eisprung könnte sich nähern.';
+          }
+        }
+        return 'Zyklustag $cycleDay — Menstruation';
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          return 'Zyklustag $cycleDay — Eisprung noch nicht durch '
+              'Temperaturanstieg bestätigt; als evtl. fruchtbar behandeln';
+        }
+        return 'Zyklustag $cycleDay — Phase vor dem Eisprung, '
+            'keine fruchtbaren Zeichen beobachtet';
+
+      case FertilityStatus.fertile:
+        if (evaluation?.peakDay != null) {
+          return 'Zyklustag $cycleDay — fruchtbare Zeichen vorhanden '
+              '(Höhepunkt: Tag ${evaluation!.peakDay})';
+        }
+        return 'Zyklustag $cycleDay — fruchtbare Zeichen vorhanden, '
+            'Eisprung noch nicht bestätigt';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        final shiftDay = evaluation?.temperatureShiftConfirmedDay;
+        final peakDay = evaluation?.peakDay;
+        if (shiftDay != null && peakDay == null) {
+          return 'Zyklustag $cycleDay — Temperaturanstieg erkannt '
+              '(Tag $shiftDay), aber der Höhepunkt ist noch nicht bestätigt. '
+              'WEITERHIN FRUCHTBAR — die Doppelkontrolle braucht beides.';
+        } else if (peakDay != null && shiftDay == null) {
+          return 'Zyklustag $cycleDay — Höhepunkt erkannt '
+              '(Tag $peakDay), aber der Temperaturanstieg ist noch nicht '
+              'bestätigt. WEITERHIN FRUCHTBAR — die Doppelkontrolle '
+              'braucht beides.';
+        }
+        return 'Zyklustag $cycleDay — warte auf die Bestätigung der '
+            'Doppelkontrolle. WEITERHIN FRUCHTBAR.';
+
+      case FertilityStatus.infertilePostOvulation:
+        final shiftDay = evaluation?.temperatureShiftConfirmedDay;
+        final peakDay = evaluation?.peakDay;
+        return 'Zyklustag $cycleDay — unfruchtbare Phase durch '
+            'Doppelkontrolle bestätigt: Temperaturanstieg bestätigt an '
+            'Tag $shiftDay UND Höhepunkt $peakDay + 3';
+
+      case FertilityStatus.unknown:
+        return 'Zyklustag $cycleDay — nicht genug Daten für eine '
+            'Auswertung';
+    }
+  }
+
+  String? _statusRuleDetailDe(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            return _preOvRuleDetailTextDe(evaluation);
+          } else {
+            return 'Eine Blutung nach Zyklustag $limit bedeutet nicht '
+                'automatisch Unfruchtbarkeit. Der Eisprung könnte sich '
+                'nähern. Beobachte weiter Zervixschleim und Temperatur.';
+          }
+        }
+        return null;
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          return 'In der symptothermalen Methode kann die Phase vor dem '
+              'Eisprung nach der Menstruation ohne Temperaturanstieg nicht '
+              'als unfruchtbar bestätigt werden. Fruchtbarer Schleim kann '
+              'jederzeit auftreten. Zur Verhütung diese Tage mit Vorsicht '
+              'behandeln.';
+        }
+        return 'Keine fruchtbaren Zervixschleim-Zeichen beobachtet. Diese '
+            'Phase endet, wenn die Schleimqualität steigt oder andere '
+            'fruchtbare Zeichen auftreten.';
+
+      case FertilityStatus.fertile:
+        return 'Das fruchtbare Fenster wird durch Veränderungen des '
+            'Zervixschleims erkannt (zunehmende Nässe, Klarheit oder '
+            'Dehnbarkeit) und bleibt offen, bis SOWOHL der Temperaturanstieg '
+            'ALS AUCH die Höhepunkt-+3-Regel den Eisprung bestätigen '
+            '(Doppelte Kontrolle).';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        return 'Die symptothermale Methode verlangt eine DOPPELTE KONTROLLE, '
+            'um den Eisprung zu bestätigen:\n\n'
+            '❶ Temperaturanstieg: 3 aufeinanderfolgende Werte über der '
+            'Hilfslinie (3-über-6-Regel, der 3. ≥ 0,2 °C darüber)\n'
+            '❷ Abtrocknen des Schleims: 3 Tage nach dem Höhepunkt\n\n'
+            'Erst wenn BEIDES bestätigt ist, beginnt die unfruchtbare Phase '
+            '(am Abend des jeweils späteren Zeitpunkts). Bis dahin gilt '
+            'dieser Tag als FRUCHTBAR.\n\n'
+            'Das ist das zentrale Sicherheitsprinzip der Methode — ein '
+            'einzelnes Zeichen reicht nie aus.';
+
+      case FertilityStatus.infertilePostOvulation:
+        return 'Unfruchtbarkeit nach dem Eisprung durch Doppelte Kontrolle '
+            'bestätigt:\n\n'
+            '✓ Temperaturanstieg: 3 aufeinanderfolgende Werte über der '
+            'Hilfslinie (3-über-6-Regel, der 3. ≥ 0,2 °C darüber)\n'
+            '✓ Abtrocknen des Schleims: 3 Tage nach dem Höhepunkt\n\n'
+            'Die unfruchtbare Phase beginnt am Abend des jeweils späteren '
+            'Markers. Dies ist die zuverlässigste Phase der symptothermalen '
+            'Methode.';
+
+      case FertilityStatus.unknown:
+        return null;
+    }
+  }
+
+  String _preOvRuleDetailTextDe(StmEvaluation? evaluation) {
+    if (evaluation == null) {
+      return 'AG NFP / Sensiplan: Die ersten 5 Tage gelten für '
+          'Anfängerinnen (weniger als 12 aufgezeichnete Zyklen) als '
+          'unfruchtbar, sofern kein fruchtbarer Schleim beobachtet wird. '
+          'Das ist die konservativste Standardregel.';
+    }
+
+    final rule = evaluation.appliedPreOvRule;
+    final limit = evaluation.lastInfertilePreOvDay;
+    final cycleCount = evaluation.completedCycleCount;
+
+    final buf = StringBuffer();
+
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        buf.write('5-Tage-Regel (Anfänger-Standard): Die ersten 5 Tage '
+            'gelten als unfruchtbar. Diese Regel gilt, solange weniger als '
+            '12 abgeschlossene Zyklen aufgezeichnet sind '
+            '(aktuell: $cycleCount). ');
+        buf.write('Bedingung: kein fruchtbarer Zervixschleim beobachtet.');
+        break;
+
+      case PreOvRule.roetzerSixDayRule:
+        buf.write('Rötzer 6-Tage-Regel: Die ersten 6 Tage gelten als '
+            'unfruchtbar, weil alle $cycleCount aufgezeichneten Zyklen '
+            'mindestens 26 Tage lang waren. ');
+        buf.write('Bedingung: kein fruchtbarer Zervixschleim beobachtet.');
+        break;
+
+      case PreOvRule.minus20Rule:
+        buf.write('Minus-20-Regel: Kürzester aufgezeichneter Zyklus '
+            '(${evaluation.shortestCycleUsed} Tage) minus 20 = '
+            'Tag $limit ist der letzte unfruchtbare Tag. ');
+        buf.write('Basierend auf $cycleCount abgeschlossenen Zyklen. ');
+        if (evaluation.minus8Value != null) {
+          buf.write('Minus-8 ergäbe Tag ${evaluation.minus8Value} '
+              '(frühester Temperaturanstieg Tag '
+              '${evaluation.earliestTempRiseUsed} − 8). ');
+        }
+        buf.write('Der konservativste Wert wurde verwendet.');
+        break;
+
+      case PreOvRule.minus8Rule:
+        buf.write('Minus-8-Regel: Frühester erster höherer '
+            'Temperaturwert (Tag ${evaluation.earliestTempRiseUsed}) '
+            'minus 8 = Tag $limit ist der letzte unfruchtbare Tag. ');
+        if (evaluation.minus20Value != null) {
+          buf.write('Minus-20 ergäbe Tag ${evaluation.minus20Value} '
+              '(kürzester Zyklus ${evaluation.shortestCycleUsed} − 20). ');
+        }
+        buf.write('Der konservativste Wert wurde verwendet.');
+        break;
+
+      default:
+        buf.write('Die ersten $limit Tage gelten nach den Regeln der '
+            'symptothermalen Methode als unfruchtbar.');
+    }
+
+    buf.write('\n\nWichtig: Jede Beobachtung von fruchtbarem '
+        'Zervixschleim hebt diese Berechnung sofort auf und markiert '
+        'den Beginn der fruchtbaren Phase.');
 
     return buf.toString();
   }
