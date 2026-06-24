@@ -768,6 +768,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
     if (lang == 'es') {
       return _statusExplanationEs(status, cycleDay, purpose, evaluation);
     }
+    if (lang == 'pt') {
+      return _statusExplanationPt(status, cycleDay, purpose, evaluation);
+    }
+    if (lang == 'fr') {
+      return _statusExplanationFr(status, cycleDay, purpose, evaluation);
+    }
+    if (lang == 'pl') {
+      return _statusExplanationPl(status, cycleDay, purpose, evaluation);
+    }
     switch (status) {
       case FertilityStatus.menstruation:
         if (purpose == AppPurpose.anticonception) {
@@ -840,6 +849,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
     if (lang == 'es') {
       return _statusRuleDetailEs(status, cycleDay, purpose, evaluation);
     }
+    if (lang == 'pt') {
+      return _statusRuleDetailPt(status, cycleDay, purpose, evaluation);
+    }
+    if (lang == 'fr') {
+      return _statusRuleDetailFr(status, cycleDay, purpose, evaluation);
+    }
+    if (lang == 'pl') {
+      return _statusRuleDetailPl(status, cycleDay, purpose, evaluation);
+    }
     switch (status) {
       case FertilityStatus.menstruation:
         if (purpose == AppPurpose.anticonception) {
@@ -905,6 +923,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
   String _preOvRuleDetailText(StmEvaluation? evaluation, String lang) {
     if (lang == 'de') return _preOvRuleDetailTextDe(evaluation);
     if (lang == 'es') return _preOvRuleDetailTextEs(evaluation);
+    if (lang == 'pt') return _preOvRuleDetailTextPt(evaluation);
+    if (lang == 'fr') return _preOvRuleDetailTextFr(evaluation);
+    if (lang == 'pl') return _preOvRuleDetailTextPl(evaluation);
     if (evaluation == null) {
       return 'AG NFP / Sensiplan: The first 5 days are considered '
           'infertile for beginners (fewer than 12 recorded cycles), '
@@ -1397,6 +1418,618 @@ class _CalendarScreenState extends State<CalendarScreen> {
     buf.write('\n\nImportante: cualquier observación de moco cervical '
         'fértil anula de inmediato este cálculo y marca el inicio de la '
         'fase fértil.');
+
+    return buf.toString();
+  }
+
+  // ─────────────────────── PORTUGUESE ───────────────────────────────────────
+
+  String _preOvRuleDescPt(PreOvRule rule) {
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        return 'regra dos 5 dias';
+      case PreOvRule.roetzerSixDayRule:
+        return 'regra de Roetzer dos 6 dias';
+      case PreOvRule.minus20Rule:
+        return 'regra Menos-20';
+      case PreOvRule.minus8Rule:
+        return 'regra Menos-8';
+      case PreOvRule.mucusOverride:
+        return 'anulação pelo muco';
+      case PreOvRule.none:
+        return 'sem regra aplicável';
+    }
+  }
+
+  String _statusExplanationPt(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            final ruleDesc = evaluation != null
+                ? _preOvRuleDescPt(evaluation.appliedPreOvRule)
+                : 'regra dos 5 dias';
+            return 'Dia $cycleDay de $limit do ciclo — '
+                'infértil segundo a $ruleDesc. '
+                'Não deve ser observado muco fértil.';
+          } else {
+            return 'Dia $cycleDay do ciclo — sangramento após o dia $limit '
+                'não é automaticamente infértil. '
+                'A ovulação pode estar a aproximar-se.';
+          }
+        }
+        return 'Dia $cycleDay do ciclo — menstruação';
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          final ruleDesc = evaluation != null
+              ? _preOvRuleDescPt(evaluation.appliedPreOvRule)
+              : 'regra dos 5 dias';
+          return 'Dia $cycleDay de $limit — infértil segundo a $ruleDesc.';
+        }
+        return 'Dia $cycleDay — fase pré-ovulatória.';
+
+      case FertilityStatus.fertile:
+        return 'Dia $cycleDay — fase fértil. '
+            'O muco ou a temperatura indicam fertilidade crescente.';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        final shiftDayPt = evaluation?.temperatureShiftConfirmedDay;
+        final peakDayPt = evaluation?.peakDay;
+        if (shiftDayPt != null && peakDayPt == null) {
+          return 'Dia $cycleDay — subida de temperatura detetada '
+              '(dia $shiftDayPt), mas o Dia Pico ainda não confirmado. '
+              'AINDA FÉRTIL — a dupla verificação exige ambos.';
+        } else if (peakDayPt != null && shiftDayPt == null) {
+          return 'Dia $cycleDay — Dia Pico detetado '
+              '(dia $peakDayPt), mas a subida de temperatura ainda não '
+              'confirmada. AINDA FÉRTIL — a dupla verificação exige ambos.';
+        }
+        return 'Dia $cycleDay — a aguardar confirmação da dupla '
+            'verificação. AINDA FÉRTIL.';
+
+      case FertilityStatus.infertilePostOvulation:
+        final shiftDayPt2 = evaluation?.temperatureShiftConfirmedDay;
+        final peakDayPt2 = evaluation?.peakDay;
+        return 'Dia $cycleDay — infertilidade pós-ovulatória confirmada '
+            'pela dupla verificação: subida de temperatura confirmada no '
+            'dia $shiftDayPt2 E Dia Pico $peakDayPt2 + 3';
+
+      case FertilityStatus.unknown:
+        return 'Dia $cycleDay — dados insuficientes para avaliar.';
+    }
+  }
+
+  String? _statusRuleDetailPt(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            return _preOvRuleDetailTextPt(evaluation);
+          } else {
+            return 'O sangramento após o dia $limit do ciclo não indica '
+                'automaticamente infertilidade. A ovulação pode estar a '
+                'aproximar-se. Continue a observar o muco cervical '
+                'e a temperatura.';
+          }
+        }
+        return null;
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          return _preOvRuleDetailTextPt(evaluation);
+        }
+        return null;
+
+      case FertilityStatus.fertile:
+        return 'Qualquer muco cervical fértil (cremoso, aquoso ou tipo '
+            'clara de ovo) ou uma temperatura ainda não elevada '
+            'indicam fertilidade. Evite relações sexuais ou use '
+            'um método de barreira se estiver a evitar uma gravidez.';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        return 'O método sintotérmico exige uma DUPLA VERIFICAÇÃO '
+            'para confirmar a ovulação:\n\n'
+            '❶ Subida de temperatura: 3 valores consecutivos acima da '
+            'linha de cobertura (regra dos 3 acima de 6, o 3.º ≥ 0,2 °C '
+            'acima)\n'
+            '❷ Secagem do muco: 3 dias após o Dia Pico\n\n'
+            'Apenas quando AMBOS estão confirmados começa a fase '
+            'infértil (ao anoitecer do ponto mais tardio). '
+            'Até lá este dia é FÉRTIL.\n\n'
+            'Este é o princípio de segurança central do método — '
+            'um único sinal nunca é suficiente.';
+
+      case FertilityStatus.infertilePostOvulation:
+        final peakDayPtR = evaluation?.peakDay;
+        final tempShiftDayPt = evaluation?.temperatureShiftConfirmedDay;
+        return 'Infertilidade pós-ovulatória confirmada pela dupla '
+            'verificação:\n\n'
+            '✔ Subida de temperatura confirmada (dia $tempShiftDayPt)\n'
+            '✔ Dia Pico ($peakDayPtR) + 3 dias passados\n\n'
+            'A fase pós-ovulatória mantém-se até ao final do ciclo.';
+
+      case FertilityStatus.unknown:
+        return 'Registe a temperatura basal e o muco cervical diariamente '
+            'para obter avaliações completas.';
+    }
+  }
+
+  String _preOvRuleDetailTextPt(StmEvaluation? evaluation) {
+    if (evaluation == null) {
+      return 'AG NFP / Sensiplan: os primeiros 5 dias consideram-se '
+          'inférteis para iniciantes (menos de 12 ciclos registados), '
+          'desde que não seja observado muco fértil. '
+          'É a regra predefinida mais conservadora.';
+    }
+
+    final rule = evaluation.appliedPreOvRule;
+    final limit = evaluation.lastInfertilePreOvDay;
+    final cycleCount = evaluation.completedCycleCount;
+
+    final buf = StringBuffer();
+
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        buf.write('Regra dos 5 dias (predefinida para iniciantes): '
+            'os primeiros 5 dias consideram-se inférteis. '
+            'Esta regra aplica-se enquanto existirem menos de 12 ciclos '
+            'completos registados (atualmente: $cycleCount). ');
+        buf.write('Condição: não é observado muco cervical fértil.');
+        break;
+
+      case PreOvRule.roetzerSixDayRule:
+        buf.write('Regra de Roetzer dos 6 dias: os primeiros 6 dias '
+            'consideram-se inférteis porque todos os $cycleCount ciclos '
+            'registados duraram pelo menos 26 dias. ');
+        buf.write('Condição: não é observado muco cervical fértil.');
+        break;
+
+      case PreOvRule.minus20Rule:
+        buf.write('Regra Menos-20: ciclo mais curto registado '
+            '(${evaluation.shortestCycleUsed} dias) menos 20 = dia $limit '
+            'é o último dia infértil. ');
+        buf.write('Baseado em $cycleCount ciclos completos. ');
+        if (evaluation.minus8Value != null) {
+          buf.write('Menos-8 daria o dia ${evaluation.minus8Value} '
+              '(subida de temperatura mais cedo no dia '
+              '${evaluation.earliestTempRiseUsed} − 8). ');
+        }
+        buf.write('Foi usado o valor mais conservador.');
+        break;
+
+      case PreOvRule.minus8Rule:
+        buf.write('Regra Menos-8: subida de temperatura mais cedo '
+            '(dia ${evaluation.earliestTempRiseUsed}) menos 8 = dia $limit '
+            'é o último dia infértil. ');
+        if (evaluation.minus20Value != null) {
+          buf.write('Menos-20 daria o dia ${evaluation.minus20Value} '
+              '(ciclo mais curto ${evaluation.shortestCycleUsed} − 20). ');
+        }
+        buf.write('Foi usado o valor mais conservador.');
+        break;
+
+      default:
+        buf.write('Os primeiros $limit dias consideram-se inférteis '
+            'segundo as regras do método sintotérmico.');
+    }
+
+    buf.write('\n\nImportante: qualquer observação de muco cervical fértil '
+        'anula imediatamente este cálculo e marca o início da fase fértil.');
+
+    return buf.toString();
+  }
+
+  // ─────────────────────── FRENCH ────────────────────────────────────────────
+
+  String _preOvRuleDescFr(PreOvRule rule) {
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        return 'règle des 5 jours';
+      case PreOvRule.roetzerSixDayRule:
+        return 'règle Rötzer des 6 jours';
+      case PreOvRule.minus20Rule:
+        return 'règle Moins-20';
+      case PreOvRule.minus8Rule:
+        return 'règle Moins-8';
+      case PreOvRule.mucusOverride:
+        return 'annulation par la glaire';
+      case PreOvRule.none:
+        return 'aucune règle applicable';
+    }
+  }
+
+  String _statusExplanationFr(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            final ruleDesc = evaluation != null
+                ? _preOvRuleDescFr(evaluation.appliedPreOvRule)
+                : 'règle des 5 jours';
+            return 'Jour $cycleDay sur $limit du cycle — '
+                'infertile selon la $ruleDesc. '
+                'Aucune glaire fertile ne doit être observée.';
+          } else {
+            return 'Jour $cycleDay du cycle — saignement après le jour $limit '
+                'n\'est pas automatiquement infertile. '
+                'L\'ovulation peut approcher.';
+          }
+        }
+        return 'Jour $cycleDay du cycle — menstruations';
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          final ruleDesc = evaluation != null
+              ? _preOvRuleDescFr(evaluation.appliedPreOvRule)
+              : 'règle des 5 jours';
+          return 'Jour $cycleDay sur $limit — infertile selon la $ruleDesc.';
+        }
+        return 'Jour $cycleDay — phase pré-ovulatoire.';
+
+      case FertilityStatus.fertile:
+        return 'Jour $cycleDay — phase fertile. '
+            'La glaire ou la température indiquent une fertilité croissante.';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        final shiftDayFr = evaluation?.temperatureShiftConfirmedDay;
+        final peakDayFr = evaluation?.peakDay;
+        if (shiftDayFr != null && peakDayFr == null) {
+          return 'Jour $cycleDay — hausse de température détectée '
+              '(jour $shiftDayFr), mais le Jour Pic n\'est pas encore '
+              'confirmé. TOUJOURS FERTILE — le double contrôle exige les deux.';
+        } else if (peakDayFr != null && shiftDayFr == null) {
+          return 'Jour $cycleDay — Jour Pic détecté '
+              '(jour $peakDayFr), mais la hausse de température n\'est pas '
+              'encore confirmée. TOUJOURS FERTILE — le double contrôle '
+              'exige les deux.';
+        }
+        return 'Jour $cycleDay — en attente de confirmation du double '
+            'contrôle. TOUJOURS FERTILE.';
+
+      case FertilityStatus.infertilePostOvulation:
+        final shiftDayFr2 = evaluation?.temperatureShiftConfirmedDay;
+        final peakDayFr2 = evaluation?.peakDay;
+        return 'Jour $cycleDay — infertilité post-ovulatoire confirmée '
+            'par le double contrôle : hausse de température confirmée au '
+            'jour $shiftDayFr2 ET Jour Pic $peakDayFr2 + 3';
+
+      case FertilityStatus.unknown:
+        return 'Jour $cycleDay — données insuffisantes pour évaluer.';
+    }
+  }
+
+  String? _statusRuleDetailFr(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            return _preOvRuleDetailTextFr(evaluation);
+          } else {
+            return 'Un saignement après le jour $limit du cycle n\'indique '
+                'pas automatiquement l\'infertilité. L\'ovulation peut '
+                'approcher. Continuez à observer la glaire cervicale '
+                'et la température.';
+          }
+        }
+        return null;
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          return _preOvRuleDetailTextFr(evaluation);
+        }
+        return null;
+
+      case FertilityStatus.fertile:
+        return 'Toute glaire cervicale fertile (crémeuse, aqueuse ou '
+            'blanc d\'œuf) ou une température pas encore élevée '
+            'indiquent la fertilité. Évitez les rapports sexuels ou '
+            'utilisez une méthode barrière si vous souhaitez éviter '
+            'une grossesse.';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        return 'La méthode symptothermique exige un DOUBLE CONTRÔLE '
+            'pour confirmer l\'ovulation :\n\n'
+            '❶ Hausse de température : 3 valeurs consécutives au-dessus '
+            'de la ligne de couverture (règle des 3 au-dessus de 6, '
+            'la 3e ≥ 0,2 °C au-dessus)\n'
+            '❷ Dessèchement de la glaire : 3 jours après le Jour Pic\n\n'
+            'Ce n\'est que lorsque les DEUX sont confirmées que la phase '
+            'infertile commence (le soir du repère le plus tardif). '
+            'Jusqu\'alors ce jour est FERTILE.\n\n'
+            'C\'est le principe de sécurité central de la méthode — '
+            'un seul signe ne suffit jamais.';
+
+      case FertilityStatus.infertilePostOvulation:
+        final peakDayFrR = evaluation?.peakDay;
+        final tempShiftDayFr = evaluation?.temperatureShiftConfirmedDay;
+        return 'Infertilité post-ovulatoire confirmée par le double '
+            'contrôle :\n\n'
+            '✔ Hausse de température confirmée (jour $tempShiftDayFr)\n'
+            '✔ Jour Pic ($peakDayFrR) + 3 jours écoulés\n\n'
+            'La phase post-ovulatoire se maintient jusqu\'à la fin '
+            'du cycle.';
+
+      case FertilityStatus.unknown:
+        return 'Notez la température basale et la glaire cervicale '
+            'chaque jour pour obtenir des évaluations complètes.';
+    }
+  }
+
+  String _preOvRuleDetailTextFr(StmEvaluation? evaluation) {
+    if (evaluation == null) {
+      return 'AG NFP / Sensiplan : les 5 premiers jours sont considérés '
+          'infertiles pour les débutantes (moins de 12 cycles enregistrés), '
+          'à condition qu\'aucune glaire fertile ne soit observée. '
+          'C\'est la règle par défaut la plus conservatrice.';
+    }
+
+    final rule = evaluation.appliedPreOvRule;
+    final limit = evaluation.lastInfertilePreOvDay;
+    final cycleCount = evaluation.completedCycleCount;
+
+    final buf = StringBuffer();
+
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        buf.write('Règle des 5 jours (par défaut pour les débutantes) : '
+            'les 5 premiers jours sont considérés infertiles. '
+            'Cette règle s\'applique tant qu\'il y a moins de 12 cycles '
+            'complets enregistrés (actuellement : $cycleCount). ');
+        buf.write('Condition : aucune glaire cervicale fertile observée.');
+        break;
+
+      case PreOvRule.roetzerSixDayRule:
+        buf.write('Règle Rötzer des 6 jours : les 6 premiers jours sont '
+            'considérés infertiles parce que tous les $cycleCount cycles '
+            'enregistrés ont duré au moins 26 jours. ');
+        buf.write('Condition : aucune glaire cervicale fertile observée.');
+        break;
+
+      case PreOvRule.minus20Rule:
+        buf.write('Règle Moins-20 : cycle le plus court enregistré '
+            '(${evaluation.shortestCycleUsed} jours) moins 20 = '
+            'le jour $limit est le dernier jour infertile. ');
+        buf.write('Basé sur $cycleCount cycles complets. ');
+        if (evaluation.minus8Value != null) {
+          buf.write('Moins-8 donnerait le jour ${evaluation.minus8Value} '
+              '(première hausse de température au jour '
+              '${evaluation.earliestTempRiseUsed} − 8). ');
+        }
+        buf.write('La valeur la plus conservatrice a été utilisée.');
+        break;
+
+      case PreOvRule.minus8Rule:
+        buf.write('Règle Moins-8 : première hausse de température la '
+            'plus précoce (jour ${evaluation.earliestTempRiseUsed}) '
+            'moins 8 = le jour $limit est le dernier jour infertile. ');
+        if (evaluation.minus20Value != null) {
+          buf.write('Moins-20 donnerait le jour ${evaluation.minus20Value} '
+              '(cycle le plus court ${evaluation.shortestCycleUsed} − 20). ');
+        }
+        buf.write('La valeur la plus conservatrice a été utilisée.');
+        break;
+
+      default:
+        buf.write('Les $limit premiers jours sont considérés infertiles '
+            'selon les règles de la méthode symptothermique.');
+    }
+
+    buf.write('\n\nImportant : toute observation de glaire cervicale fertile '
+        'annule immédiatement ce calcul et marque le début de la phase '
+        'fertile.');
+
+    return buf.toString();
+  }
+
+  // ─────────────────────── POLISH ────────────────────────────────────────────
+
+  String _preOvRuleDescPl(PreOvRule rule) {
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        return 'zasada 5 dni';
+      case PreOvRule.roetzerSixDayRule:
+        return 'zasada Rötzersa 6 dni';
+      case PreOvRule.minus20Rule:
+        return 'zasada Minus-20';
+      case PreOvRule.minus8Rule:
+        return 'zasada Minus-8';
+      case PreOvRule.mucusOverride:
+        return 'nadpisanie przez śluz';
+      case PreOvRule.none:
+        return 'brak zastosowanej zasady';
+    }
+  }
+
+  String _statusExplanationPl(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            final ruleDesc = evaluation != null
+                ? _preOvRuleDescPl(evaluation.appliedPreOvRule)
+                : 'zasada 5 dni';
+            return 'Dzień $cycleDay z $limit cyklu — '
+                'niepłodna wg zasady: $ruleDesc. '
+                'Nie może być obserwowany płodny śluz.';
+          } else {
+            return 'Dzień $cycleDay cyklu — krwawienie po dniu $limit '
+                'nie jest automatycznie niepłodne. '
+                'Owulacja może się zbliżać.';
+          }
+        }
+        return 'Dzień $cycleDay cyklu — miesiączka';
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          final ruleDesc = evaluation != null
+              ? _preOvRuleDescPl(evaluation.appliedPreOvRule)
+              : 'zasada 5 dni';
+          return 'Dzień $cycleDay z $limit — niepłodna wg zasady: $ruleDesc.';
+        }
+        return 'Dzień $cycleDay — faza przedowulacyjna.';
+
+      case FertilityStatus.fertile:
+        return 'Dzień $cycleDay — faza płodna. '
+            'Śluz lub temperatura wskazują na rosnącą płodność.';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        final shiftDayPl = evaluation?.temperatureShiftConfirmedDay;
+        final peakDayPl = evaluation?.peakDay;
+        if (shiftDayPl != null && peakDayPl == null) {
+          return 'Dzień $cycleDay — wzrost temperatury wykryty '
+              '(dzień $shiftDayPl), ale Dzień szczytu nie potwierdzony. '
+              'NADAL PŁODNA — podwójna kontrola wymaga obu.';
+        } else if (peakDayPl != null && shiftDayPl == null) {
+          return 'Dzień $cycleDay — Dzień szczytu wykryty '
+              '(dzień $peakDayPl), ale wzrost temperatury nie potwierdzony. '
+              'NADAL PŁODNA — podwójna kontrola wymaga obu.';
+        }
+        return 'Dzień $cycleDay — oczekiwanie na potwierdzenie podwójnej '
+            'kontroli. NADAL PŁODNA.';
+
+      case FertilityStatus.infertilePostOvulation:
+        final shiftDayPl2 = evaluation?.temperatureShiftConfirmedDay;
+        final peakDayPl2 = evaluation?.peakDay;
+        return 'Dzień $cycleDay — niepłodność poowulacyjna potwierdzona '
+            'podwójną kontrolą: wzrost temperatury potwierdzony '
+            'w dniu $shiftDayPl2 I Dzień szczytu $peakDayPl2 + 3';
+
+      case FertilityStatus.unknown:
+        return 'Dzień $cycleDay — niewystarczające dane do oceny.';
+    }
+  }
+
+  String? _statusRuleDetailPl(FertilityStatus status, int cycleDay,
+      AppPurpose purpose, StmEvaluation? evaluation) {
+    switch (status) {
+      case FertilityStatus.menstruation:
+        if (purpose == AppPurpose.anticonception) {
+          final limit = evaluation?.lastInfertilePreOvDay ?? 5;
+          if (cycleDay <= limit) {
+            return _preOvRuleDetailTextPl(evaluation);
+          } else {
+            return 'Krwawienie po dniu $limit cyklu nie wskazuje '
+                'automatycznie na niepłodność. Owulacja może się zbliżać. '
+                'Kontynuuj obserwację śluzu szyjkowego i temperatury.';
+          }
+        }
+        return null;
+
+      case FertilityStatus.infertilePreOvulation:
+        if (purpose == AppPurpose.anticonception) {
+          return _preOvRuleDetailTextPl(evaluation);
+        }
+        return null;
+
+      case FertilityStatus.fertile:
+        return 'Jakikolwiek płodny śluz szyjkowy (kremowy, wodnisty lub '
+            'jak białko jaja) lub jeszcze nieprzemieszczona temperatura '
+            'wskazują na płodność. Unikaj stosunków seksualnych lub używaj '
+            'metody barierowej, jeśli chcesz uniknąć ciąży.';
+
+      case FertilityStatus.fertileWaitingForDoubleCheck:
+        return 'Metoda symptotermalna wymaga PODWÓJNEJ KONTROLI '
+            'w celu potwierdzenia owulacji:\n\n'
+            '❶ Wzrost temperatury: 3 kolejne wartości powyżej linii '
+            'pokrycia (zasada 3 powyżej 6, 3. ≥ 0,2 °C powyżej)\n'
+            '❷ Wysychanie śluzu: 3 dni po Dniu szczytu\n\n'
+            'Dopiero gdy OBIE są potwierdzone, zaczyna się faza '
+            'niepłodna (wieczorem późniejszego punktu). '
+            'Do tego czasu ten dzień jest PŁODNY.\n\n'
+            'To jest główna zasada bezpieczeństwa metody — '
+            'jeden sygnał nigdy nie wystarczy.';
+
+      case FertilityStatus.infertilePostOvulation:
+        final peakDayPlR = evaluation?.peakDay;
+        final tempShiftDayPl = evaluation?.temperatureShiftConfirmedDay;
+        return 'Niepłodność poowulacyjna potwierdzona podwójną '
+            'kontrolą:\n\n'
+            '✔ Wzrost temperatury potwierdzony (dzień $tempShiftDayPl)\n'
+            '✔ Dzień szczytu ($peakDayPlR) + 3 dni minęły\n\n'
+            'Faza poowulacyjna utrzymuje się do końca cyklu.';
+
+      case FertilityStatus.unknown:
+        return 'Notuj podstawową temperaturę i śluz szyjkowy codziennie, '
+            'by uzyskiwać pełne oceny.';
+    }
+  }
+
+  String _preOvRuleDetailTextPl(StmEvaluation? evaluation) {
+    if (evaluation == null) {
+      return 'AG NFP / Sensiplan: pierwsze 5 dni uważa się za niepłodne '
+          'dla początkujących (mniej niż 12 zarejestrowanych cykli), '
+          'pod warunkiem braku obserwacji płodnego śluzu. '
+          'Jest to najbardziej zachowawcza zasada domyślna.';
+    }
+
+    final rule = evaluation.appliedPreOvRule;
+    final limit = evaluation.lastInfertilePreOvDay;
+    final cycleCount = evaluation.completedCycleCount;
+
+    final buf = StringBuffer();
+
+    switch (rule) {
+      case PreOvRule.fiveDayRule:
+        buf.write('Zasada 5 dni (domyślna dla początkujących): '
+            'pierwsze 5 dni uważa się za niepłodne. '
+            'Zasada obowiązuje, dopóki zarejestrowano mniej niż '
+            '12 pełnych cykli (obecnie: $cycleCount). ');
+        buf.write('Warunek: nie obserwuje się płodnego śluzu szyjkowego.');
+        break;
+
+      case PreOvRule.roetzerSixDayRule:
+        buf.write('Zasada Rötzersa 6 dni: pierwsze 6 dni uważa się '
+            'za niepłodne, ponieważ wszystkie $cycleCount '
+            'zarejestrowane cykle trwały co najmniej 26 dni. ');
+        buf.write('Warunek: nie obserwuje się płodnego śluzu szyjkowego.');
+        break;
+
+      case PreOvRule.minus20Rule:
+        buf.write('Zasada Minus-20: najkrótszy zarejestrowany cykl '
+            '(${evaluation.shortestCycleUsed} dni) minus 20 = dzień $limit '
+            'to ostatni niepłodny dzień. ');
+        buf.write('Na podstawie $cycleCount pełnych cykli. ');
+        if (evaluation.minus8Value != null) {
+          buf.write('Minus-8 dałoby dzień ${evaluation.minus8Value} '
+              '(najwcześniejszy wzrost temperatury w dniu '
+              '${evaluation.earliestTempRiseUsed} − 8). ');
+        }
+        buf.write('Użyto bardziej zachowawczej wartości.');
+        break;
+
+      case PreOvRule.minus8Rule:
+        buf.write('Zasada Minus-8: najwcześniejszy wzrost temperatury '
+            '(dzień ${evaluation.earliestTempRiseUsed}) minus 8 = '
+            'dzień $limit to ostatni niepłodny dzień. ');
+        if (evaluation.minus20Value != null) {
+          buf.write('Minus-20 dałoby dzień ${evaluation.minus20Value} '
+              '(najkrótszy cykl ${evaluation.shortestCycleUsed} − 20). ');
+        }
+        buf.write('Użyto bardziej zachowawczej wartości.');
+        break;
+
+      default:
+        buf.write('Pierwsze $limit dni uważa się za niepłodne '
+            'zgodnie z zasadami metody symtotermale.');
+    }
+
+    buf.write('\n\nWażne: jakakolwiek obserwacja płodnego śluzu szyjkowego '
+        'natychmiast unieważnia to obliczenie i oznacza początek '
+        'fazy płodnej.');
 
     return buf.toString();
   }

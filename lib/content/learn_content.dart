@@ -29,6 +29,12 @@ List<TopicContent> methodTopics(String lang) {
       return _methodTopicsDe;
     case 'es':
       return _methodTopicsEs;
+    case 'pt':
+      return _methodTopicsPt;
+    case 'fr':
+      return _methodTopicsFr;
+    case 'pl':
+      return _methodTopicsPl;
     default:
       return _methodTopicsEn;
   }
@@ -55,6 +61,12 @@ List<FaqSection> faqSections(String lang) {
       return _faqSectionsDe;
     case 'es':
       return _faqSectionsEs;
+    case 'pt':
+      return _faqSectionsPt;
+    case 'fr':
+      return _faqSectionsFr;
+    case 'pl':
+      return _faqSectionsPl;
     default:
       return _faqSectionsEn;
   }
@@ -124,6 +136,12 @@ AtlasContent atlasContent(String lang) {
       return _atlasDe;
     case 'es':
       return _atlasEs;
+    case 'pt':
+      return _atlasPt;
+    case 'fr':
+      return _atlasFr;
+    case 'pl':
+      return _atlasPl;
     default:
       return _atlasEn;
   }
@@ -1500,4 +1518,1163 @@ const _atlasEs = AtlasContent(
       'del día. Presta especial atención a la sensación: el tacto '
       'resbaladizo/lubricante suele ser el indicador más fiable, aun '
       'cuando no veas mucho.',
+);
+
+// ─────────────────────── PORTUGUESE ──────────────────────────────────────────
+
+const _methodTopicsPt = <TopicContent>[
+  TopicContent(
+    icon: Icons.auto_stories_outlined,
+    title: 'O que é o Método Sintotérmico?',
+    summary: 'Uma forma cientificamente validada de identificar '
+        'os dias férteis e inférteis usando dois sinais corporais.',
+    body: 'O método sintotérmico (MST) utiliza dois marcadores biológicos '
+        'independentes — temperatura basal do corpo e muco cervical — para '
+        'identificar as fases férteis e inférteis de cada ciclo menstrual.\n\n'
+        'Ao contrário dos métodos baseados em calendário que calculam '
+        'previsões a partir de médias, o MST observa os sinais reais do seu '
+        'corpo a cada ciclo. Um grande estudo (Frank-Herrmann et al., 2007) '
+        'demonstrou que menos de 1 em cada 200 mulheres por ano engravidava '
+        'quando as regras eram seguidas corretamente.',
+    reference: 'Frank-Herrmann P et al. (2007). '
+        'Human Reproduction, 22(5), 1310–1319.',
+  ),
+  TopicContent(
+    icon: Icons.loop,
+    title: 'O Seu Ciclo Menstrual',
+    summary: 'Como as hormonas controlam as quatro fases do ciclo.',
+    body: 'O seu ciclo é controlado por um circuito de feedback entre o '
+        'cérebro e os ovários. Um ciclo típico dura 24–35 dias, mas a '
+        'variação é normal.\n\n'
+        'As quatro fases:\n\n'
+        '1. Menstruação (~dias 1–5)\n'
+        'O revestimento uterino é eliminado. As hormonas estão no ponto mais '
+        'baixo.\n\n'
+        '2. Fase folicular (dias 1–12, variável)\n'
+        'O FSH estimula o crescimento dos folículos ováricos. O estrogénio '
+        'aumenta gradualmente, engrossando o revestimento uterino e '
+        'estimulando a produção de muco cervical.\n\n'
+        '3. Ovulação (dia 12–16 num ciclo de 28 dias)\n'
+        'Um pico de LH desencadeia a libertação do óvulo. A ovulação pode '
+        'variar de ciclo para ciclo — incluindo no seu próprio corpo.\n\n'
+        '4. Fase lútea (dura ~14 dias)\n'
+        'A progesterona domina: a temperatura sobe, o muco seca. Se não '
+        'houver fecundação, os níveis hormonais descem e o ciclo reinicia.',
+  ),
+  TopicContent(
+    icon: Icons.thermostat_outlined,
+    title: 'Temperatura Basal do Corpo (TBC)',
+    summary: 'A sua temperatura mais baixa em repouso revela '
+        'quando a ovulação ocorreu.',
+    body: 'A progesterona libertada após a ovulação eleva a temperatura '
+        'basal do corpo em 0,2–0,5 °C. Esta subida confirma que a '
+        'ovulação já aconteceu.\n\n'
+        'Como medir corretamente:\n'
+        '• Medir imediatamente ao acordar, antes de se levantar ou falar\n'
+        '• Usar o mesmo termómetro todos os dias\n'
+        '• Medir à mesma hora (±30 min.) — cada hora de diferença pode '
+        'alterar a temperatura em 0,1 °C\n'
+        '• Registar sempre, mesmo quando a temperatura parecer estranha\n\n'
+        'Perturbações (noite agitada, álcool, doença) fazem a temperatura '
+        'subir artificialmente. Anote-as no gráfico para que possam ser '
+        'interpretadas no contexto.\n\n'
+        'O termómetro deve ler até às centésimas (0,01 °C) — os '
+        'termómetros orais comuns só medem às décimas.',
+  ),
+  TopicContent(
+    icon: Icons.water_drop_outlined,
+    title: 'Muco Cervical',
+    summary: 'O muco muda ao longo do ciclo e indica '
+        'quando é possível engravidar.',
+    body: 'As glândulas cervicais produzem muco constantemente, mas a sua '
+        'quantidade e qualidade variam de acordo com os níveis hormonais.\n\n'
+        'Tipos de muco:\n\n'
+        '• Seco / sem muco — baixa fertilidade\n'
+        '• Pegajoso (branco/amarelado, espesso, não se estica) — baixa '
+        'fertilidade, mas atenção crescente\n'
+        '• Cremoso (branco/amarelado, suave, algum estiramento) — '
+        'potencialmente fértil\n'
+        '• Molhado / Transparente / Tipo clara de ovo (transparente, '
+        'elástico, estica-se facilmente) — muito fértil, pico de fertilidade\n\n'
+        'O "Dia Pico" é o último dia de muco tipo clara de ovo ou sensação '
+        'de lubrificação. Só o pode identificar retrospetivamente '
+        '(no dia seguinte).',
+  ),
+  TopicContent(
+    icon: Icons.rule_outlined,
+    title: 'As Regras do MST',
+    summary: 'Dois sinais independentes confirmam a infertilidade '
+        'pós-ovulatória — essa é a dupla verificação.',
+    body: 'O MST exige que DOIS sinais independentes confirmem que a '
+        'ovulação terminou antes de declarar infertilidade pós-ovulatória:\n\n'
+        '1. Subida de temperatura: 3 temperaturas consecutivas acima das '
+        '6 temperaturas anteriores (regra dos 3 acima de 6)\n'
+        '2. Regra do muco: 3 dias após o Dia Pico\n\n'
+        'A infertilidade pós-ovulatória começa quando AMBAS as condições '
+        'são satisfeitas — geralmente ao anoitecer do 3.º dia após o Pico.\n\n'
+        'Infertilidade pré-ovulatória (após a menstruação):\n'
+        'A regra dos 5 dias afirma que os primeiros 5 dias de ciclo são '
+        'geralmente inférteis — mas apenas se o ciclo mais curto dos '
+        'últimos 12 foi ≥ 26 dias. Ciclos variáveis ou curtos eliminam '
+        'esta janela. A regra de Roetzer e a regra Menos-20 proporcionam '
+        'alternativas mais personalizadas.',
+  ),
+  TopicContent(
+    icon: Icons.show_chart_outlined,
+    title: 'Ler o Seu Gráfico',
+    summary: 'Reconhecer padrões é uma competência que melhora '
+        'com a prática.',
+    body: 'O seu gráfico diz-lhe mais do que apenas "fértil" ou "infértil".\n\n'
+        'O que procurar:\n'
+        '• A linha de cobertura separa a fase baixa da alta de temperaturas\n'
+        '• O Dia Pico marca o seu ponto mais fértil\n'
+        '• A fase lútea (após a ovulação) costuma ser consistente — '
+        'a fase pré-ovulatória varia\n\n'
+        'Ciclos perturbados:\n'
+        'Doença, viagens, stress ou álcool podem distorcer as temperaturas. '
+        'Anote sempre as perturbações e use o contexto do muco para '
+        'confirmar o padrão.\n\n'
+        'A maioria das pessoas aprende a reconhecer o seu padrão típico '
+        'ao fim de 3–4 ciclos. Os primeiros ciclos são de observação — '
+        'não os interprete sob pressão.',
+  ),
+  TopicContent(
+    icon: Icons.school_outlined,
+    title: 'Aprender o Método',
+    summary: 'Para usar o MST de forma eficaz, a aprendizagem adequada '
+        'é essencial.',
+    body: 'O MST tem excelentes resultados com formação adequada. '
+        'A taxa de falha com uso perfeito é inferior a 0,5 % — '
+        'comparável ao uso correto do preservativo.\n\n'
+        'Como aprender:\n'
+        '• Leia "Natürlich und sicher" (NFP/AG NFP) ou '
+        '"Taking Charge of Your Fertility" (Weschler) — ambos '
+        'são excelentes textos de referência\n'
+        '• Considere um curso presencial ou online de uma instrutora '
+        'certificada de MST\n'
+        '• Observe e registe durante pelo menos 3 ciclos antes de '
+        'usar o método como contraceção\n\n'
+        'Esta aplicação é uma ferramenta de registo de gráficos. '
+        'Não substitui a formação adequada nem o acompanhamento de '
+        'uma instrutora certificada.',
+  ),
+];
+
+const _faqSectionsPt = <FaqSection>[
+  FaqSection(
+    label: 'Noções básicas',
+    items: [
+      FaqEntry(
+        question: 'O MST é apenas contraceção natural?',
+        answer: 'Não — o MST é um método de observação da fertilidade. '
+            'Pode ser usado para evitar a gravidez (contraceção), para '
+            'conseguir engravidar (planeamento familiar) ou simplesmente '
+            'para conhecer melhor o próprio corpo. Muitas pessoas usam-no '
+            'por razões de saúde ou para evitar hormonas, independentemente '
+            'dos seus objetivos reprodutivos.',
+      ),
+      FaqEntry(
+        question: 'Quão eficaz é?',
+        answer: 'Com formação adequada e uso correto, o MST tem uma taxa de '
+            'falha por uso perfeito de < 0,5 por 100 mulheres/ano — '
+            'comparável ao preservativo. A taxa de uso típico depende muito '
+            'da consistência na aplicação das regras. A formação e '
+            'o acompanhamento profissional melhoram significativamente '
+            'os resultados.',
+      ),
+      FaqEntry(
+        question: 'Preciso de dois sinais?',
+        answer: 'Sim — a "dupla verificação" é o que distingue o MST dos '
+            'métodos menos fiáveis de temperatura simples ou de muco. A '
+            'temperatura sozinha pode subir por doença; o muco sozinho pode '
+            'enganar. Dois sinais independentes a confirmar a mesma coisa '
+            'tornam a avaliação muito mais robusta.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Medição',
+    items: [
+      FaqEntry(
+        question: 'E se me esquecer de medir?',
+        answer: 'Anote "—" no gráfico e siga em frente. Um dado em falta '
+            'não arruína o ciclo — apenas reduz a confiança naquele dia. '
+            'Nunca tente adivinhar ou interpolar uma temperatura. '
+            'Se perder vários dias, consulte as notas de perturbação '
+            'e seja conservadora/o na interpretação.',
+      ),
+      FaqEntry(
+        question: 'Como é que a doença afeta as temperaturas?',
+        answer: 'A febre eleva a temperatura basal artificialmente. '
+            'Anote "perturbação" no gráfico e não use essa temperatura '
+            'como parte de uma avaliação de subida. Se a doença coincidir '
+            'com a subida de temperatura esperada, seja mais conservadora/o '
+            'e considere aguardar um dia adicional de confirmação.',
+      ),
+      FaqEntry(
+        question: 'Viagem / fuso horário — como lidar?',
+        answer: 'Ao viajar através de fusos horários, a temperatura pode '
+            'ser afetada por diferentes horas de sono. Anote a perturbação '
+            'e o fuso horário. Muitas pessoas usam a sua hora de casa para '
+            'as primeiras 1–2 semanas e depois ajustam quando o sono '
+            'estabiliza. Assinale qualquer temperatura afetada pela viagem '
+            'como perturbação.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Situações especiais',
+    items: [
+      FaqEntry(
+        question: 'Posso usar o MST depois de parar os contracetivos hormonais?',
+        answer: 'Sim, mas espere variações. Os ciclos podem ser irregulares '
+            'durante vários meses após parar a pílula, o implante ou outros '
+            'hormonais. Observe e registe sem se preocupar com a previsão '
+            'nos primeiros 3–6 ciclos. O padrão tornará muito mais claro '
+            'à medida que o corpo reequilibra.',
+      ),
+      FaqEntry(
+        question: 'E o pós-parto ou a amamentação?',
+        answer: 'O MST pode ser utilizado durante a amamentação (método LAM '
+            'nos primeiros 6 meses, depois MST completo), mas as regras '
+            'padrão para a infertilidade pré-ovulatória não se aplicam '
+            'quando os ciclos ainda não regressaram. Procure orientação '
+            'específica de uma instrutora certificada para a '
+            'pós-maternidade.',
+      ),
+      FaqEntry(
+        question: 'A perimenopausa e os ciclos irregulares funcionam com o MST?',
+        answer: 'O MST pode ser utilizado durante a perimenopausa, mas os '
+            'ciclos irregulares exigem maior atenção. A regra de Roetzer '
+            'funciona melhor com ciclos variáveis do que a regra dos 5 dias. '
+            'Consulte uma instrutora certificada para apoio personalizado '
+            'durante esta transição.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Esta aplicação',
+    items: [
+      FaqEntry(
+        question: 'A aplicação calcula a fertilidade automaticamente?',
+        answer: 'A aplicação mostra avaliações de fertilidade com base nas '
+            'regras do MST — mas a responsabilidade final da interpretação '
+            'é sempre sua. Reveja sempre o gráfico e use o seu julgamento. '
+            'Esta aplicação é um auxiliar de registo, não um sistema de '
+            'decisão automatizado.',
+      ),
+      FaqEntry(
+        question: 'Porque é que os meus dados estão só no dispositivo?',
+        answer: 'Os dados de saúde reprodutiva são sensíveis. Armazenar '
+            'tudo localmente significa que nenhum terceiro tem acesso aos '
+            'seus ciclos — mesmo que a empresa que desenvolveu a aplicação '
+            'seja vendida ou sofra uma violação de dados. A sincronização '
+            'na nuvem pode ser adicionada opcionalmente no futuro, '
+            'sempre com encriptação total.',
+      ),
+      FaqEntry(
+        question: 'Posso confiar nas avaliações da aplicação?',
+        answer: 'As avaliações são calculadas de acordo com as regras '
+            'publicadas do MST (AG NFP). No entanto, nenhuma aplicação '
+            'substitui a formação adequada. Se não tiver a certeza de uma '
+            'avaliação, consulte as regras ou uma instrutora certificada '
+            'de MST.',
+      ),
+    ],
+  ),
+];
+
+const _atlasPt = AtlasContent(
+  categories: [
+    MucusCategoryText(
+      category: 'Seco / Sem Muco',
+      fertility: 'Infértil (baixa probabilidade)',
+      sensation: 'Seco, sem sensação especial',
+      appearance: 'Nenhum muco visível',
+      fingerTest: 'Não aplicável',
+      details: 'Nenhum muco observável. Sensação seca na vulva. '
+          'Geralmente infértil, mas aplique sempre as regras do MST '
+          'para confirmar a infertilidade pré-ovulatória.',
+    ),
+    MucusCategoryText(
+      category: 'Pegajoso',
+      fertility: 'Baixa fertilidade',
+      sensation: 'Rugoso, áspero, seco',
+      appearance: 'Branco ou amarelado, espesso, migalhas',
+      fingerTest: 'Não se estica, quebra imediatamente',
+      details: 'Muco espesso de consistência granulosa. Forma um tampão '
+          'cervical que dificulta a penetração dos espermatozoides. '
+          'Indica a fase inicial da produção de estrogénio.',
+    ),
+    MucusCategoryText(
+      category: 'Cremoso',
+      fertility: 'Fertilidade crescente',
+      sensation: 'Suave, ligeiramente húmido',
+      appearance: 'Branco ou amarelado, uniforme, leitoso',
+      fingerTest: 'Algum estiramento, rompe suavemente',
+      details: 'Muco mais fluido que o pegajoso. Indica estrogénio '
+          'crescente e fertilidade potencial. Trate como potencialmente '
+          'fértil; siga as regras do MST.',
+    ),
+    MucusCategoryText(
+      category: 'Aquoso / Transparente',
+      fertility: 'Alta fertilidade',
+      sensation: 'Molhado, escorregadio, lubrificante',
+      appearance: 'Transparente, fino, fluido',
+      fingerTest: 'Estica-se bem, consistência aquosa',
+      details: 'Muco fértil com alto teor de água. Pode ocorrer antes '
+          'do muco tipo clara de ovo ou em alternativa a este. '
+          'A sensação de lubrificação é muitas vezes mais fiável '
+          'do que a aparência visual.',
+    ),
+    MucusCategoryText(
+      category: 'Clara de Ovo (ovo cru)',
+      fertility: 'Fertilidade máxima — Dia Pico',
+      sensation: 'Muito escorregadio, lubrificante',
+      appearance: 'Transparente, elástico, brilhante',
+      fingerTest: 'Estica-se ≥ 5 cm sem romper',
+      details: 'Muco cervical de fertilidade máxima. Favorece a '
+          'sobrevivência e o transporte dos espermatozoides. O último '
+          'dia de muco tipo clara de ovo ou sensação de lubrificação '
+          'é o Dia Pico — identifique-o retrospetivamente no dia '
+          'seguinte.',
+    ),
+  ],
+  progressionTitle: 'Progressão típica do muco no ciclo',
+  progression: [
+    ProgressionRowText(phase: 'Menstruação', mucus: 'Coberto por sangramento'),
+    ProgressionRowText(phase: 'Logo após a menstruação', mucus: 'Seco ou pegajoso'),
+    ProgressionRowText(phase: 'Pré-ovulação', mucus: 'Cremoso → Aquoso'),
+    ProgressionRowText(phase: 'Ovulação (Dia Pico)', mucus: 'Clara de ovo / Muito escorregadio'),
+    ProgressionRowText(phase: 'Pós-ovulação', mucus: 'Seco ou pegajoso novamente'),
+  ],
+  progressionCaption: 'O padrão individual varia — observe o seu próprio '
+      'ciclo ao longo de vários meses para reconhecer a progressão típica.',
+  goodToKnowTitle: 'Bom saber',
+  goodToKnowBody: 'A sensação na vulva é muitas vezes mais informativa do '
+      'que a aparência visual. Uma sensação escorregadia ou lubrificante — '
+      'mesmo sem muco visível — deve ser registada como muco tipo clara de '
+      'ovo.\n\n'
+      'Os espermatozoides sobrevivem no muco fértil até 5 dias. Por isso, '
+      'relações sexuais durante a fase de muco podem levar à gravidez '
+      'mesmo que a ovulação só ocorra vários dias depois.\n\n'
+      'O muco pode ser mascarado por lubrificantes, sémen, infeções ou '
+      'determinados medicamentos. Se notar muco atípico, anote-o e '
+      'consulte uma instrutora.',
+  samplingTitle: 'Como recolher muco',
+  samplingIntro: 'Verifique o muco cervical várias vezes por dia. '
+      'Pode usar qualquer método com que se sinta confortável — '
+      'o importante é a consistência.',
+  samplingMethods: [
+    SamplingMethodText(
+      title: 'Método do papel higiénico',
+      text: 'Antes de urinar, limpe a entrada vaginal de frente para trás '
+          'com papel higiénico branco e sem perfume. Observe o papel: '
+          'há alguma coisa? Anote a cor, a consistência e a sensação '
+          'ao limpar (seco, suave, escorregadio?).',
+    ),
+    SamplingMethodText(
+      title: 'Método do dedo',
+      text: 'Com as mãos limpas, insira o dedo indicador ou médio na '
+          'vagina (apenas 2–3 cm). Mova suavemente à volta do colo do '
+          'útero. Retire o dedo e examine o que há nele. De seguida, '
+          'faça o teste de estiramento: pressione o muco entre o polegar '
+          'e o indicador e separe-os devagar. Anote quantos centímetros '
+          'se estica antes de romper.',
+    ),
+    SamplingMethodText(
+      title: 'Verificação da roupa interior',
+      text: 'Observe a sua roupa interior ao longo do dia. O muco cervical '
+          'deixa frequentemente marcas visíveis; anote se a marca está '
+          'seca, cremosa, húmida ou mostra um resíduo transparente '
+          'e elástico.',
+    ),
+  ],
+  samplingTip: 'Registe sempre a qualidade MAIS ALTA que observou durante '
+      'o dia. Se viu muco pegajoso de manhã mas clara de ovo à tarde, '
+      'registe clara de ovo.\n\n'
+      'Verifique várias vezes ao dia: o muco pode mudar ao longo do dia. '
+      'Preste especial atenção à sensação — a sensação escorregadia/'
+      'lubrificante é muitas vezes o indicador mais fiável, mesmo quando '
+      'não há muito muco visível.',
+);
+
+// ─────────────────────── FRENCH ───────────────────────────────────────────────
+
+const _methodTopicsFr = <TopicContent>[
+  TopicContent(
+    icon: Icons.auto_stories_outlined,
+    title: 'Qu\'est-ce que la méthode symptothermique?',
+    summary: 'Une méthode scientifiquement validée pour identifier '
+        'les jours fertiles et infertiles grâce à deux signes corporels.',
+    body: 'La méthode symptothermique (MST) utilise deux marqueurs '
+        'biologiques indépendants — la température basale du corps et '
+        'la glaire cervicale — pour identifier les phases fertiles et '
+        'infertiles de chaque cycle menstruel.\n\n'
+        'Contrairement aux méthodes calendaires qui prévoient à partir '
+        'de moyennes, la MST observe les vrais signaux de votre corps '
+        'à chaque cycle. Une grande étude (Frank-Herrmann et al., 2007) '
+        'a montré que moins d\'1 femme sur 200 par an tombait enceinte '
+        'en appliquant correctement les règles.',
+    reference: 'Frank-Herrmann P et al. (2007). '
+        'Human Reproduction, 22(5), 1310–1319.',
+  ),
+  TopicContent(
+    icon: Icons.loop,
+    title: 'Votre cycle menstruel',
+    summary: 'Comment les hormones régissent les quatre phases du cycle.',
+    body: 'Votre cycle est contrôlé par une boucle de rétroaction entre '
+        'le cerveau et les ovaires. Un cycle typique dure 24–35 jours, '
+        'mais les variations sont normales.\n\n'
+        'Les quatre phases :\n\n'
+        '1. Menstruations (~jours 1–5)\n'
+        'La muqueuse utérine se détache. Les hormones sont à leur plus '
+        'bas niveau.\n\n'
+        '2. Phase folliculaire (jours 1–12, variable)\n'
+        'La FSH stimule la croissance des follicules ovariens. '
+        'Les œstrogènes augmentent progressivement, épaississant la '
+        'muqueuse utérine et stimulant la production de glaire cervicale.\n\n'
+        '3. Ovulation (jour 12–16 dans un cycle de 28 jours)\n'
+        'Un pic de LH déclenche la libération de l\'ovule. L\'ovulation '
+        'peut varier d\'un cycle à l\'autre — y compris pour vous.\n\n'
+        '4. Phase lutéale (dure ~14 jours)\n'
+        'La progestérone domine : la température monte, la glaire sèche. '
+        'Sans fécondation, les taux hormonaux chutent et le cycle reprend.',
+  ),
+  TopicContent(
+    icon: Icons.thermostat_outlined,
+    title: 'Température basale du corps (TBC)',
+    summary: 'Votre température au repos la plus basse révèle '
+        'quand l\'ovulation a eu lieu.',
+    body: 'La progestérone libérée après l\'ovulation élève la température '
+        'basale de 0,2–0,5 °C. Cette hausse confirme que l\'ovulation '
+        'a bien eu lieu.\n\n'
+        'Comment mesurer correctement :\n'
+        '• Mesurez immédiatement au réveil, avant de vous lever ou de parler\n'
+        '• Utilisez le même thermomètre chaque jour\n'
+        '• Mesurez à la même heure (± 30 min) — chaque heure de différence '
+        'peut modifier la température de 0,1 °C\n'
+        '• Notez toujours, même si la température semble bizarre\n\n'
+        'Les perturbations (nuit agitée, alcool, maladie) font monter '
+        'la température artificiellement. Notez-les dans le graphique '
+        'pour pouvoir les interpréter en contexte.\n\n'
+        'Le thermomètre doit afficher les centièmes (0,01 °C) — '
+        'les thermomètres buccaux courants ne mesurent qu\'au dixième.',
+  ),
+  TopicContent(
+    icon: Icons.water_drop_outlined,
+    title: 'Glaire cervicale',
+    summary: 'La glaire évolue tout au long du cycle et indique '
+        'quand une grossesse est possible.',
+    body: 'Les glandes cervicales produisent de la glaire en permanence, '
+        'mais sa quantité et sa qualité varient selon les taux '
+        'hormonaux.\n\n'
+        'Types de glaire :\n\n'
+        '• Sèche / sans glaire — faible fertilité\n'
+        '• Collante (blanche/jaunâtre, épaisse, ne s\'étire pas) — '
+        'faible fertilité, mais attention croissante\n'
+        '• Crémeuse (blanche/jaunâtre, douce, s\'étire un peu) — '
+        'potentiellement fertile\n'
+        '• Humide / Transparente / Blanc d\'œuf (transparente, élastique, '
+        's\'étire facilement) — très fertile, pic de fertilité\n\n'
+        'Le "Jour Pic" est le dernier jour de glaire type blanc d\'œuf '
+        'ou de sensation lubrifiante. Vous ne pouvez l\'identifier '
+        'que rétrospectivement (le lendemain).',
+  ),
+  TopicContent(
+    icon: Icons.rule_outlined,
+    title: 'Les règles de la MST',
+    summary: 'Deux signes indépendants confirment l\'infertilité '
+        'post-ovulatoire — c\'est le double contrôle.',
+    body: 'La MST exige que DEUX signes indépendants confirment la fin '
+        'de l\'ovulation avant de déclarer l\'infertilité '
+        'post-ovulatoire :\n\n'
+        '1. Hausse de température : 3 températures consécutives '
+        'au-dessus des 6 précédentes (règle des 3 au-dessus de 6)\n'
+        '2. Règle de la glaire : 3 jours après le Jour Pic\n\n'
+        'L\'infertilité post-ovulatoire commence lorsque les DEUX '
+        'conditions sont remplies — généralement le soir du 3e jour '
+        'après le Pic.\n\n'
+        'Infertilité pré-ovulatoire (après les règles) :\n'
+        'La règle des 5 jours stipule que les 5 premiers jours du cycle '
+        'sont généralement infertiles — mais seulement si le cycle le '
+        'plus court des 12 derniers était ≥ 26 jours. Des cycles '
+        'variables ou courts suppriment cette fenêtre. La règle de '
+        'Roetzer et la règle Moins-20 offrent des alternatives '
+        'plus personnalisées.',
+  ),
+  TopicContent(
+    icon: Icons.show_chart_outlined,
+    title: 'Lire votre graphique',
+    summary: 'Reconnaître les schémas est une compétence qui '
+        's\'améliore avec la pratique.',
+    body: 'Votre graphique vous dit bien plus que simplement '
+        '"fertile" ou "infertile".\n\n'
+        'Ce qu\'il faut chercher :\n'
+        '• La ligne de couverture sépare la phase basse de la '
+        'phase haute des températures\n'
+        '• Le Jour Pic marque votre point de fertilité maximale\n'
+        '• La phase lutéale (après l\'ovulation) est généralement '
+        'constante — la phase pré-ovulatoire varie\n\n'
+        'Cycles perturbés :\n'
+        'Maladie, voyages, stress ou alcool peuvent fausser les '
+        'températures. Notez toujours les perturbations et utilisez '
+        'le contexte de la glaire pour confirmer le schéma.\n\n'
+        'La plupart des personnes apprennent à reconnaître leur schéma '
+        'typique après 3–4 cycles. Les premiers cycles sont '
+        'd\'observation — ne les interprétez pas sous pression.',
+  ),
+  TopicContent(
+    icon: Icons.school_outlined,
+    title: 'Apprendre la méthode',
+    summary: 'Pour utiliser la MST efficacement, '
+        'un apprentissage approprié est essentiel.',
+    body: 'La MST donne d\'excellents résultats avec une formation '
+        'adéquate. Le taux d\'échec en utilisation parfaite est '
+        'inférieur à 0,5 % — comparable à l\'utilisation correcte '
+        'du préservatif.\n\n'
+        'Comment apprendre :\n'
+        '• Lisez "Natürlich und sicher" (NFP/AG NFP) ou '
+        '"Taking Charge of Your Fertility" (Weschler) — '
+        'deux excellentes références\n'
+        '• Envisagez un cours en présentiel ou en ligne '
+        'avec une instructrice MST certifiée\n'
+        '• Observez et notez pendant au moins 3 cycles avant '
+        'd\'utiliser la méthode comme contraception\n\n'
+        'Cette application est un outil de graphique. Elle ne '
+        'remplace ni une formation adéquate ni le suivi par une '
+        'instructrice certifiée.',
+  ),
+];
+
+const _faqSectionsFr = <FaqSection>[
+  FaqSection(
+    label: 'Les bases',
+    items: [
+      FaqEntry(
+        question: 'La MST n\'est-elle qu\'une contraception naturelle?',
+        answer: 'Non — la MST est une méthode d\'observation de la '
+            'fertilité. Elle peut être utilisée pour éviter une grossesse '
+            '(contraception), pour tomber enceinte (planification familiale) '
+            'ou simplement pour mieux connaître son corps. De nombreuses '
+            'personnes l\'utilisent pour des raisons de santé ou pour éviter '
+            'les hormones, indépendamment de leurs objectifs reproductifs.',
+      ),
+      FaqEntry(
+        question: 'Quelle est son efficacité?',
+        answer: 'Avec une formation adéquate et une utilisation correcte, '
+            'la MST a un taux d\'échec en utilisation parfaite de < 0,5 '
+            'pour 100 femmes/an — comparable au préservatif. Le taux '
+            'd\'utilisation typique dépend fortement de la cohérence dans '
+            'l\'application des règles. La formation et un suivi '
+            'professionnel améliorent significativement les résultats.',
+      ),
+      FaqEntry(
+        question: 'Ai-je besoin de deux signes?',
+        answer: 'Oui — le "double contrôle" est ce qui distingue la MST '
+            'des méthodes moins fiables basées uniquement sur la température '
+            'ou sur la glaire. La température seule peut monter à cause '
+            'd\'une maladie ; la glaire seule peut induire en erreur. '
+            'Deux signes indépendants confirmant la même chose rendent '
+            'l\'évaluation bien plus robuste.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Mesure',
+    items: [
+      FaqEntry(
+        question: 'Et si j\'oublie de mesurer?',
+        answer: 'Notez "—" dans le graphique et continuez. Une donnée '
+            'manquante ne ruine pas le cycle — elle réduit simplement la '
+            'confiance ce jour-là. Ne tentez jamais de deviner ou '
+            'd\'interpoler une température. Si vous manquez plusieurs jours, '
+            'consultez vos notes de perturbation et soyez prudente dans '
+            'l\'interprétation.',
+      ),
+      FaqEntry(
+        question: 'Comment la maladie affecte-t-elle les températures?',
+        answer: 'La fièvre élève artificiellement la température basale. '
+            'Notez "perturbation" dans le graphique et n\'utilisez pas '
+            'cette température pour évaluer une hausse. Si la maladie '
+            'coïncide avec la hausse attendue, soyez plus prudente et '
+            'envisagez d\'attendre un jour supplémentaire de confirmation.',
+      ),
+      FaqEntry(
+        question: 'Voyage / décalage horaire — comment gérer?',
+        answer: 'En voyageant à travers des fuseaux horaires différents, '
+            'la température peut être affectée par des horaires de sommeil '
+            'différents. Notez la perturbation et le fuseau horaire. '
+            'Beaucoup de personnes utilisent leur heure locale habituelle '
+            'les 1–2 premières semaines, puis s\'adaptent une fois le '
+            'sommeil stabilisé. Signalez toute température affectée '
+            'par le voyage comme perturbation.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Situations particulières',
+    items: [
+      FaqEntry(
+        question: 'Puis-je utiliser la MST après avoir arrêté la contraception hormonale?',
+        answer: 'Oui, mais attendez-vous à des variations. Les cycles '
+            'peuvent être irréguliers pendant plusieurs mois après l\'arrêt '
+            'de la pilule, de l\'implant ou d\'autres contraceptifs hormonaux. '
+            'Observez et notez sans vous préoccuper de prédire pendant '
+            'les 3–6 premiers cycles. Le schéma deviendra beaucoup plus '
+            'clair au fil du temps.',
+      ),
+      FaqEntry(
+        question: 'Et après l\'accouchement ou pendant l\'allaitement?',
+        answer: 'La MST peut être utilisée pendant l\'allaitement '
+            '(méthode MAMA les 6 premiers mois, puis MST complète), '
+            'mais les règles standard d\'infertilité pré-ovulatoire '
+            'ne s\'appliquent pas quand les cycles ne sont pas encore '
+            'revenus. Demandez des conseils spécifiques à une instructrice '
+            'certifiée pour la période post-partum.',
+      ),
+      FaqEntry(
+        question: 'La périménopause et les cycles irréguliers fonctionnent-ils avec la MST?',
+        answer: 'La MST peut être utilisée pendant la périménopause, '
+            'mais les cycles irréguliers demandent plus d\'attention. '
+            'La règle de Roetzer fonctionne mieux avec des cycles '
+            'variables que la règle des 5 jours. Consultez une instructrice '
+            'certifiée pour un accompagnement personnalisé.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Cette application',
+    items: [
+      FaqEntry(
+        question: 'L\'application calcule-t-elle automatiquement la fertilité?',
+        answer: 'L\'application affiche des évaluations de fertilité '
+            'basées sur les règles de la MST — mais la responsabilité '
+            'finale de l\'interprétation vous appartient toujours. '
+            'Vérifiez toujours le graphique et faites confiance à votre '
+            'jugement. Cette application est un aide au graphique, '
+            'pas un système de décision automatisé.',
+      ),
+      FaqEntry(
+        question: 'Pourquoi mes données sont-elles uniquement sur l\'appareil?',
+        answer: 'Les données de santé reproductive sont sensibles. '
+            'Stocker tout localement signifie qu\'aucun tiers n\'a accès '
+            'à vos cycles — même si la société qui a développé '
+            'l\'application est vendue ou subit une violation de données. '
+            'La synchronisation dans le cloud pourra être ajoutée '
+            'optionnellement à l\'avenir, toujours avec un chiffrement '
+            'intégral.',
+      ),
+      FaqEntry(
+        question: 'Puis-je faire confiance aux évaluations de l\'application?',
+        answer: 'Les évaluations sont calculées selon les règles publiées '
+            'de la MST (AG NFP). Cependant, aucune application ne remplace '
+            'une formation adéquate. En cas de doute sur une évaluation, '
+            'consultez les règles ou une instructrice MST certifiée.',
+      ),
+    ],
+  ),
+];
+
+const _atlasFr = AtlasContent(
+  categories: [
+    MucusCategoryText(
+      category: 'Sèche / Sans glaire',
+      fertility: 'Infertile (faible probabilité)',
+      sensation: 'Sèche, sans sensation particulière',
+      appearance: 'Aucune glaire visible',
+      fingerTest: 'Non applicable',
+      details: 'Aucune glaire observable. Sensation de sécheresse à la vulve. '
+          'Généralement infertile, mais appliquez toujours les règles '
+          'de la MST pour confirmer l\'infertilité pré-ovulatoire.',
+    ),
+    MucusCategoryText(
+      category: 'Collante',
+      fertility: 'Faible fertilité',
+      sensation: 'Rugueuse, sèche',
+      appearance: 'Blanche ou jaunâtre, épaisse, grumeleuse',
+      fingerTest: 'Ne s\'étire pas, se brise immédiatement',
+      details: 'Glaire épaisse de consistance granuleuse. Forme un bouchon '
+          'cervical qui gêne la pénétration des spermatozoïdes. '
+          'Indique le début de la production d\'œstrogènes.',
+    ),
+    MucusCategoryText(
+      category: 'Crémeuse',
+      fertility: 'Fertilité croissante',
+      sensation: 'Douce, légèrement humide',
+      appearance: 'Blanche ou jaunâtre, uniforme, laiteuse',
+      fingerTest: 'S\'étire un peu, se rompt doucement',
+      details: 'Glaire plus fluide que la collante. Indique des œstrogènes '
+          'croissants et une fertilité potentielle. Traitez comme '
+          'potentiellement fertile ; suivez les règles de la MST.',
+    ),
+    MucusCategoryText(
+      category: 'Aqueuse / Transparente',
+      fertility: 'Haute fertilité',
+      sensation: 'Humide, glissante, lubrifiante',
+      appearance: 'Transparente, fine, fluide',
+      fingerTest: 'S\'étire bien, consistance aqueuse',
+      details: 'Glaire fertile à haute teneur en eau. Peut survenir avant '
+          'la glaire type blanc d\'œuf ou en alternance avec elle. '
+          'La sensation lubrifiante est souvent plus fiable '
+          'que l\'aspect visuel.',
+    ),
+    MucusCategoryText(
+      category: 'Blanc d\'œuf (œuf cru)',
+      fertility: 'Fertilité maximale — Jour Pic',
+      sensation: 'Très glissante, lubrifiante',
+      appearance: 'Transparente, élastique, brillante',
+      fingerTest: 'S\'étire ≥ 5 cm sans se rompre',
+      details: 'Glaire cervicale de fertilité maximale. Favorise la '
+          'survie et le transport des spermatozoïdes. Le dernier jour '
+          'de glaire type blanc d\'œuf ou de sensation lubrifiante '
+          'est le Jour Pic — identifiez-le rétrospectivement '
+          'le lendemain.',
+    ),
+  ],
+  progressionTitle: 'Progression typique de la glaire dans le cycle',
+  progression: [
+    ProgressionRowText(phase: 'Menstruations', mucus: 'Masqué par le saignement'),
+    ProgressionRowText(phase: 'Juste après les règles', mucus: 'Sèche ou collante'),
+    ProgressionRowText(phase: 'Pré-ovulation', mucus: 'Crémeuse → Aqueuse'),
+    ProgressionRowText(phase: 'Ovulation (Jour Pic)', mucus: 'Blanc d\'œuf / Très glissante'),
+    ProgressionRowText(phase: 'Post-ovulation', mucus: 'Sèche ou collante à nouveau'),
+  ],
+  progressionCaption: 'Le schéma individuel varie — observez votre propre '
+      'cycle sur plusieurs mois pour reconnaître votre progression typique.',
+  goodToKnowTitle: 'Bon à savoir',
+  goodToKnowBody: 'La sensation à la vulve est souvent plus informative '
+      'que l\'aspect visuel. Une sensation glissante ou lubrifiante — '
+      'même sans glaire visible — doit être notée comme blanc d\'œuf.\n\n'
+      'Les spermatozoïdes survivent dans la glaire fertile jusqu\'à '
+      '5 jours. Des rapports sexuels pendant la phase de glaire peuvent '
+      'donc entraîner une grossesse même si l\'ovulation n\'a lieu que '
+      'plusieurs jours plus tard.\n\n'
+      'La glaire peut être masquée par des lubrifiants, du sperme, '
+      'des infections ou certains médicaments. Si vous observez une '
+      'glaire atypique, notez-le et consultez une instructrice.',
+  samplingTitle: 'Comment prélever la glaire',
+  samplingIntro: 'Vérifiez la glaire cervicale plusieurs fois par jour. '
+      'Vous pouvez utiliser la méthode avec laquelle vous êtes la plus '
+      'à l\'aise — l\'important est la régularité.',
+  samplingMethods: [
+    SamplingMethodText(
+      title: 'Méthode du papier hygiénique',
+      text: 'Avant d\'uriner, essuyez l\'entrée vaginale de l\'avant '
+          'vers l\'arrière avec du papier hygiénique blanc non parfumé. '
+          'Observez le papier : y a-t-il quelque chose? Notez la couleur, '
+          'la consistance et la sensation lors de l\'essuyage '
+          '(sèche, douce, glissante?).',
+    ),
+    SamplingMethodText(
+      title: 'Méthode du doigt',
+      text: 'Les mains propres, insérez l\'index ou le majeur dans le '
+          'vagin (seulement 2–3 cm). Déplacez doucement autour du col '
+          'de l\'utérus. Retirez le doigt et examinez ce qui s\'y trouve. '
+          'Effectuez ensuite le test d\'étirement : pressez la glaire '
+          'entre le pouce et l\'index et écartez-les lentement. '
+          'Notez de combien elle s\'étire avant de se rompre.',
+    ),
+    SamplingMethodText(
+      title: 'Vérification des sous-vêtements',
+      text: 'Observez vos sous-vêtements au cours de la journée. '
+          'La glaire cervicale laisse souvent des traces visibles ; '
+          'notez si la tache est sèche, crémeuse, humide ou montre '
+          'un résidu transparent et élastique.',
+    ),
+  ],
+  samplingTip: 'Notez toujours la qualité LA PLUS HAUTE observée '
+      'dans la journée. Si vous avez vu de la glaire collante le matin '
+      'mais du blanc d\'œuf l\'après-midi, notez blanc d\'œuf.\n\n'
+      'Vérifiez plusieurs fois par jour : la glaire peut changer au '
+      'cours de la journée. Prêtez une attention particulière à la '
+      'sensation — la sensation glissante/lubrifiante est souvent '
+      'l\'indicateur le plus fiable, même quand la glaire visible '
+      'est peu abondante.',
+);
+
+// ─────────────────────── POLISH ───────────────────────────────────────────────
+
+const _methodTopicsPl = <TopicContent>[
+  TopicContent(
+    icon: Icons.auto_stories_outlined,
+    title: 'Czym jest metoda symptotermalna?',
+    summary: 'Naukowo zwalidowany sposób rozpoznawania dni płodnych '
+        'i niepłodnych za pomocą dwóch sygnałów ciała.',
+    body: 'Metoda symptotermalna (MST) wykorzystuje dwa niezależne '
+        'wskaźniki biologiczne — podstawową temperaturę ciała i śluz '
+        'szyjkowy — do wyznaczania faz płodnych i niepłodnych '
+        'każdego cyklu miesiączkowego.\n\n'
+        'W odróżnieniu od metod kalendarzowych, które opierają się '
+        'na średnich, MST obserwuje rzeczywiste sygnały Twojego ciała '
+        'w każdym cyklu. Duże badanie (Frank-Herrmann i in., 2007) '
+        'wykazało, że przy prawidłowym stosowaniu zasad metody rzadziej '
+        'niż 1 na 200 kobiet rocznie zaszła w ciążę.',
+    reference: 'Frank-Herrmann P et al. (2007). '
+        'Human Reproduction, 22(5), 1310–1319.',
+  ),
+  TopicContent(
+    icon: Icons.loop,
+    title: 'Twój cykl miesiączkowy',
+    summary: 'Jak hormony regulują cztery fazy cyklu.',
+    body: 'Twój cykl kontrolowany jest przez pętlę sprzężenia zwrotnego '
+        'między mózgiem a jajnikami. Typowy cykl trwa 24–35 dni, '
+        'ale wahania są normalne.\n\n'
+        'Cztery fazy:\n\n'
+        '1. Miesiączka (~dni 1–5)\n'
+        'Błona śluzowa macicy złuszcza się. Poziom hormonów '
+        'jest najniższy.\n\n'
+        '2. Faza folikularna (dni 1–12, zmienna)\n'
+        'FSH pobudza wzrost pęcherzyków jajnikowych. Estrogeny stopniowo '
+        'rosną, pogrubiając błonę śluzową macicy i stymulując '
+        'produkcję śluzu szyjkowego.\n\n'
+        '3. Owulacja (dzień 12–16 w cyklu 28-dniowym)\n'
+        'Wyrzut LH wyzwala uwolnienie komórki jajowej. Owulacja może '
+        'różnić się między cyklami — także u tej samej osoby.\n\n'
+        '4. Faza lutealna (~14 dni)\n'
+        'Dominuje progesteron: temperatura rośnie, śluz wysycha. '
+        'Bez zapłodnienia poziom hormonów spada i cykl zaczyna się '
+        'od nowa.',
+  ),
+  TopicContent(
+    icon: Icons.thermostat_outlined,
+    title: 'Podstawowa temperatura ciała (PTC)',
+    summary: 'Twoja najniższa temperatura spoczynkowa ujawnia, '
+        'kiedy nastąpiła owulacja.',
+    body: 'Progesteron wydzielany po owulacji podnosi podstawową '
+        'temperaturę ciała o 0,2–0,5 °C. Ten wzrost potwierdza, '
+        'że owulacja już nastąpiła.\n\n'
+        'Jak mierzyć poprawnie:\n'
+        '• Mierz zaraz po przebudzeniu, zanim wstaniesz lub zaczniesz '
+        'mówić\n'
+        '• Używaj tego samego termometru każdego dnia\n'
+        '• Mierz o tej samej porze (±30 min.) — każda godzina różnicy '
+        'może zmienić temperaturę o 0,1 °C\n'
+        '• Notuj zawsze, nawet gdy temperatura wydaje się dziwna\n\n'
+        'Zakłócenia (niespokojny sen, alkohol, choroba) powodują '
+        'sztuczny wzrost temperatury. Zaznacz je na wykresie, '
+        'by można było je ocenić w kontekście.\n\n'
+        'Termometr powinien mierzyć do setnych stopnia (0,01 °C) — '
+        'zwykłe termometry oralne mierzą tylko do dziesiątych.',
+  ),
+  TopicContent(
+    icon: Icons.water_drop_outlined,
+    title: 'Śluz szyjkowy',
+    summary: 'Śluz zmienia się przez cały cykl i wskazuje, '
+        'kiedy zajście w ciążę jest możliwe.',
+    body: 'Gruczoły szyjki macicy stale produkują śluz, ale jego ilość '
+        'i jakość zmieniają się w zależności od poziomu hormonów.\n\n'
+        'Rodzaje śluzu:\n\n'
+        '• Sucho / brak śluzu — niska płodność\n'
+        '• Lepki (biały/żółtawy, gęsty, nie rozciąga się) — niska '
+        'płodność, ale rosnąca czujność\n'
+        '• Kremowy (biały/żółtawy, gładki, lekko się rozciąga) — '
+        'potencjalnie płodny\n'
+        '• Wilgotny / Przezroczysty / Jak białko jaja '
+        '(przezroczysty, elastyczny, łatwo się rozciąga) — '
+        'bardzo płodny, szczyt płodności\n\n'
+        '"Dzień szczytu" to ostatni dzień śluzu jak białko jaja lub '
+        'odczucia nawilżenia. Można go rozpoznać jedynie '
+        'retrospektywnie (następnego dnia).',
+  ),
+  TopicContent(
+    icon: Icons.rule_outlined,
+    title: 'Zasady MST',
+    summary: 'Dwa niezależne sygnały potwierdzają niepłodność '
+        'poowulacyjną — to jest podwójna kontrola.',
+    body: 'MST wymaga, by DWA niezależne sygnały potwierdziły koniec '
+        'owulacji, zanim można ogłosić niepłodność poowulacyjną:\n\n'
+        '1. Wzrost temperatury: 3 kolejne temperatury powyżej '
+        '6 poprzednich (zasada 3 powyżej 6)\n'
+        '2. Zasada śluzu: 3 dni po Dniu szczytu\n\n'
+        'Niepłodność poowulacyjna zaczyna się, gdy OBA warunki są '
+        'spełnione — zazwyczaj wieczorem 3. dnia po szczycie.\n\n'
+        'Niepłodność przedowulacyjna (po miesiączce):\n'
+        'Zasada 5 dni mówi, że pierwsze 5 dni cyklu jest zazwyczaj '
+        'niepłodnych — ale tylko wtedy, gdy najkrótszy cykl '
+        'z ostatnich 12 wynosił ≥ 26 dni. Zmienne lub krótkie cykle '
+        'eliminują to okno. Zasada Rötzersa i zasada Minus-20 '
+        'oferują bardziej spersonalizowane alternatywy.',
+  ),
+  TopicContent(
+    icon: Icons.show_chart_outlined,
+    title: 'Odczytywanie wykresu',
+    summary: 'Rozpoznawanie wzorców to umiejętność, '
+        'która poprawia się z praktyką.',
+    body: 'Twój wykres mówi Ci więcej niż tylko "płodna" czy '
+        '"niepłodna".\n\n'
+        'Na co zwracać uwagę:\n'
+        '• Linia pokrycia oddziela fazę niskich od wysokich temperatur\n'
+        '• Dzień szczytu zaznacza punkt najwyższej płodności\n'
+        '• Faza lutealna (po owulacji) jest zazwyczaj stała — '
+        'faza przedowulacyjna jest zmienna\n\n'
+        'Zaburzone cykle:\n'
+        'Choroba, podróże, stres lub alkohol mogą zniekształcić '
+        'temperatury. Zawsze notuj zakłócenia i używaj kontekstu śluzu '
+        'do potwierdzenia wzorca.\n\n'
+        'Większość osób uczy się rozpoznawać swój typowy wzorzec '
+        'po 3–4 cyklach. Pierwsze cykle to obserwacja — '
+        'nie interpretuj ich pod presją.',
+  ),
+  TopicContent(
+    icon: Icons.school_outlined,
+    title: 'Nauka metody',
+    summary: 'Aby skutecznie stosować MST, '
+        'niezbędne jest właściwe przeszkolenie.',
+    body: 'MST daje doskonałe wyniki przy odpowiednim przeszkoleniu. '
+        'Wskaźnik zawodności przy idealnym stosowaniu wynosi '
+        'poniżej 0,5 % — porównywalnie do prawidłowego stosowania '
+        'prezerwatywy.\n\n'
+        'Jak się uczyć:\n'
+        '• Przeczytaj "Natürlich und sicher" (NFP/AG NFP) lub '
+        '"Taking Charge of Your Fertility" (Weschler) — '
+        'obie są doskonałymi pozycjami\n'
+        '• Rozważ kurs stacjonarny lub online z certyfikowaną '
+        'instruktorką MST\n'
+        '• Obserwuj i notuj przez co najmniej 3 cykle, zanim '
+        'zaczniesz stosować metodę jako antykoncepcję\n\n'
+        'Ta aplikacja jest narzędziem do prowadzenia wykresów. '
+        'Nie zastępuje odpowiedniego przeszkolenia ani opieki '
+        'certyfikowanej instruktorki.',
+  ),
+];
+
+const _faqSectionsPl = <FaqSection>[
+  FaqSection(
+    label: 'Podstawy',
+    items: [
+      FaqEntry(
+        question: 'Czy MST to tylko naturalna antykoncepcja?',
+        answer: 'Nie — MST to metoda obserwacji płodności. Można ją '
+            'stosować, by unikać ciąży (antykoncepcja), by zajść w ciążę '
+            '(planowanie rodziny) lub po prostu, by lepiej poznać '
+            'własne ciało. Wiele osób stosuje ją ze względów zdrowotnych '
+            'lub chcąc unikać hormonów, niezależnie od celów rozrodczych.',
+      ),
+      FaqEntry(
+        question: 'Jaka jest jej skuteczność?',
+        answer: 'Przy odpowiednim przeszkoleniu i prawidłowym stosowaniu '
+            'MST ma wskaźnik zawodności przy idealnym stosowaniu < 0,5 '
+            'na 100 kobiet/rok — porównywalnie do prezerwatywy. '
+            'Wskaźnik przy typowym stosowaniu zależy głównie od '
+            'konsekwencji w przestrzeganiu zasad. Przeszkolenie i opieka '
+            'specjalistki znacząco poprawiają wyniki.',
+      ),
+      FaqEntry(
+        question: 'Czy potrzebuję dwóch sygnałów?',
+        answer: 'Tak — "podwójna kontrola" to właśnie to, co odróżnia '
+            'MST od mniej wiarygodnych metod opartych wyłącznie na '
+            'temperaturze lub śluzie. Sama temperatura może wzrosnąć '
+            'z powodu choroby; sam śluz może wprowadzać w błąd. '
+            'Dwa niezależne sygnały potwierdzające to samo sprawiają, '
+            'że ocena jest o wiele bardziej niezawodna.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Pomiary',
+    items: [
+      FaqEntry(
+        question: 'Co zrobić, jeśli zapomnę zmierzyć?',
+        answer: 'Wpisz "—" na wykresie i kontynuuj. Brak jednego pomiaru '
+            'nie niszczy cyklu — jedynie zmniejsza pewność oceny '
+            'w tym dniu. Nigdy nie próbuj zgadywać ani interpolować '
+            'temperatury. Jeśli stracisz kilka dni, zajrzyj do notatek '
+            'o zakłóceniach i bądź ostrożna w interpretacji.',
+      ),
+      FaqEntry(
+        question: 'Jak choroba wpływa na temperaturę?',
+        answer: 'Gorączka sztucznie podnosi temperaturę podstawową. '
+            'Zaznacz "zakłócenie" na wykresie i nie używaj tej temperatury '
+            'do oceny wzrostu. Jeśli choroba zbiegnie się z oczekiwanym '
+            'wzrostem temperatury, bądź ostrożniejsza i rozważ '
+            'odczekanie dodatkowego dnia potwierdzenia.',
+      ),
+      FaqEntry(
+        question: 'Podróż / różne strefy czasowe — jak sobie poradzić?',
+        answer: 'Podczas podróży przez różne strefy czasowe temperatura '
+            'może być zaburzona przez inne godziny snu. Zanotuj zakłócenie '
+            'i strefę czasową. Wiele osób przez pierwsze 1–2 tygodnie '
+            'używa czasu z miejsca zamieszkania, a potem dostosowuje się, '
+            'gdy sen się ustabilizuje. Każdą temperaturę zaburzoną przez '
+            'podróż zaznacz jako zakłócenie.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Sytuacje szczególne',
+    items: [
+      FaqEntry(
+        question: 'Czy mogę stosować MST po odstawieniu antykoncepcji hormonalnej?',
+        answer: 'Tak, ale spodziewaj się wahań. Cykle mogą być nieregularne '
+            'przez kilka miesięcy po odstawieniu pigułki, implantu lub '
+            'innych hormonalnych środków. Przez pierwsze 3–6 cykli '
+            'obserwuj i notuj, nie martwiąc się o przewidywania. '
+            'Wzorzec stanie się znacznie wyraźniejszy, gdy organizm '
+            'się wyrówna.',
+      ),
+      FaqEntry(
+        question: 'A co z połogiem i karmieniem piersią?',
+        answer: 'MST można stosować podczas karmienia piersią '
+            '(metoda LAM przez pierwsze 6 miesięcy, potem pełna MST), '
+            'ale standardowe zasady niepłodności przedowulacyjnej '
+            'nie mają zastosowania, gdy cykl jeszcze nie powrócił. '
+            'Poszukaj specjalistycznych wskazówek certyfikowanej '
+            'instruktorki MST na ten okres.',
+      ),
+      FaqEntry(
+        question: 'Czy MST działa przy perimenopauzie i nieregularnych cyklach?',
+        answer: 'MST można stosować podczas perimenopauzy, ale nieregularne '
+            'cykle wymagają większej uwagi. Zasada Rötzersa sprawdza się '
+            'lepiej przy zmiennych cyklach niż zasada 5 dni. '
+            'Skontaktuj się z certyfikowaną instruktorką, '
+            'by uzyskać spersonalizowane wsparcie w tym czasie.',
+      ),
+    ],
+  ),
+  FaqSection(
+    label: 'Ta aplikacja',
+    items: [
+      FaqEntry(
+        question: 'Czy aplikacja automatycznie oblicza płodność?',
+        answer: 'Aplikacja wyświetla oceny płodności na podstawie zasad MST '
+            '— ale ostateczna odpowiedzialność za interpretację zawsze '
+            'należy do Ciebie. Zawsze sprawdzaj wykres i ufaj własnemu '
+            'osądowi. Ta aplikacja to pomoc w prowadzeniu wykresu, '
+            'nie zautomatyzowany system decyzyjny.',
+      ),
+      FaqEntry(
+        question: 'Dlaczego moje dane są tylko na urządzeniu?',
+        answer: 'Dane dotyczące zdrowia reprodukcyjnego są wrażliwe. '
+            'Przechowywanie wszystkiego lokalnie oznacza, że żadna '
+            'strona trzecia nie ma dostępu do Twoich cykli — '
+            'nawet jeśli firma, która stworzyła aplikację, zostanie '
+            'sprzedana lub dojdzie do wycieku danych. '
+            'Synchronizacja w chmurze może zostać opcjonalnie dodana '
+            'w przyszłości, zawsze z pełnym szyfrowaniem.',
+      ),
+      FaqEntry(
+        question: 'Czy mogę ufać ocenom aplikacji?',
+        answer: 'Oceny obliczane są zgodnie z opublikowanymi zasadami MST '
+            '(AG NFP). Jednak żadna aplikacja nie zastąpi właściwego '
+            'przeszkolenia. Jeśli masz wątpliwości co do oceny, '
+            'sprawdź zasady lub skontaktuj się z certyfikowaną '
+            'instruktorką MST.',
+      ),
+    ],
+  ),
+];
+
+const _atlasPl = AtlasContent(
+  categories: [
+    MucusCategoryText(
+      category: 'Sucho / Brak śluzu',
+      fertility: 'Niepłodna (niskie prawdopodobieństwo)',
+      sensation: 'Sucho, brak szczególnych odczuć',
+      appearance: 'Brak widocznego śluzu',
+      fingerTest: 'Nie dotyczy',
+      details: 'Brak obserwowalnego śluzu. Odczucie suchości przy sromie. '
+          'Zazwyczaj niepłodna, ale zawsze stosuj zasady MST, '
+          'by potwierdzić niepłodność przedowulacyjną.',
+    ),
+    MucusCategoryText(
+      category: 'Lepki',
+      fertility: 'Niska płodność',
+      sensation: 'Szorstko, sucho',
+      appearance: 'Biały lub żółtawy, gęsty, grudkowaty',
+      fingerTest: 'Nie rozciąga się, natychmiast się urywa',
+      details: 'Gęsty śluz o grudkowatej konsystencji. Tworzy czop '
+          'szyjkowy utrudniający przenikanie plemników. '
+          'Sygnalizuje początek produkcji estrogenów.',
+    ),
+    MucusCategoryText(
+      category: 'Kremowy',
+      fertility: 'Rosnąca płodność',
+      sensation: 'Gładko, lekko wilgotno',
+      appearance: 'Biały lub żółtawy, jednolity, mleczny',
+      fingerTest: 'Lekko się rozciąga, łagodnie pęka',
+      details: 'Śluz bardziej płynny niż lepki. Sygnalizuje rosnące '
+          'estrogeny i potencjalną płodność. Traktuj jako potencjalnie '
+          'płodny; przestrzegaj zasad MST.',
+    ),
+    MucusCategoryText(
+      category: 'Wodnisty / Przezroczysty',
+      fertility: 'Wysoka płodność',
+      sensation: 'Wilgotno, ślisko, nawilżająco',
+      appearance: 'Przezroczysty, cienki, płynny',
+      fingerTest: 'Dobrze się rozciąga, konsystencja wodna',
+      details: 'Płodny śluz o wysokiej zawartości wody. Może '
+          'występować przed śluzem jak białko jaja lub zamiast niego. '
+          'Odczucie nawilżenia bywa często bardziej wiarygodne '
+          'niż wygląd.',
+    ),
+    MucusCategoryText(
+      category: 'Jak białko jaja (surowe jajko)',
+      fertility: 'Maksymalna płodność — Dzień szczytu',
+      sensation: 'Bardzo ślisko, nawilżająco',
+      appearance: 'Przezroczysty, elastyczny, lśniący',
+      fingerTest: 'Rozciąga się ≥ 5 cm bez urywania',
+      details: 'Śluz szyjkowy o maksymalnej płodności. Sprzyja przeżyciu '
+          'i transportowi plemników. Ostatni dzień śluzu jak białko jaja '
+          'lub odczucia nawilżenia to Dzień szczytu — '
+          'rozpoznaj go retrospektywnie następnego dnia.',
+    ),
+  ],
+  progressionTitle: 'Typowa progresja śluzu w cyklu',
+  progression: [
+    ProgressionRowText(phase: 'Miesiączka', mucus: 'Zakryty krwawieniem'),
+    ProgressionRowText(phase: 'Zaraz po miesiączce', mucus: 'Sucho lub lepko'),
+    ProgressionRowText(phase: 'Przed owulacją', mucus: 'Kremowy → Wodnisty'),
+    ProgressionRowText(phase: 'Owulacja (Dzień szczytu)', mucus: 'Jak białko jaja / Bardzo ślisko'),
+    ProgressionRowText(phase: 'Po owulacji', mucus: 'Sucho lub lepko ponownie'),
+  ],
+  progressionCaption: 'Indywidualny wzorzec jest różny — obserwuj własny '
+      'cykl przez kilka miesięcy, by rozpoznać swoją typową progresję.',
+  goodToKnowTitle: 'Warto wiedzieć',
+  goodToKnowBody: 'Odczucia przy sromie są często bardziej informacyjne '
+      'niż wygląd śluzu. Odczucie śliskości lub nawilżenia — nawet bez '
+      'widocznego śluzu — należy odnotować jako białko jaja.\n\n'
+      'Plemniki przeżywają w płodnym śluzie do 5 dni. Stosunek '
+      'seksualny podczas fazy śluzu może więc prowadzić do ciąży, '
+      'nawet jeśli owulacja nastąpi dopiero kilka dni później.\n\n'
+      'Śluz może być maskowany przez środki nawilżające, nasienie, '
+      'infekcje lub niektóre leki. Jeśli zauważysz nietypowy śluz, '
+      'zanotuj to i skonsultuj się z instruktorką.',
+  samplingTitle: 'Jak pobierać śluz',
+  samplingIntro: 'Sprawdzaj śluz szyjkowy kilka razy dziennie. '
+      'Możesz używać metody, która jest dla Ciebie najwygodniejsza '
+      '— ważna jest konsekwencja.',
+  samplingMethods: [
+    SamplingMethodText(
+      title: 'Metoda papieru toaletowego',
+      text: 'Przed oddaniem moczu przetrzyj wejście do pochwy '
+          'od przodu do tyłu białym, bezzapachowym papierem '
+          'toaletowym. Obejrzyj papier: czy coś na nim widać? '
+          'Zanotuj kolor, konsystencję i odczucie podczas wycierania '
+          '(sucho, gładko, ślisko?).',
+    ),
+    SamplingMethodText(
+      title: 'Metoda palcowa',
+      text: 'Czystymi rękami wprowadź palec wskazujący lub środkowy '
+          'do pochwy (tylko 2–3 cm). Delikatnie przesuń wokół szyjki '
+          'macicy. Wyciągnij palec i obejrzyj, co na nim zostało. '
+          'Następnie wykonaj test rozciągania: ściśnij śluz między '
+          'kciukiem a wskazującym i powoli je rozsuń. '
+          'Zanotuj, ile centymetrów się rozciąga przed urwaniem.',
+    ),
+    SamplingMethodText(
+      title: 'Kontrola bielizny',
+      text: 'Obserwuj bieliznę przez cały dzień. Śluz szyjkowy '
+          'często zostawia widoczne ślady; zanotuj, czy plama jest '
+          'sucha, kremowa, wilgotna lub czy widać przezroczysty '
+          'i elastyczny osad.',
+    ),
+  ],
+  samplingTip: 'Zawsze notuj NAJWYŻSZĄ jakość śluzu zaobserwowaną '
+      'w ciągu dnia. Jeśli rano widziałaś śluz lepki, ale po południu '
+      'jak białko jaja — notuj białko jaja.\n\n'
+      'Sprawdzaj kilka razy dziennie: śluz może się zmieniać '
+      'w ciągu dnia. Zwracaj szczególną uwagę na odczucia — '
+      'uczucie śliskości/nawilżenia jest często najbardziej '
+      'wiarygodnym wskaźnikiem, nawet gdy widocznego śluzu jest mało.',
 );
